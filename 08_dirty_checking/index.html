@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My First Controller</title>
+	</head>
+
+	<body ng-app="myApp" ng-init="count = { value: 3 }">
+						<div ng-controller="AddCommentController as addCommentCtrl">
+					<div>
+						<div ng-controller="StarController as starCtrl" style="font-size: 0px;">
+							<img src="../image/star_full.png" width="15" height="15"
+								ng-repeat="i in starCtrl.getRange(addCommentCtrl.comment.stars) track by $index" />
+							<img src="../image/star_empty.png" width="15" height="15"
+								ng-repeat="i in starCtrl.getRange(5 - addCommentCtrl.comment.stars) track by $index" />
+						</div>
+						{{addCommentCtrl.comment.content}} - <b>{{addCommentCtrl.comment.author}}</b>
+					</div>
+
+					<!-- NEW CODE -->
+					<form name="commentForm"
+						ng-submit="addCommentCtrl.addComment(product) || commentForm.$setPristine()"
+						novalidation>
+					<!-- END NEW CODE -->
+
+						<fieldset>
+							Select your note :
+							<select ng-model="addCommentCtrl.comment.stars"
+								ng-options="stars for stars in [5, 4, 3, 2, 1]"
+								required>
+								<option value="">Rate</option>
+							</select><br />
+							Email : <input type="email" ng-model="addCommentCtrl.comment.author" required/><br />
+							Your comment :<br />
+							<textarea ng-model="addCommentCtrl.comment.content" cols="100" rows="5" required></textarea>
+
+							<input type="submit" value="Post" ng-disabled="!commentForm.$valid"/>
+						</fieldset>
+					</form>
+				</div>
+
+		<script src="../etc/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>

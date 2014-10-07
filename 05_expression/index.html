@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+	<head>
+		<title>My First Angular expression</title>
+	</head>
+	<body>
+		<div ng-controller="StoreController as storeCtrl">
+			<h1>{{storeCtrl.product.name}}</h1>
+			<h2>${{storeCtrl.product.price}}</h2>
+			<p>{{storeCtrl.product.description}}</p>
+		</div>
+		<script src="../etc/angular.min.js"></script>
+	</body>
+</html>
