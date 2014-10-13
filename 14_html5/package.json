@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "name": "modehtml5-test",
+  "description": "Test for mode HTML5",
+  "repository": "<no repository>",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.6.1",
+    "tmp": "0.0.23",
+    "shelljs": "^0.2.6"
+  },
+  "scripts": {
+    "prestart": "node start.js",
+    "start": "http-server -a 0.0.0.0 -p 8000",
+    "clean": "node clean.js"
+  }
+}
