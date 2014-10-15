@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My First $http use</title>
+		<style>
+[ng-cloak] {
+	display: none !important;
+}
+		</style>
+	</head>
+
+	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
+		<h1>My First $http use</h1>
+		Voila du contenu AJAX :
+		<span ng-cloak>{{content}}</span>
+
+		<script src="etc/angular/angular.min.js"></script>
+		<script src="etc/angular-resource/angular-resource.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
