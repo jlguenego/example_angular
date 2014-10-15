@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('myApp', []);
+	var app = angular.module('myApp', ['ngResource']);
 
 	app.factory('myService', ['$resource', function($resource){
 		var result = $resource('content.json');
@@ -7,6 +7,6 @@
 	}]);
 
 	app.controller('MyController', [ '$scope', 'myService', function($scope, myService) {
-		$scope.content = myService.get();
+		$scope.data = myService.get();
 	}]);
 })();
