@@ -1,37 +1,18 @@
 (function() {
 	var app = angular.module('myApp', []);
-	app.constant('$myInfo', {
-		version: '1.2.4',
-		author: 'JLG'
-	});
+	app.value('s1', { value: 0 });
+	app.value('s2', { value: 0 });
 
-	function Person(myinfo) {
-		this.sayHello = function() {
-			return 'Hello I am ' + this.name;
+	app.controller('MyController', [ '$scope', '$injector', function($scope, $injector) {
+		$scope.myService = 's1';
+		$scope.increment = function(serviceName) {
+			var service = $injector.get($scope.myService);
+			service.value++;
 		};
-		this.name = myinfo.author;
-	}
 
-	app.provider('$myPerson', function() {
-		console.log('provider call');
-		var author = undefined;
-		this.setAuthor = function(name) {
-			author = name;
+		$scope.value = function() {
+			var service = $injector.get($scope.myService);
+			return service.value;
 		};
-		this.$get = [ '$myInfo', function($myInfo) {
-			var result = new Person($myInfo);
-			if (author) {
-				result.name = author;
-			}
-			return result;
-		}];
-	});
-
-	app.config(["$myPersonProvider", '$myInfo', function($myPersonProvider, $myInfo) {
-		$myInfo.author = "Dupond";
-	}]);
-
-	app.controller('MyController', [ '$myPerson', function($myPerson) {
-		this.hello = $myPerson.sayHello();
 	}]);
 })();
