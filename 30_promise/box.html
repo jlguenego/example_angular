@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>body { margin: 0px; } .box { position: absolute;
+			width: 50px; height: 50px; background-color: blue;
+}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+function myMove(element, angle, distance, duration, next) {
+	var rad = -angle * 2 * Math.PI / 360;
+	var x = element.offset().left;
+	var y = element.offset().top;
+	element.animate({
+		left: x + (distance * Math.cos(rad)),
+		top: y + (distance * Math.sin(rad))
+	}, duration, next);
+}
+$(document).ready(function() {
+	var move = function(angle, distance, duration) {
+		return new Promise(function(fulfill, reject) {
+			myMove($('.box'), angle, distance, duration, fulfill);
+		});
+	};
+	move(0, 600, 1000)
+		.then(function() {
+			return move(-90, 100, 1000);
+		})
+		.then(function() {
+			return move(180, 100, 1000);
+		})
+		.then(function() {
+			console.log('End');
+		});
+});
+		</script>
+	</body>
+</html>
