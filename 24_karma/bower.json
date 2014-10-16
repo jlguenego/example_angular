@@ -1,0 +1,14 @@
+{
+  "name": "karma-demo",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-mocks": "~1.2.x",
+    "jquery": "1.10.2",
+    "bootstrap": "~3.1.1"
+  }
+}
