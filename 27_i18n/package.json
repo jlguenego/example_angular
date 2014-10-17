@@ -1,0 +1,19 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "name": "localization_example",
+  "description": "",
+  "license": "",
+  "devDependencies": {
+    "http-server": "^0.6.1"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "http-server -a 0.0.0.0 -p 8000",
+
+    "prei18n": "npm install",
+    "i18n": "node scripts/create_locale_files.js"
+  }
+}

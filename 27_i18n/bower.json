@@ -1,0 +1,13 @@
+{
+  "name": "localization_example",
+  "description": "",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-i18n": "",
+    "angular-resource": "~1.2.x"
+  }
+}
