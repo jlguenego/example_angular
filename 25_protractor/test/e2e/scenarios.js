@@ -8,19 +8,13 @@ describe('Hello World app', function() {
 			browser.get('app/index.html');
 		});
 
-
 		it('should reflect the message when typing it', function() {
-
 			var input = element(by.css('input'));
-			console.log('input=', input);
 			var text = element.all(by.css('h1')).get(1);
 			input.clear();
 			input.sendKeys('coucou');
-
 			expect(text.getText()).toEqual('coucou');
 		});
-
-
 	});
 });
 
