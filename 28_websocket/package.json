@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "name": "websocket_example",
+  "description": "",
+  "license": "",
+  "devDependencies": {
+    "express": "~4.x",
+    "http-server": "^0.6.1",
+    "socket.io": "^1.1.0"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+
+    "start": "node server.js"
+  }
+}
