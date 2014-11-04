@@ -11,7 +11,7 @@ app.controller('MyController', ['$scope', function($scope) {
 	};
 
 	socket.on('chat_message', function(data) {
-		console.log('Message recieved:', data);
+		console.log('Message received:', data);
 		$scope.messages.push(data);
 		$scope.$apply();
 	});
