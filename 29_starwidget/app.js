@@ -8,7 +8,22 @@
 	app.directive('myStars', function() {
 		return {
 			restrict: 'E',
-			template: function() { console.log('hello'); return 'partials/truc.html' },
+			scope: {
+				rate: '=rate',
+				total: '=total'
+			},
+			template: function(elem, attr) {
+				var html = '';
+				var rate = attr.rate || 3;
+				var total = attr.total || 5;
+				for (var i = 0; i < rate; i++) {
+					html += '<img src="yellow_star.png" />';
+				}
+				for (var i = rate; i < total; i++) {
+					html += '<img src="white_star.png" />';
+				}
+				return html;
+			},
 			transclude: true
 		};
 	});
