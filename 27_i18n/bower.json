@@ -8,6 +8,8 @@
   "dependencies": {
     "angular": "1.2.x",
     "angular-i18n": "",
-    "angular-resource": "~1.2.x"
+    "angular-resource": "~1.2.x",
+	"jquery": "1.x.x",
+	"jquery-ui": "1.x.x"
   }
 }
