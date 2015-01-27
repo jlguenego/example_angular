@@ -8,10 +8,6 @@
 	app.directive('myStars', function() {
 		return {
 			restrict: 'E',
-			scope: {
-				rate: '=rate',
-				total: '=total'
-			},
 			template: function(elem, attr) {
 				var html = '';
 				var rate = attr.rate || 3;
@@ -23,7 +19,34 @@
 					html += '<img src="white_star.png" />';
 				}
 				return html;
+			}
+		};
+	});
+
+	app.controller('StarsController', [ '$scope', function($scope) {
+		this.getRange = function(n) {
+			var result = [];
+			for (var i = 1; i <= n; i++) {
+				result.push(i);
+			}
+			return result;
+		};
+
+		this.rate = $scope.rate || 3;
+		this.total = $scope.total || 5;
+
+	}]);
+
+	app.directive('myOtherStars', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'template_stars.html',
+			scope: {
+				rate: '=rate',
+				total: '=total',
 			},
+			controller: 'StarsController',
+			controllerAs: 'ctrl',
 			transclude: true
 		};
 	});
