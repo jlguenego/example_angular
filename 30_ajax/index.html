@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Ajax example</title>
+	</head>
+	<body>
+		<button type="button" onclick="clean()">Clean</button>
+		<button type="button" onclick="loadXMLDocAsync()">Request data (Async)</button>
+		<button type="button" onclick="loadXMLDocSync()">Request data (Sync)</button>
+		<div id="myDiv"></div>
+		<script>
+function clean() {
+	console.log("cleaning");
+	document.getElementById("myDiv").innerHTML = "";
+}
+function loadXMLDocAsync() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4) {
+			document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET", "content.html", true);
+	xmlhttp.send();
+}
+function loadXMLDocSync() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4) {
+			document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("GET", "content.html", false);
+	console.log("about to send");
+	xmlhttp.send();
+	console.log("send finished");
+}
+		</script>
+	</body>
+</html>
