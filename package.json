@@ -8,8 +8,7 @@
   "devDependencies": {
     "bower": "^1.3.1",
     "express": "~4.x",
-    "serve-index": "",
-    "serve-static": "",
+    "serve-index": "1.6.2",
     "http-server": "^0.6.1",
     "socket.io": "^1.1.0",
     "karma": "^0.12.16",
@@ -34,7 +33,9 @@
 
     "i18n": "node 27_i18n/scripts/create_locale_files.js",
 
-    "start28": "node 28_websocket/server.js"
+    "start28": "node 28_websocket/server.js",
+
+    "start30": "node 30_ajax/server.js"
 
 
   }
