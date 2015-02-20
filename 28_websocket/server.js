@@ -1,19 +1,16 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var http = require('http').Server(app);
-var path = require('path');
 var io = require('socket.io')(http);
+var path = require('path');
 
-var root = __dirname, port = 9000;
+var root = __dirname + "/..";
+var port = 9000;
 
-app.get('*.*', function(req, res) {
-	var file = path.normalize(root + '/' + req.url)
-	res.sendFile(file);
-});
+var serveIndex = require('serve-index');
 
-app.get('/', function(req, res) {
-	var indexFile = path.normalize(root + '/index.html')
-	res.sendFile(indexFile);
-});
+app.use(express.static(root + "/"))
+app.use('/', serveIndex(root + '/'));
 
 io.on('connection', function(socket){
 	console.log('User connected');
