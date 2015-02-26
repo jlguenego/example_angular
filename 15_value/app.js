@@ -1,11 +1,11 @@
 (function() {
 	var app = angular.module('myApp', []);
-	app.value('$myInfo', {
+	app.value('myInfo', {
 		version: '1.2.4',
 		author: 'JLG'
 	});
 
-	app.controller('MyController', [ '$myInfo', function($myInfo) {
-		this.version = $myInfo.version;
+	app.controller('MyController', [ 'myInfo', function(myInfo) {
+		this.version = myInfo.version;
 	}]);
 })();
