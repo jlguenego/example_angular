@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html ng-app="myApp">
+<html xmlns:ng="http://angularjs.org" id="ng-app" ng-app="myApp">
 	<head>
 		<title>My First View</title>
+		<!--[if lte IE 8]>
+		<script>
+document.createElement('ng-view');
+		</script>
+		<![endif]-->
 	</head>
 	<body >
-		<ng-view></ng-view>
+		<ng-view>xxx</ng-view>
 		<script src="../etc/angular.min.js"></script>
 		<script src="../etc/angular-route.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
