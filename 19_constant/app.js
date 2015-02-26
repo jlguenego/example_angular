@@ -1,6 +1,6 @@
 (function() {
 	var app = angular.module('myApp', []);
-	app.constant('$myInfo', {
+	app.constant('myInfo', {
 		version: '1.2.4',
 		author: 'JLG'
 	});
@@ -12,14 +12,14 @@
 		this.name = myinfo.author;
 	}
 
-	app.provider('$myPerson', function() {
+	app.provider('myPerson', function() {
 		console.log('provider call');
 		var author = undefined;
 		this.setAuthor = function(name) {
 			author = name;
 		};
-		this.$get = [ '$myInfo', function($myInfo) {
-			var result = new Person($myInfo);
+		this.$get = [ 'myInfo', function(myInfo) {
+			var result = new Person(myInfo);
 			if (author) {
 				result.name = author;
 			}
@@ -27,11 +27,11 @@
 		}];
 	});
 
-	app.config(["$myPersonProvider", '$myInfo', function($myPersonProvider, $myInfo) {
-		$myInfo.author = "Dupond";
+	app.config(["myPersonProvider", 'myInfo', function(myPersonProvider, myInfo) {
+		myInfo.author = "Dupond";
 	}]);
 
-	app.controller('MyController', [ '$myPerson', function($myPerson) {
-		this.hello = $myPerson.sayHello();
+	app.controller('MyController', [ 'myPerson', function(myPerson) {
+		this.hello = myPerson.sayHello();
 	}]);
 })();
