@@ -11,7 +11,7 @@
 
 	var app = angular.module('myApp', [ 'myModule' ]);
 	app.controller('MyController', [ '$scope', 'hello', function($scope, hello) {
-		$scope.sayHello = function(name) {
+		$scope.sayHello2 = function(name) {
 			hello.welcome(name);
 		}
 	}]);
