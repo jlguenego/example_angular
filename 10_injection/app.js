@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	var myModule = angular.module('myModule', []);
 
 	myModule.service('hello', [ '$window', function($window) {
@@ -14,6 +16,6 @@
 		$scope.sayHello = function(name) {
 			hello.welcome(name);
 			console.log(name);
-		}
+		};
 	}]);
 })();
