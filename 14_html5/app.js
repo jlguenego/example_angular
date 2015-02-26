@@ -9,7 +9,7 @@
 			.when('/', {
 				templateUrl: 'cover.html'
 			})
-			.when('/hello', {
+			.when('/hello/coucou/truc/juan.html', {
 				templateUrl: 'hello.html'
 			})
 			.when('/:message', {
