@@ -1,7 +1,7 @@
 (function() {
-	var app = angular.module('myApp', []);
+	var app = angular.module('mainApp', []);
 
-		app.controller('MyController', function() {
+		app.controller('MainCtrl', function() {
 			this.object = {};
 			this.list = [];
 
