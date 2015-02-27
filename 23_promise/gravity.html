@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+body { margin: 0px; }
+.box { position: absolute;
+	width: 50px;
+	height: 50px;
+	background-color: blue;
+}
+.sol { position: absolute;
+	width: 100%;
+	height: 50px;
+	top: 250px;
+	background-color: rgb(155, 249, 153);
+}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="sol"></div>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+
+var Fx = 0;
+var Fy = 2;
+var dt = 10;
+
+var Particule = function(element, masse, vitesse, angle, x, y) {
+	this.masse = masse;
+	this.vx = vitesse * Math.cos(angle * 2 * Math.PI / 360);
+	this.vy = vitesse * Math.sin(angle * 2 * Math.PI / 360);
+	this.x = x;
+	this.y = y;
+	this.element = element;
+	this.move = function() {
+		this.vx += (Fx / this.masse) * (dt / 1000);
+		this.vy += (Fy / this.masse) * (dt / 1000);
+		this.x += this.vx * dt;
+		this.y += this.vy * dt;
+		if (this.y >= 4000) {
+			this.vy = -this.vy;
+		}
+	}
+};
+
+
+function atomicMove(particule, next) {
+	particule.move();
+	var x =  particule.x / 20;
+	var y =  particule.y / 20;
+	particule.element.animate({
+		left: x,
+		top: y
+	}, dt, next);
+}
+
+$(document).ready(function() {
+	var particule = new Particule($('.box'), 0.1, 10, -20, 0, 500);
+
+	var move = function() {
+		return new Promise(function(fulfill, reject) {
+			atomicMove(particule, fulfill);
+		});
+	};
+
+	var end = function() {
+		console.log('End');
+	};
+
+	var sequence = Promise.resolve();
+
+	for (n = 0; n < 300; n++) {
+		sequence = sequence.then(function() {
+			return move();
+		});
+	}
+
+	sequence.then(end);
+});
+		</script>
+	</body>
+</html>
