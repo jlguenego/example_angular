@@ -12,7 +12,8 @@
 
 	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
 		<h1>My First $resource use</h1>
-		Voila du contenu AJAX :
+		<button ng-click="start_ajax()">Appeler le contenu AJAX</button><br/>
+		<button ng-click="get_promise()">logguer la promise</button><br/>
 		<span ng-cloak>{{data.content}}</span>
 
 		<script src="../bower_components/angular/angular.min.js"></script>

@@ -5,7 +5,7 @@
 
 	app.controller('MyController', [ '$scope', '$injector', function($scope, $injector) {
 		$scope.myService = 's1';
-		$scope.increment = function(serviceName) {
+		$scope.increment = function() {
 			var service = $injector.get($scope.myService);
 			service.value++;
 		};

@@ -35,8 +35,9 @@
 
     "i18n": "node 27_i18n/scripts/create_locale_files.js",
 
-    "start28": "node 28_websocket/server.js",
 
+    "start22": "node 22_resource/server.js",
+    "start28": "node 28_websocket/server.js",
     "start30": "node 30_ajax/server.js"
 
 
