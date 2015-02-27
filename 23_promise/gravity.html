@@ -7,7 +7,12 @@ body { margin: 0px; }
 .box { position: absolute;
 	width: 25px;
 	height: 25px;
-	background-color: blue;
+	background-color: rgb(149, 149, 249);
+}
+.red { position: absolute;
+	width: 25px;
+	height: 25px;
+	background-color: red;
 }
 .sol { position: absolute;
 	width: 100%;
@@ -18,11 +23,16 @@ body { margin: 0px; }
 .hidden {
 	visibility: hidden;
 }
+.debug {
+	background-color: rgb(149, 149, 249);
+	display: inline-block;
+	width: 300px;
+}
 		</style>
 	</head>
 	<body ng-app="mainApp" ng-controller="MainCtrl">
 		<div id="p1" class="box hidden"></div>
-		<div id="p2" class="box hidden"></div>
+		<div id="p2" class="red hidden"></div>
 		<div class="sol"></div>
 		<div class="debug">
 			x: {{particule.x}}<br/>
