@@ -46,6 +46,22 @@
 		console.log(i);
 	}
 
+	function myTest2(a, b, c) {
+		console.log("start");
+		console.log(a, b, c);
+		console.log(arguments);
+		console.log(arguments[3]);
+		console.log(typeof arguments);
+		Array.prototype.forEach.call(arguments, function(n, i) { console.log(n, i); });
+	}
+
+	myTest2(1);
+	myTest2(1, 3, 12);
+	myTest2(1, 3, 12, 14);
+	var x = [1, 12, 3];
+	console.log(x);
+	x.forEach(function(n, i) { console.log(n, i); });
+
 })();
 
 

@@ -3,9 +3,8 @@
 
 	var app = angular.module('jlg.localization', [ 'ngLocale', 'ngResource' ]);
 
-	app.service('jlg.localization.i18nService', ['$locale', '$resource', '$rootScope',
-		function JLGI18NService($locale, $resource, $rootScope) {
-			var self = this;
+	app.service('jlg.localization.i18nService', ['$locale', '$resource',
+		function JLGI18NService($locale, $resource) {
 
 			var i18nRes = $resource('i18n/:locale.json');
 			var localeRes = $resource('i18n/locale/locale_:locale.json');
