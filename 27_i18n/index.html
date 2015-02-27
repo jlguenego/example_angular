@@ -3,29 +3,28 @@
 		<base href="/27_i18n/" />
 	</head>
 
-	<body ng-app="myApp" ng-controller="MyController as ctrl">
+	<body ng-app="myApp" ng-controller="MyController">
 		<h1>I18N</h1>
-		<p>Locale: {{ctrl.locale.id}}</p>
+		<p>Locale: {{locale.id}}</p>
 		<div>
-			<label ng-repeat="locale in ['en-us', 'fr-fr']">
+			<label ng-repeat="id in ['en-us', 'fr-fr', 'es-co']">
 				<input name="locale_id" type="radio"
-					ng-click="ctrl.changeLocale(locale)"
-					ng-checked="{{ctrl.locale.id == locale}}"/>
-					{{locale}}
+					ng-click="changeLocale(id)"
+					ng-checked="{{locale.id == id}}"/>
+					{{id}}
 			</label>
 		</div>
 		<p>
-			{{'Hello' | i18n}},
-			{{'You have [[nbr]] message(s) and [[err]] error(s)' | i18n:4:0 }}<br/>
-			{{'You have [[nbr]] message(s) and [[err]] error(s)' | i18n:1:1 }}<br/>
-			{{'You have [[nbr]] message(s) and [[err]] error(s)' | i18n:5:3 }}<br/>
+			{{'Hello' | i18n}},<br/>
+			{{'You have [[nbr]] message(s) and [[err]] error(s)' | i18n:4:0 }}.<br/>
+			{{'You have [[nbr]] message(s) and [[err]] error(s)' | i18n:1:1 }}.<br/>
+			{{'You have [[nbr]] message(s) and [[err]] error(s)' | i18n:5:3 }}.<br/>
 			{{date | date:'fullDate'}}
 		</p>
 
 		<script src="../bower_components/angular/angular.min.js"></script>
 		<script src="../bower_components/angular-resource/angular-resource.min.js"></script>
 		<script src="js/jlg-localization.js"></script>
-
 		<script src="js/app.js"></script>
 	</body>
 </html>

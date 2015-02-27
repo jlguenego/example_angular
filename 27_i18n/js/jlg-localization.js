@@ -1,7 +1,9 @@
 (function() {
-	var app = angular.module('jlgLocalization', [ 'ngLocale', 'ngResource' ]);
+	"use strict";
 
-	app.service('jlgI18NService', ['$locale', '$resource', '$rootScope',
+	var app = angular.module('jlg.localization', [ 'ngLocale', 'ngResource' ]);
+
+	app.service('jlg.localization.i18nService', ['$locale', '$resource', '$rootScope',
 		function JLGI18NService($locale, $resource, $rootScope) {
 			var self = this;
 
@@ -24,11 +26,11 @@
 		}
 	]);
 
-	app.filter('i18n', ['jlgI18NService', function(jlgI18NService) {
+	app.filter('i18n', ['jlg.localization.i18nService', function(i18nService) {
 		return function(text) {
 			var result = text;
 			var args = Array.prototype.slice.call(arguments, 1);
-			var translation = jlgI18NService.translation;
+			var translation = i18nService.translation;
 
 			if (translation.hasOwnProperty(text)) {
 				result = translation[text];
@@ -39,7 +41,7 @@
 				for (var i = 0; i < Math.pow(2, args.length); i++) {
 					var a = [];
 					for (var j = 0; j < args.length; j++) {
-						var isNotProvided = i&Math.pow(2, j);
+						var isNotProvided = i & Math.pow(2, j); // jshint ignore:line
 						if (isNotProvided) {
 							a.push('@');
 						} else {
@@ -49,14 +51,14 @@
 					res.push(a.join('_'));
 				}
 				return res;
-			}
+			};
 
-			var selectedKey = Array.apply(null, Array(args.length))
-								.map(function() { return '@' })
+			var selectedKey = Array.apply(null, new Array(args.length))
+								.map(function() { return '@'; })
 								.join('_');
 
 			// Pluralization
-			if (typeof result == 'object') {
+			if (typeof result === 'object') {
 				var keys = getKeys();
 				var found = false;
 				for (var i = 0; i < keys.length; i++) {
@@ -74,13 +76,13 @@
 
 			// Interpolation
 			var a = selectedKey.split('_');
-			for (var i = 0; i < args.length; i++) {
-				if (a[i] == '@') {
+			for (var i = 0; i < args.length; i++) { // jshint ignore:line
+				if (a[i] === '@') {
 					result = result.replace(/\[\[.*?\]\]/, args[i]);
 				}
 			}
 
 			return result;
-		}
+		};
 	}]);
 })();

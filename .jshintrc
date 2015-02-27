@@ -1,0 +1,18 @@
+{
+  "globalstrict": true,
+  "enforceall": true,
+  "nocomma": false,
+  "globals": {
+  	"console": false,
+    "angular": false,
+
+    "browser": false,
+    "element": false,
+    "by": false,
+
+    "describe": false,
+    "beforeEach": false,
+    "it": false,
+    "expect": false
+  }
+}

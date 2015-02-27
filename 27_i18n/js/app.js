@@ -1,15 +1,17 @@
 (function() {
-	var app = angular.module('myApp', [ 'jlgLocalization' ]);
+	"use strict";
 
-	app.controller('MyController', ['$scope', '$locale', 'jlgI18NService',
-		function($scope, $locale, jlgI18NService) {
+	var app = angular.module('myApp', [ 'jlg.localization' ]);
+
+	app.controller('MyController', ['$scope', '$locale', 'jlg.localization.i18nService',
+		function($scope, $locale, i18nService) {
 			$scope.date = new Date();
 
-			this.locale = $locale;
+			$scope.locale = $locale;
 
-			this.changeLocale = function(newLocaleId) {
+			$scope.changeLocale = function(newLocaleId) {
 				$locale.id = newLocaleId;
-				jlgI18NService.refresh();
+				i18nService.refresh();
 			};
 		}
 	]);
