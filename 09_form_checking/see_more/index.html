@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Mon formulaire</title>
+		<style>
+input.error {
+	background-color: red;
+}
+		</style>
+	</head>
+
+	<body ng-app="mainApp" ng-controller="MainCtrl">
+		<div>
+			<form name="myForm" ng-submit="doSomething()" novalidate>
+				Nom :
+				<input required ng-class="{error: myForm.name.$invalid && myForm.name.$touched}" type="text" name="name" ng-model="obj.name" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.name.$invalid && myForm.name.$touched">
+					<span ng-show="myForm.name.$error.required">Le nom ne doit pas être vide !</span>
+				</span><br/>
+				Prénom :
+				<input required firstname ng-class="{error: myForm.firstname.$invalid && myForm.firstname.$touched}" type="text" name="firstname" ng-model="obj.firstname" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.firstname.$invalid && myForm.firstname.$touched">
+					<span ng-show="myForm.firstname.$error.required">Le prénom ne doit pas être vide !</span>
+					<span ng-show="myForm.firstname.$error.firstname">Le prénom doit être Juan, Yannis ou Jean-Louis !</span>
+				</span><br/>
+				Age :
+				<input integer required ng-class="{error: myForm.age.$invalid && myForm.age.$touched}" type="number" name="age"  ng-model="obj.age" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.age.$invalid && myForm.age.$touched">
+					<span ng-show="myForm.age.$error.required">L'âge ne doit pas être vide !</span>
+					<span ng-show="myForm.age.$error.number">L'âge doit être un nombre !</span>
+					<span ng-show="myForm.age.$error.integer">L'âge doit être un entier !</span>
+				</span><br/>
+				Email :
+				<input required ng-class="{error: myForm.email.$invalid && myForm.email.$touched}" type="email" name="email"  ng-model="obj.email" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.email.$invalid && myForm.email.$touched">
+					<span ng-show="myForm.email.$error.required">L'email ne doit pas être vide !</span>
+					<span ng-show="myForm.email.$error.email">L'email doit être valide !</span>
+				</span><br/>
+				Mot de passe :
+				<input required ng-class="{error: myForm.password.$invalid && myForm.password.$touched}" type="password" name="password"  ng-model="obj.password" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.password.$invalid && myForm.password.$touched">
+					<span ng-show="myForm.password.$error.required">Le mot de passe ne doit pas être vide !</span>
+				</span><br/>
+				Entier a :
+				<input required integer ng-class="{error: myForm.a.$invalid && myForm.a.$touched}" type="text" name="a"  ng-model="obj.a" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.a.$invalid && myForm.a.$touched">
+					<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
+					<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
+				</span><br/>
+				Entier b :
+				<input required integer ng-class="{error: myForm.b.$invalid && myForm.b.$touched}" type="text" name="b"  ng-model="obj.b" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.b.$invalid && myForm.b.$touched">
+					<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
+					<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
+				</span><br/>
+				Entier c (doit être la somme de a et b) :
+				<input ui-validate-watch=" '[obj.a, obj.b]' " ui-validate=" {sum: 'sum($value, obj.a, obj.b)' } " required integer ng-class="{error: myForm.c.$invalid && myForm.c.$touched}" type="text" name="c"  ng-model="obj.c" ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }" />
+				<span ng-show="myForm.c.$invalid && myForm.c.$touched">
+					<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
+					<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
+					<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
+				</span><br/>
+
+				<input type="submit" ng-disabled="myForm.$invalid" value="Valider" />
+			</form>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
