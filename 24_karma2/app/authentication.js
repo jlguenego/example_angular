@@ -9,6 +9,7 @@
 
 		$scope.authenticate = function() {
 			$log.debug("authenticate");
+			$rootScope.state = "not logged";
 			$rootScope.errorMessage = undefined;
 			$http.get('data/login.json').success(function(data) {
 				if (!(data.logins && data.logins instanceof Array)) {
@@ -21,6 +22,7 @@
 				$log.debug("logins = ", data.logins);
 				if (data.logins.indexOf($scope.login) > -1) {
 					$rootScope.state = "logged";
+					$rootScope.login = $scope.login;
 					$location.url("/");
 				} else {
 					$rootScope.errorMessage = "bad login/password";

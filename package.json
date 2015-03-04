@@ -25,6 +25,9 @@
     "test24": "node node_modules/karma/bin/karma start 24_karma/test/karma.conf.js",
     "test24-single-run": "node node_modules/karma/bin/karma start 24_karma/test/karma.conf.js  --single-run",
 
+    "test24-2": "node node_modules/karma/bin/karma start 24_karma2/test/karma.conf.js",
+    "test24-2-single-run": "node node_modules/karma/bin/karma start 24_karma2/test/karma.conf.js  --single-run",
+
     "test25": "node node_modules/karma/bin/karma start 25_protractor/test/karma.conf.js",
     "test25-single-run": "node node_modules/karma/bin/karma start 25_protractor/test/karma.conf.js  --single-run",
 

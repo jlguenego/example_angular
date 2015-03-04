@@ -5,6 +5,6 @@
 		if ($rootScope.state != "logged") {
 			$location.url("/login");
 		}
-		$rootScope.message = "Welcome!";
+		$rootScope.message = "Welcome " + $rootScope.login + "!";
 	}]);
 })();

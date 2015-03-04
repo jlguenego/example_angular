@@ -7,8 +7,8 @@ module.exports = function(config){
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      '24_karma/app/*.js',
-      '24_karma/test/unit/**/*.js'
+      '24_karma2/app/*.js',
+      '24_karma2/test/unit/**/*.js'
     ],
 
     autoWatch : true,

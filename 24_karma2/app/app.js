@@ -2,8 +2,9 @@
 	var app = angular.module('mainApp', [ 'ngRoute', 'authentication', 'welcome' ]);
 
 	app.controller('MainCtrl', [ "$rootScope", function($rootScope) {
-		$rootScope.state = "not logged";
+		$rootScope.state = undefined;
 		$rootScope.errorMessage = undefined;
+		$rootScope.login = undefined;
 	}]);
 
 	app.config(['$routeProvider', '$locationProvider', '$logProvider', function($routeProvider, $locationProvider, $logProvider) {
