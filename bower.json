@@ -13,6 +13,7 @@
     "angular-i18n": "~1.2.x",
     "jquery": "1.10.2",
     "bootstrap": "~3.2.x",
-    "socket.io-client": "~1.1.0"
+    "socket.io-client": "~1.1.0",
+    "jasmine-jquery": "1.7.0"
   }
 }

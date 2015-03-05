@@ -23,6 +23,7 @@
  				$controller = $injector.get('$controller');
  				$location = $injector.get('$location');
  				$scope = $rootScope.$new();
+ 				jasmine.getJSONFixtures().fixturesPath = 'base/24_karma2/test/mock';
 
 			}));
 
@@ -52,14 +53,7 @@
 				$rootScope.state = "logged";
 
 				serviceRequestHandler = $http.when('GET', 'data/juan.json');
-				serviceRequestHandler.respond({
-					"services": [
-						"mail",
-						"cloud",
-						"ftp",
-						"ssh"
-					]
-				});
+				serviceRequestHandler.respond(getJSONFixture('juan.json'));
 
 				$http.expectGET('data/juan.json');
 				ctrl = $controller('welcome.MainCtrl', {'$scope' : $scope });
