@@ -8,7 +8,7 @@
 			var $scope = undefined;
 			var $controller = undefined;
 			var $http = undefined;
-			var loginRequestHandler = undefined;
+			var serviceRequestHandler = undefined;
 			var $controller = undefined;
 			var $rootScope = undefined;
 			var $location = undefined;
@@ -23,11 +23,11 @@
  				$controller = $injector.get('$controller');
  				$location = $injector.get('$location');
  				$scope = $rootScope.$new();
+
 			}));
 
 			afterEach(function() {
-				$http.verifyNoOutstandingExpectation();
-				$http.verifyNoOutstandingRequest();
+
 			});
 
 
@@ -45,6 +45,33 @@
 				ctrl = $controller('welcome.MainCtrl', {'$scope' : $scope });
 
 				expect($location.url()).toEqual("/login");
+			});
+
+			it('should show the service list', function() {
+				$rootScope.login = "juan";
+				$rootScope.state = "logged";
+
+				serviceRequestHandler = $http.when('GET', 'data/juan.json');
+				serviceRequestHandler.respond({
+					"services": [
+						"mail",
+						"cloud",
+						"ftp",
+						"ssh"
+					]
+				});
+
+				$http.expectGET('data/juan.json');
+				ctrl = $controller('welcome.MainCtrl', {'$scope' : $scope });
+				$http.flush();
+				expect($rootScope.serviceJson.services).toEqual([
+					"mail",
+					"cloud",
+					"ftp",
+					"ssh"
+				]);
+				$http.verifyNoOutstandingExpectation();
+				$http.verifyNoOutstandingRequest();
 			});
 
 
