@@ -23,6 +23,9 @@
 				templateUrl: 'partials/welcome.html',
 				controller: 'welcome.MainCtrl'
 			})
+			.when('/logout', {
+				templateUrl: 'partials/logout.html'
+			})
 			.otherwise({
 				redirectTo: '/main'
 			});
