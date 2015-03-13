@@ -1,37 +1,36 @@
 (function() {
+	'use strict';
 	var app = angular.module('myApp', []);
-	app.constant('myInfo', {
-		version: '1.2.4',
-		author: 'JLG'
+	app.constant('salt', 'sel de Guerande');
+	app.value('hash', { name: 'md5', hash: function(n) { return new Hashes.MD5().hex(n); }
 	});
-
-	function Person(myinfo) {
-		this.sayHello = function() {
-			return 'Hello I am ' + this.name;
-		};
-		this.name = myinfo.author;
-	}
-
-	app.provider('myPerson', function() {
-		console.log('provider call');
-		var author = undefined;
-		this.setAuthor = function(name) {
-			author = name;
-		};
-		this.$get = [ 'myInfo', function(myInfo) {
-			var result = new Person(myInfo);
-			if (author) {
-				result.name = author;
+	app.provider('passwordService', [ 'salt', function(salt) {
+		var mySalt = salt;
+		this.salt = function(s) {
+			if (s) {
+				mySalt = s;
 			}
-			return result;
+			return mySalt;
+		};
+		this.$get = [ 'hash', '$log', function(hash, $log) {
+			return {
+				hash: function(login, password) {
+					var r = hash.hash(login + password + mySalt);
+					$log.debug('hash = ', r, self);
+					return r;
+				}
+			};
 		}];
-	});
-
-	app.config(["myPersonProvider", 'myInfo', function(myPersonProvider, myInfo) {
-		myInfo.author = "Dupond";
 	}]);
+	app.config([ 'passwordServiceProvider', function(passwordServiceProvider) {
+		console.log('salt ', passwordServiceProvider.salt());
+	}]);
+	app.controller('MyController', [ 'passwordService', 'hash', '$scope', 'salt', function(passwordService, hash, $scope, salt) {
+		$scope.hash = hash;
+		$scope.$watch('password + login', function() {
+			$scope.passwordHash = passwordService.hash($scope.login, $scope.password);
+		});
+		$scope.salt = salt;
 
-	app.controller('MyController', [ 'myPerson', function(myPerson) {
-		this.hello = myPerson.sayHello();
 	}]);
 })();
