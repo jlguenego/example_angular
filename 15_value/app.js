@@ -1,11 +1,13 @@
 (function() {
 	var app = angular.module('myApp', []);
-	app.value('myInfo', {
-		version: '1.2.4',
-		author: 'JLG'
+	app.value('hash', {
+		name: 'md5',
+		hash: function(n) {
+			return new Hashes.MD5().hex(n);
+		}
 	});
 
-	app.controller('MyController', [ 'myInfo', function(myInfo) {
-		this.version = myInfo.version;
+	app.controller('MyController', [ 'hash', '$scope', function(hash, $scope) {
+		$scope.hash = hash;
 	}]);
 })();

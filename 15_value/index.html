@@ -6,8 +6,10 @@
 
 	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
 		<h1>My First Value Recipe</h1>
-		<h1>{{my_ctrl.version}}</h1>
-		<script src="../etc/angular.min.js"></script>
+		<h1>Hash('coucou') = {{hash.hash('coucou')}}</h1>
+		<h1>Algo = {{hash.name}}</h1>
+		<script src="../bower_components/jshashes/hashes.min.js"></script>
+		<script src="../bower_components/angular/angular.min.js"></script>
 		<script type="text/javascript" src="app.js"></script>
 	</body>
 </html>

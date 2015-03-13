@@ -1,4 +1,5 @@
 (function() {
+	"use strict";
 	var app = angular.module('authentication', []);
 
 	app.controller('authentication.MainCtrl', [ '$scope', '$injector', function($scope, $injector) {
