@@ -1,37 +1,31 @@
 (function() {
+	'use strict';
 	var app = angular.module('myApp', []);
-	app.value('myInfo', {
-		version: '1.2.4',
-		author: 'JLG'
+	app.value('hash', { name: 'md5', hash: function(n) { return new Hashes.MD5().hex(n); }
 	});
-
-	function Person(myinfo) {
-		this.sayHello = function() {
-			return 'Hello I am ' + this.name;
+	app.provider('passwordService', function() {
+		var salt = 'default';
+		this.salt = function(s) {
+			salt = s;
 		};
-		this.name = myinfo.author;
-	}
-
-	app.provider('myPerson', function() {
-		console.log('provider call');
-		var author = undefined;
-		this.setAuthor = function(name) {
-			author = name;
-		};
-		this.$get = [ 'myInfo', function(myInfo) {
-			var result = new Person(myInfo);
-			if (author) {
-				result.name = author;
-			}
-			return result;
+		this.$get = [ 'hash', '$log', function(hash, $log) {
+			return {
+				hash: function(login, password) {
+					var r = hash.hash(login + password + salt);
+					$log.debug('hash = ', r, self);
+					return r;
+				}
+			};
 		}];
 	});
-
-	app.config(["myPersonProvider", function(myPersonProvider) {
-		myPersonProvider.setAuthor('Jean-Louis');
+	app.config([ 'passwordServiceProvider', function(passwordServiceProvider) {
+		passwordServiceProvider.salt('hmmm..., it is salted...');
 	}]);
+	app.controller('MyController', [ 'passwordService', 'hash', '$scope', function(passwordService, hash, $scope) {
+		$scope.hash = hash;
+		$scope.$watch('password + login', function() {
+			$scope.passwordHash = passwordService.hash($scope.login, $scope.password);
+		});
 
-	app.controller('MyController', [ 'myPerson', function(myPerson) {
-		this.hello = myPerson.sayHello();
 	}]);
 })();
