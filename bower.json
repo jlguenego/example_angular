@@ -15,6 +15,8 @@
     "bootstrap": "~3.2.x",
     "socket.io-client": "~1.1.0",
     "jasmine-jquery": "1.7.0",
-    "jshashes": "1.0.5"
+    "jshashes": "1.0.5",
+    "spin.js": "2.0.1",
+    "angular-spinner": "0.6.1"
   }
 }
