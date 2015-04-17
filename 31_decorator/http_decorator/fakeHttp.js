@@ -5,6 +5,24 @@
 
 	var provide;
 
+	var fakeHttpExample = [ {
+		key: function(config) {
+			return config.url.match(new RegExp('http://bot.whatismyipaddress..*/'));
+		},
+		value: function(config) {
+			console.log('config = ', config);
+			return {
+				data: '91.35.249.115',
+				headers: function() {
+					return 'headers not implemented';
+				}
+			};
+		}
+	} ];
+	window.fakeHttp = window.fakeHttp || fakeHttpExample;
+
+
+
 	app.config([ '$provide', function($provide) {
 		provide = $provide;
 	}]);
@@ -14,16 +32,15 @@
 			var $http = $delegate;
 
 			var wrapper = function() {
+				var config = arguments[0];
 				$log.debug('custom http...');
-				if (arguments[0].url == 'http://bot.whatismyipaddress.com/') {
+				var a = window.fakeHttp.filter(function(x) {
+					return x.key(config);
+				});
+				if (a.length > 0) {
 					$log.debug('You ask http://bot.whatismyipaddress.com/');
 
-					return $q.when({
-						data: '91.35.249.115',
-						headers: function() {
-							return 'headers not implemented';
-						}
-					});
+					return $q.when(a[0].value(config));
 				}
 				return $http.apply($http, arguments);
 			};
