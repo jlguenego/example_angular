@@ -28,7 +28,7 @@
 				this.y = 0;
 			}
 			var x =  this.x / 20;
-			var y =  -(this.y / 20) + 200;
+			var y =  -(this.y / 20) + 400;
 			this.element.animate({
 				left: x,
 				top: y
