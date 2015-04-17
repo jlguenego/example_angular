@@ -59,6 +59,7 @@
 				'request': function(config) {
 					// do something on success
 					console.log('running interceptor request ', config);
+					console.log('arguments ', arguments);
 					return config;
 				},
 
