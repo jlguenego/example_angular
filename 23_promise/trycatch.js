@@ -19,7 +19,7 @@
 		});
 	}
 
-	function goDown(element, isRight, next) {
+	function move(element, isRight, next) {
 		var x = element.offset().left;
 		var y = element.offset().top;
 		console.log('x = ', x);
@@ -43,7 +43,7 @@
 		var box = $('.box');
 		initial(box);
 
-		var move = function(isRight) {
+		var movePromise = function(isRight) {
 			var deferred = $q.defer();
 			var x = box.offset().left;
 			if ((x == leftLimit + 50) && (isRight == false)) {
@@ -51,22 +51,36 @@
 			} else if ((x == rightLimit - 50) && (isRight == true)) {
 				deferred.reject();
 			} else {
-				goDown(box, isRight, function() {
+				move(box, isRight, function() {
 					deferred.resolve();
 				});
 			}
 			return deferred.promise;
 		};
 
+//		$q.when('start').then(function() {
+//			var choice = (Math.random() - 0.5) >= 0;
+//			return movePromise(choice);
+//		}).then(function() {
+//			var choice = (Math.random() - 0.5) >= 0;
+//			return movePromise(choice);
+//		}).then(function() {
+//			var choice = (Math.random() - 0.5) >= 0;
+//			return movePromise(choice);
+//		}).then(function() {
+//			var choice = (Math.random() - 0.5) >= 0;
+//			return movePromise(choice);
+//		}).catch(function() {
+//			console.log('BOUM');
+//		});
+
 
 		var goAhead = true;
-
-
 		var f = function() {
 			if (goAhead) {
 				var choice = (Math.random() - 0.5) >= 0;
-				var sequence = $q.when(move(choice));
-				sequence.then(function() {
+				var promise = $q.when(movePromise(choice));
+				promise.then(function() {
 					f();
 				}).catch(function() {
 					console.log('BOUM');
