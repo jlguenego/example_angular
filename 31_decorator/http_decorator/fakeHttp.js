@@ -18,6 +18,20 @@
 				}
 			};
 		}
+	},
+	{
+		key: function(config) {
+			return config.url.match(new RegExp('http://google.com'));
+		},
+		value: function(config) {
+			console.log('config = ', config);
+			return {
+				data: '<html><body>fake google</body></html>',
+				headers: function() {
+					return 'headers not implemented';
+				}
+			};
+		}
 	} ];
 	window.fakeHttp = window.fakeHttp || fakeHttpExample;
 

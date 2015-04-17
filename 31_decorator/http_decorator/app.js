@@ -4,10 +4,10 @@
 	var app = angular.module('mainApp', [ 'fakeHttp' ]);
 
 	app.controller('MainCtrl', [ '$scope', '$http', function($scope, $http) {
-		$scope.click = function() {
+		$scope.click = function(url) {
 			$http({
 				method: 'GET',
-				url: 'http://bot.whatismyipaddress.com/'
+				url: url
 			}).then(function(response) {
 				console.log(response);
 				console.log(response.headers());
