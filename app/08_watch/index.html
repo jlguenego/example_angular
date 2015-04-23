@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<title>Watch example</title>
+	</head>
+	<body ng-controller="MyController as ctrl">
+		Name: <input ng-model="name" />
+		<p>Name: {{ name }}</p>
+		<p>Last update of name: {{last_update | date:'medium'}}</p>
+		<script src="../../etc/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>

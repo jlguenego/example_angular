@@ -1,0 +1,8 @@
+{
+	"services": [
+		"mail",
+		"cloud",
+		"ftp",
+		"ssh"
+	]
+}

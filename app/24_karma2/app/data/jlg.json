@@ -1,0 +1,8 @@
+{
+	"authenticated": "false",
+	"services": [
+		"mail",
+		"ftp",
+		"admin"
+	]
+}

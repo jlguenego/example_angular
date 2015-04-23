@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My First Injector</title>
+	</head>
+
+	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
+		<h1>My First Injector</h1>
+
+		<select ng-model="myService">
+			<option value="s1">Service1</option>
+			<option value="s2">Service2</option>
+		</select>
+		<button ng-click="increment()">Increment</button>
+		{{myService + ': ' + value()}}
+		<script src="../../etc/angular.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>

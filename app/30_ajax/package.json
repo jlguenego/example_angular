@@ -1,0 +1,17 @@
+{
+  "version": "0.0.0",
+  "private": true,
+  "name": "",
+  "description": "",
+  "repository": "",
+  "license": "",
+  "devDependencies": {
+    "finalhandler": "",
+    "serve-index": "",
+    "serve-static": ""
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
