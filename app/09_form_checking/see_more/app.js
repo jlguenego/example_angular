@@ -86,11 +86,14 @@
 			require: 'ngModel',
 			restrict: 'A',
 			link: function(scope, element, attrs, ctrl) {
+				var isIntermediary = function(value) {
+					return value == '-';
+				}
 				var viewValue = '';
 				scope.$watchGroup([function() { return viewValue; }, attrs.ngModel], function(newValue, oldValue) {
 					console.log('oldValue ', oldValue);
 					console.log('newValue ', newValue);
-					if (newValue[1] == undefined && viewValue) {
+					if (newValue[1] == undefined && viewValue && (!isIntermediary(viewValue))) {
 						var action = attrs.ngModel + ' = "' + oldValue[0] + '"';
 						console.log('action ', action);
 						scope.$eval(action);
