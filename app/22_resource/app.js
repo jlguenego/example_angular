@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	var app = angular.module('myApp', ['ngResource']);
 
 	app.controller('MyController', ['$scope', '$resource', function($scope, $resource) {

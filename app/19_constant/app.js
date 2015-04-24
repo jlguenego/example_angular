@@ -16,7 +16,7 @@
 			return {
 				hash: function(login, password) {
 					var r = hash.hash(login + password + mySalt);
-					$log.debug('hash = ', r, self);
+					$log.debug('hash = ', r);
 					return r;
 				}
 			};

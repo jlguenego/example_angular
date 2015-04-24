@@ -18,7 +18,7 @@
 	// Serve directory indexes for public/ftp folder (with icons)
 	var index = serveIndex(rootDir, {
 		icons: true
-	})
+	});
 
 	// Create server
 	var server = http.createServer(function(req, res) {

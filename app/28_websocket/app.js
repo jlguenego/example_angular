@@ -1,18 +1,22 @@
-var app = angular.module('myApp', []);
+(function() {
+	'use strict';
 
-app.controller('MyController', ['$scope', function($scope) {
-	$scope.userMessage = '';
-	$scope.messages = [];
-	var socket = io();
+	var app = angular.module('myApp', []);
 
-	$scope.sendMessage = function() {
-		socket.emit('chat_message', $scope.userMessage);
+	app.controller('MyController', ['$scope', function($scope) {
 		$scope.userMessage = '';
-	};
+		$scope.messages = [];
+		var socket = io();
 
-	socket.on('chat_message', function(data) {
-		console.log('Message received:', data);
-		$scope.messages.push(data);
-		$scope.$apply();
-	});
-}]);
+		$scope.sendMessage = function() {
+			socket.emit('chat_message', $scope.userMessage);
+			$scope.userMessage = '';
+		};
+
+		socket.on('chat_message', function(data) {
+			console.log('Message received:', data);
+			$scope.messages.push(data);
+			$scope.$apply();
+		});
+	}]);
+})();

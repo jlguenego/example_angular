@@ -13,7 +13,7 @@
 				console.log(response.headers());
 				$scope.content = response.data;
 			});
-		}
+		};
 
 	}]);
 })();

@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	var app = angular.module('mainApp', ['ui.validate']);
 
 	app.controller('MainCtrl', ['$scope', function($scope) {
@@ -17,7 +19,7 @@
 			var result = Number(c) == Number(a) + Number(b);
 			console.log('result = ', result);
 			return result;
-		}
+		};
 
 	}]);
 

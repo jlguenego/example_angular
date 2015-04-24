@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	var someone = {
 		lastname: 'DUPOND',
 		firstname: 'Marcel',

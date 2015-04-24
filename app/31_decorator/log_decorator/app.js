@@ -15,7 +15,7 @@
 				args.unshift('coucou:');
 
 				// Call the original with the output prepended with formatted timestamp
-				debugFn.apply(null, args)
+				debugFn.apply(null, args);
 			};
 
 			return $delegate;

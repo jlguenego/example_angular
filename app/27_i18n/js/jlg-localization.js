@@ -40,6 +40,7 @@
 				for (var i = 0; i < Math.pow(2, args.length); i++) {
 					var a = [];
 					for (var j = 0; j < args.length; j++) {
+						// jshint bitwise:false
 						var isNotProvided = i & Math.pow(2, j);
 
 						// jshint ignore:line

@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	var app = angular.module('welcome', ['ngResource']);
 
 	app.controller('welcome.MainCtrl', ['$rootScope', '$location', '$resource', '$log', function($rootScope, $location, $resource, $log) {

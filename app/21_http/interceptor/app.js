@@ -1,4 +1,7 @@
 (function() {
+	/* jshint -W117 */
+	'use strict';
+
 	var app = angular.module('mainApp', ['angularSpinner']);
 
 	app.controller('MainCtrl', ['$scope', '$injector', function($scope, $injector) {
@@ -116,7 +119,7 @@
 
 					// do something on error
 					if (canRecover(rejection)) {
-						return responseOrNewPromise
+						return responseOrNewPromise;
 					}
 					return $q.reject(rejection);
 				},
@@ -154,4 +157,5 @@
 
 		console.log('interceptors', $httpProvider.interceptors);
 	}]);
+	/* jshint +W117 */
 })();

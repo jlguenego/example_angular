@@ -1,4 +1,6 @@
 (function() {
+	'use strict';
+
 	var app = angular.module('mainApp', ['ngRoute', 'authentication', 'welcome']);
 
 	app.controller('MainCtrl', ['$rootScope', function($rootScope) {

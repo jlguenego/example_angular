@@ -1,5 +1,6 @@
 (function() {
 	'use strict';
+	/* jshint -W117 */
 
 	describe('welcome', function() {
 		beforeEach(module('welcome'));
@@ -71,5 +72,6 @@
 
 		});
 	});
+	/* jshint +W117 */
 })();
 

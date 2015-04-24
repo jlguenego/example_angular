@@ -1,4 +1,5 @@
 (function() {
+	/* jshint -W003, -W038 */
 	'use strict';
 
 	console.log('Hello World!');
@@ -61,6 +62,8 @@
 	var x = [1, 12, 3];
 	console.log(x);
 	x.forEach(function(n, i) { console.log(n, i); });
+
+	/* jshint +W003, +W038 */
 
 })();
 

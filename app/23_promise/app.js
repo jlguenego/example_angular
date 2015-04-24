@@ -1,4 +1,5 @@
 (function() {
+	/* jshint -W117 */
 	'use strict';
 
 
@@ -38,7 +39,7 @@
 					next();
 				}
 			});
-		}
+		};
 	};
 
 	var app = angular.module('mainApp', []);
@@ -85,4 +86,5 @@
 
 		$scope.particule = particules[0];
 	}]);
+	/* jshint +W117 */
 })();

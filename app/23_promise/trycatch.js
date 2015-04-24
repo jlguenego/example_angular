@@ -46,9 +46,9 @@
 		var movePromise = function(isRight) {
 			var deferred = $q.defer();
 			var x = box.offset().left;
-			if ((x == leftLimit + 50) && (isRight == false)) {
+			if ((x == leftLimit + 50) && (isRight === false)) {
 				deferred.reject();
-			} else if ((x == rightLimit - 50) && (isRight == true)) {
+			} else if ((x == rightLimit - 50) && (isRight === true)) {
 				deferred.reject();
 			} else {
 				move(box, isRight, function() {

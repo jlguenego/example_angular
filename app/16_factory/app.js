@@ -9,7 +9,7 @@
 			var r = hash.hash(login + password);
 			$log.debug('hash = ', r);
 			return r;
-		}
+		};
 		return result;
 	}]);
 	app.controller('MyController', ['passwordService', 'hash', '$scope', function(passwordService, hash, $scope) {
