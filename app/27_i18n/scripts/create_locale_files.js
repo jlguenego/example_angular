@@ -18,7 +18,7 @@ function main() {
 		}
 		createLocaleFile(fname);
 	});
-	console.log("Finished with success.");
+	console.log('Finished with success.');
 }
 
 function createLocaleFile(fname) {
@@ -34,7 +34,7 @@ function createLocaleFile(fname) {
 					.replace(/__newLine__/g, '\n');
 	content += '\n}';
 	fs.writeFileSync(newFpath, content);
-	console.log(fname + ": File created.");
+	console.log(fname + ': File created.');
 }
 
 main();

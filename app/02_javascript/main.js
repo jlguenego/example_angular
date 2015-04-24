@@ -1,21 +1,21 @@
 (function() {
-	"use strict";
+	'use strict';
 
-	console.log("Hello World!");
+	console.log('Hello World!');
 
 	var Animal = function() {
 		this.eat = function() {
-			console.log("miam miam slurp slurp...");
+			console.log('miam miam slurp slurp...');
 		};
 	};
 
 	Animal.prototype.sleep = function() {
-		console.log("rzzzzzzzzz...");
+		console.log('rzzzzzzzzz...');
 	};
 
 	var Cat = function() {
 		this.speak = function() {
-			console.log("miaou");
+			console.log('miaou');
 		};
 	};
 	Cat.prototype = new Animal();
@@ -27,17 +27,17 @@
 
 	function myTest() {
 		x = 25;
-		console.log("x=" + x);
+		console.log('x=' + x);
 
 		if (true) {
 			var x;
-			console.log("x=" + x);
+			console.log('x=' + x);
 			x = 32;
-			console.log("x=" + x);
+			console.log('x=' + x);
 		}
-		console.log("x=" + x);
+		console.log('x=' + x);
 		x += 1;
-		console.log("x=" + x);
+		console.log('x=' + x);
 	}
 
 	myTest();
@@ -47,7 +47,7 @@
 	}
 
 	function myTest2(a, b, c) {
-		console.log("start");
+		console.log('start');
 		console.log(a, b, c);
 		console.log(arguments);
 		console.log(arguments[3]);

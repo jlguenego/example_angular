@@ -11,9 +11,8 @@ describe('hello world', function() {
 			ctrl = $controller('myController', {$scope: scope});
 		}));
 
-
 		it('should return "Hello World!"', function() {
-			expect(scope.message).toEqual("Hello World!");
+			expect(scope.message).toEqual('Hello World!');
 		});
 	});
 });

@@ -1,5 +1,5 @@
 (function() {
-	"use strict";
+	'use strict';
 
 	var app = angular.module('myApp', ['jlg.localization']);
 

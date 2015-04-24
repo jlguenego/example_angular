@@ -1,21 +1,21 @@
 (function() {
-	"use strict";
+	'use strict';
 
 	var rightLimit = 200;
 	var leftLimit = 0;
 
 	function initial() {
 		$('.box').css({
-			'left': 100,
-			'top': 0
+			left: 100,
+			top: 0
 		});
 		$('.limit.right').css({
-			'left': rightLimit,
-			'top': 0
+			left: rightLimit,
+			top: 0
 		});
 		$('.limit.left').css({
-			'left': leftLimit,
-			'top': 0
+			left: leftLimit,
+			top: 0
 		});
 	}
 

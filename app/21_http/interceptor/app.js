@@ -101,7 +101,7 @@
 
 			return {
 				// optional method
-				'request': function(config) {
+				request: function(config) {
 					// do something on success
 					console.log('running interceptor request ', config);
 					console.log('arguments ', arguments);
@@ -110,7 +110,7 @@
 				},
 
 				// optional method
-				'requestError': function(rejection) {
+				requestError: function(rejection) {
 					usSpinnerService.stop('spinner-1');
 					console.log('running interceptor requestError ', rejection);
 
@@ -124,7 +124,7 @@
 
 
 				// optional method
-				'response': function(response) {
+				response: function(response) {
 					$log.debug('running interceptor response ', response);
 					usSpinnerService.stop('spinner-1');
 					if (response.data.content == 'Error') {
@@ -137,7 +137,7 @@
 				},
 
 				// optional method
-				'responseError': function(rejection) {
+				responseError: function(rejection) {
 					usSpinnerService.stop('spinner-1');
 					console.log('running interceptor responseError ', rejection);
 

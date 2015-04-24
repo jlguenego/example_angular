@@ -4,12 +4,12 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
-var root = __dirname + "/../..";
+var root = __dirname + '/../..';
 var port = 9000;
 
 var serveIndex = require('serve-index');
 
-app.use(express.static(root + "/"))
+app.use(express.static(root + '/'))
 app.use('/', serveIndex(root + '/'));
 
 io.on('connection', function(socket) {

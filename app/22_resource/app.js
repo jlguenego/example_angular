@@ -3,11 +3,11 @@
 
 	app.controller('MyController', ['$scope', '$resource', function($scope, $resource) {
 		$scope.data = undefined;
-		$scope.start_ajax = function() {
+		$scope.startAjax = function() {
 			$scope.data = $resource('content.json').get();
 			console.log('appel en cours...');
 		};
-		$scope.get_promise = function() {
+		$scope.getPromise = function() {
 			console.log($scope.data);
 		};
 	}]);

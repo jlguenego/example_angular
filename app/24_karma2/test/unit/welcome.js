@@ -34,35 +34,35 @@
 
 
 			it('should print the welcome message', function() {
-				$rootScope.login = "juan";
-				$rootScope.state = "logged";
-				ctrl = $controller('welcome.MainCtrl', {'$scope': $scope });
+				$rootScope.login = 'juan';
+				$rootScope.state = 'logged';
+				ctrl = $controller('welcome.MainCtrl', {$scope: $scope });
 
-				expect($rootScope.message).toEqual("Welcome juan!");
+				expect($rootScope.message).toEqual('Welcome juan!');
 			});
 
 			it('should redirect to authentication', function() {
-				$rootScope.state = "not logged";
-				ctrl = $controller('welcome.MainCtrl', {'$scope': $scope });
+				$rootScope.state = 'not logged';
+				ctrl = $controller('welcome.MainCtrl', {$scope: $scope });
 
-				expect($location.url()).toEqual("/login");
+				expect($location.url()).toEqual('/login');
 			});
 
 			it('should show the service list', function() {
-				$rootScope.login = "juan";
-				$rootScope.state = "logged";
+				$rootScope.login = 'juan';
+				$rootScope.state = 'logged';
 
 				serviceRequestHandler = $http.when('GET', 'data/juan.json');
 				serviceRequestHandler.respond(getJSONFixture('juan.json'));
 
 				$http.expectGET('data/juan.json');
-				ctrl = $controller('welcome.MainCtrl', {'$scope': $scope });
+				ctrl = $controller('welcome.MainCtrl', {$scope: $scope });
 				$http.flush();
 				expect($rootScope.serviceJson.services).toEqual([
-					"mail",
-					"cloud",
-					"ftp",
-					"ssh"
+					'mail',
+					'cloud',
+					'ftp',
+					'ssh'
 				]);
 				$http.verifyNoOutstandingExpectation();
 				$http.verifyNoOutstandingRequest();

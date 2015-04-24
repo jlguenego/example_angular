@@ -26,7 +26,7 @@
     "disallowTrailingComma": true,
     "disallowYodaConditions": true,
     "disallowKeywords": [ "with" ],
-    "disallowMultipleVarDecl": "strict",
+    "disallowMultipleVarDecl": "exceptUndefined",
     "requireSpaceBeforeBlockStatements": true,
     "requireParenthesesAroundIIFE": true,
     "requireSpacesInConditionalExpression": true,
@@ -56,7 +56,7 @@
     "requirePaddingNewLinesBeforeLineComments": {
         "allExcept": "firstAfterCurly"
     },
-    "safeContextKeyword": "_this",
+    "safeContextKeyword": "self",
     "validateLineBreaks": "LF",
     "validateQuoteMarks": "'",
     "validateIndentation": "\t",

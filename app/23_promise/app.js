@@ -1,5 +1,5 @@
-﻿(function() {
-	"use strict";
+(function() {
+	'use strict';
 
 
 	var Fx = 0;
@@ -15,9 +15,9 @@
 		this.vy = obj.vitesse * Math.sin(obj.angle * 2 * Math.PI / 360);
 		this.x = obj.x;
 		this.y = obj.y;
-		$("#particules").append('<div id="' + obj.name + 'x" class="box"></div>');
-		this.element = $("#" + obj.name + "x");
-		this.element.css("background-color", "hsl(" + obj.hue + ", 50%, 50%)");
+		$('#particules').append('<div id="' + obj.name + 'x" class="box"></div>');
+		this.element = $('#' + obj.name + 'x');
+		this.element.css('background-color', 'hsl(' + obj.hue + ', 50%, 50%)');
 		this.move = function(next) {
 			this.vx += (Fx / this.masse) * (dt / 1000) - (this.vx * k);
 			this.vy += (Fy / this.masse) * (dt / 1000) - (this.vy * k);
@@ -33,7 +33,7 @@
 				left: x,
 				top: y
 			}, dt, function() {
-				self.element.removeClass("hidden");
+				self.element.removeClass('hidden');
 				if (next) {
 					next();
 				}
@@ -48,7 +48,7 @@
 		var particules = [];
 		for (var i = 0; i < total; i++) {
 			particules.push(new Particule({
-				name: "p" + i,
+				name: 'p' + i,
 				masse: 0.05 + (0.05 * i),
 				vitesse: 10 + (0.5 * i),
 				angle: -5 - (2 * i),

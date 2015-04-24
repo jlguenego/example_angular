@@ -13,7 +13,7 @@ describe('hello world', function() {
 
 
 		it('should return "Hello World!"', function() {
-			expect(ctrl.message).toEqual("Hello World!");
+			expect(ctrl.message).toEqual('Hello World!');
 		});
 	});
 });

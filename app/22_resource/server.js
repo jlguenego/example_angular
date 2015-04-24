@@ -1,4 +1,4 @@
-﻿"use strict";
+'use strict';
 
 var http = require('http');
 var finalhandler = require('finalhandler');
@@ -8,10 +8,10 @@ var path = require('path');
 
 var rootDir = path.normalize(__dirname + '/../..');
 
-var serve = serveStatic(rootDir, {'index': ['index.html', 'index.htm']});
+var serve = serveStatic(rootDir, {index: ['index.html', 'index.htm']});
 
 // Serve directory indexes for public/ftp folder (with icons)
-var index = serveIndex(rootDir, {'icons': true})
+var index = serveIndex(rootDir, {icons: true})
 
 // Create server
 var server = http.createServer(function(req, res) {

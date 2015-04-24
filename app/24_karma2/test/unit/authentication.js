@@ -18,15 +18,15 @@
 				$http = $injector.get('$httpBackend');
 				loginRequestHandler = $http.when('GET', 'data/login.json');
 				loginRequestHandler.respond({
-					"logins": [
-						"juan"
+					logins: [
+						'juan'
 					]
 				});
 
 				$rootScope = $injector.get('$rootScope');
 				$controller = $injector.get('$controller');
 				$scope = $rootScope.$new();
-				ctrl = $controller('authentication.MainCtrl', {'$scope': $scope });
+				ctrl = $controller('authentication.MainCtrl', {$scope: $scope });
 			}));
 
 			afterEach(function() {
@@ -37,42 +37,42 @@
 
 
 			it('should authenticate the user', function() {
-				$scope.login = "juan";
+				$scope.login = 'juan';
 				$http.expectGET('data/login.json');
 				$scope.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual("logged");
+				expect($rootScope.state).toEqual('logged');
 			});
 
 			it('should return "bad login"', function() {
-				$scope.login = "kiki";
+				$scope.login = 'kiki';
 				$http.expectGET('data/login.json');
 				$scope.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual("not logged");
-				expect($rootScope.errorMessage).toEqual("bad login/password");
+				expect($rootScope.state).toEqual('not logged');
+				expect($rootScope.errorMessage).toEqual('bad login/password');
 			});
 
 			it('should return "technical error" when 404', function() {
-				$scope.login = "kiki";
+				$scope.login = 'kiki';
 				loginRequestHandler.respond(404, '');
 				$http.expectGET('data/login.json');
 				$scope.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual("not logged");
-				expect($rootScope.errorMessage).toEqual("technical error");
+				expect($rootScope.state).toEqual('not logged');
+				expect($rootScope.errorMessage).toEqual('technical error');
 			});
 
 			it('should return "technical error" when json is not good', function() {
-				$scope.login = "kiki";
+				$scope.login = 'kiki';
 				loginRequestHandler.respond({
-					"logins": true
+					logins: true
 				});
 				$http.expectGET('data/login.json');
 				$scope.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual("not logged");
-				expect($rootScope.errorMessage).toEqual("technical error");
+				expect($rootScope.state).toEqual('not logged');
+				expect($rootScope.errorMessage).toEqual('technical error');
 			});
 		});
 	});
