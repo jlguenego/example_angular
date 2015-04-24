@@ -37,6 +37,7 @@
 			link: function(scope, elm, attrs, ctrl) {
 				console.log('ctrl = ', ctrl);
 				ctrl.$validators.integer = function(modelValue, viewValue) {
+					console.log('validating integer');
 					if (ctrl.$isEmpty(modelValue)) {
 						// consider empty models to be valid
 						return true;
@@ -44,10 +45,12 @@
 
 					if (INTEGER_REGEXP.test(viewValue)) {
 						// it is valid
+						console.log('integer valid ', viewValue);
 						return true;
 					}
 
 					// it is invalid
+					console.log('integer invalid ', viewValue);
 					return false;
 				};
 			}
@@ -80,17 +83,30 @@
 
 	app.directive('restrictKeyboard', function () {
 		return {
+			require: 'ngModel',
 			restrict: 'A',
 			link: function(scope, element, attrs, ctrl) {
-				console.log('my ctrl = ', ctrl);
-				console.log('my scope = ', scope);
-				scope.$watch(attrs.ngModel, function(newValue, oldValue) {
-					console.log('oldValue = ', oldValue);
-					console.log('newValue = ', newValue);
-					console.log('element = ', element);
-					if (newValue == undefined) {
-						scope.$eval(attrs.ngModel + ' = ' + oldValue);
+				var viewValue = '';
+				scope.$watchGroup([function() { return viewValue; }, attrs.ngModel], function(newValue, oldValue) {
+					console.log('oldValue ', oldValue);
+					console.log('newValue ', newValue);
+					if (newValue[1] == undefined && viewValue) {
+						var action = attrs.ngModel + ' = "' + oldValue[0] + '"';
+						console.log('action ', action);
+						scope.$eval(action);
+						var v = oldValue[0] || '';
+
+						ctrl.$setViewValue(v, 'abc');
+						ctrl.$render();
+
+
 					}
+				});
+				ctrl.$parsers.push(function(value) {
+					console.log('about to parse', arguments);
+					viewValue = value;
+					console.log('return ', value);
+					return value;
 				});
 			}
 		};
