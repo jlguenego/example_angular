@@ -21,6 +21,13 @@
 			return result;
 		};
 
+		$scope.isError = function(field) {
+			return field.$invalid && field.$touched && field.$dirty;
+		};
+
+		$scope.options = { updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} };
+
+		window.x = $scope;
 	}]);
 
 	var INTEGER_REGEXP = /^\-?\d+$/;
@@ -71,4 +78,21 @@
 		};
 	});
 
+	app.directive('restrictKeyboard', function () {
+		return {
+			restrict: 'A',
+			link: function(scope, element, attrs, ctrl) {
+				console.log('my ctrl = ', ctrl);
+				console.log('my scope = ', scope);
+				scope.$watch(attrs.ngModel, function(newValue, oldValue) {
+					console.log('oldValue = ', oldValue);
+					console.log('newValue = ', newValue);
+					console.log('element = ', element);
+					if (newValue == undefined) {
+						scope.$eval(attrs.ngModel + ' = ' + oldValue);
+					}
+				});
+			}
+		};
+	});
 })();
