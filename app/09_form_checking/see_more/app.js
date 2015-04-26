@@ -81,35 +81,20 @@
 		};
 	});
 
-	app.directive('restrictKeyboard', function () {
+	app.directive('integerInputOnly', function () {
 		return {
 			require: 'ngModel',
 			restrict: 'A',
 			link: function(scope, element, attrs, ctrl) {
-				var isIntermediary = function(value) {
-					return value == '-';
-				}
-				var viewValue = '';
-				scope.$watchGroup([function() { return viewValue; }, attrs.ngModel], function(newValue, oldValue) {
-					console.log('oldValue ', oldValue);
-					console.log('newValue ', newValue);
-					if (newValue[1] == undefined && viewValue && (!isIntermediary(viewValue))) {
-						var action = attrs.ngModel + ' = "' + oldValue[0] + '"';
-						console.log('action ', action);
-						scope.$eval(action);
-						var v = oldValue[0] || '';
-
-						ctrl.$setViewValue(v, 'abc');
-						ctrl.$render();
-
-
-					}
-				});
+				var previousValue = '';
 				ctrl.$parsers.push(function(value) {
-					console.log('about to parse', arguments);
-					viewValue = value;
-					console.log('return ', value);
-					return value;
+					if ((value == '') || (value == '-') || INTEGER_REGEXP.test(value)) {
+						previousValue = value;
+						return value;
+					}
+					ctrl.$setViewValue(previousValue, 'integerInputOnly');
+					ctrl.$render();
+					return previousValue;
 				});
 			}
 		};

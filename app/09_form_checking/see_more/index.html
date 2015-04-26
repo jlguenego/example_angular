@@ -25,7 +25,7 @@ input.error {
 					<span ng-show="myForm.firstname.$error.firstname">Le prénom doit être Juan, Yannis ou Jean-Louis !</span>
 				</span><br/>
 				Age :
-				<input restrict-keyboard integer required ng-class="{error: isError(myForm.age)}" type="text" name="age"  ng-model="obj.age" />
+				<input integer-input-only integer required ng-class="{error: isError(myForm.age)}" type="text" name="age"  ng-model="obj.age" />
 				<span ng-show="isError(myForm.age)">
 					<span ng-show="myForm.age.$error.required">L'âge ne doit pas être vide !</span>
 					<span ng-show="myForm.age.$error.number">L'âge doit être un nombre !</span>
