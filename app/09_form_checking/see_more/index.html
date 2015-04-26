@@ -104,25 +104,63 @@
 							<span ng-show="myForm.password.$error.required">Le mot de passe ne doit pas être vide !</span>
 						</span><br/>
 					</div>
-					Entier a :
-					<input required integer ng-class="{error: isError(myForm.a)}" type="text" name="a"  ng-model="obj.a" ng-model-options="options" value="123" />
-					<span ng-show="isError(myForm.a)">
-						<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
-						<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
-					</span><br/>
-					Entier b :
-					<input required integer ng-class="{error: isError(myForm.b)}" type="text" name="b"  ng-model="obj.b" ng-model-options="options" />
-					<span ng-show="isError(myForm.b)">
-						<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
-						<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
-					</span><br/>
-					Entier c (doit être la somme de a et b) :
-					<input ui-validate-watch=" '[obj.a, obj.b]' " ui-validate=" {sum: 'sum($value, obj.a, obj.b)' } " required integer ng-class="{error: isError(myForm.c)}" type="text" name="c"  ng-model="obj.c" ng-model-options="options" />
-					<span ng-show="isError(myForm.c)">
-						<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
-						<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
-						<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
-					</span><br/>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.a)">
+						<label class="control-label" for="password">Entier a</label>
+						<input
+							id="a"
+							name="a"
+							class="form-control"
+							placeholder="Entrer un entier a"
+							type="text"
+							ng-model="obj.a"
+							required
+							integer
+							integer-input-only />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.a)"></span>
+						<span ng-show="isError(myForm.a)">
+							<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
+							<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
+						</span><br/>
+					</div>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.b)">
+						<label class="control-label" for="password">Entier b</label>
+						<input
+							id="b"
+							name="b"
+							class="form-control"
+							placeholder="Entrer un entier b"
+							type="text"
+							ng-model="obj.b"
+							required
+							integer
+							integer-input-only />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.b)"></span>
+						<span ng-show="isError(myForm.b)">
+							<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
+							<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
+						</span><br/>
+					</div>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.c)">
+						<label class="control-label" for="password">Entier (doit être la somme de a et b)</label>
+						<input
+							id="c"
+							name="c"
+							class="form-control"
+							placeholder="Entrer un entier c"
+							type="text"
+							ng-model="obj.c"
+							required
+							integer
+							integer-input-only
+							ui-validate-watch=" '[obj.a, obj.b]' " ui-validate=" {sum: 'sum($value, obj.a, obj.b)' } "
+						/>
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.c)"></span>
+						<span ng-show="isError(myForm.c)">
+							<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
+							<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
+							<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
+						</span><br/>
+					</div>
 
 					<input type="submit" ng-disabled="myForm.$invalid" value="Valider" />
 				</form>
