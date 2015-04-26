@@ -1,71 +1,136 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- bootstrap: zoom for mobiles -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 		<meta charset="utf-8">
 		<title>Mon formulaire</title>
-		<style>
-input.error {
-	background-color: red;
-}
-		</style>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	</head>
 
-	<body >
-		<div ng-app="mainApp" ng-controller="MainCtrl">
-			<form name="myForm" ng-submit="doSomething()" novalidate>
-				Nom :
-				<input required ng-class="{error: isError(myForm.name)}" type="text" name="name" ng-model="obj.name" ng-model-options="options" />
-				<span ng-show="isError(myForm.name)">
-					<span ng-show="myForm.name.$error.required">Le nom ne doit pas être vide !</span>
-				</span><br/>
-				Prénom :
-				<input required firstname ng-class="{error:isError(myForm.firstname)}" type="text" name="firstname" ng-model="obj.firstname" ng-model-options="options" />
-				<span ng-show="isError(myForm.firstname)">
-					<span ng-show="myForm.firstname.$error.required">Le prénom ne doit pas être vide !</span>
-					<span ng-show="myForm.firstname.$error.firstname">Le prénom doit être Juan, Yannis ou Jean-Louis !</span>
-				</span><br/>
-				Age :
-				<input integer-input-only integer required ng-class="{error: isError(myForm.age)}" type="text" name="age"  ng-model="obj.age" />
-				<span ng-show="isError(myForm.age)">
-					<span ng-show="myForm.age.$error.required">L'âge ne doit pas être vide !</span>
-					<span ng-show="myForm.age.$error.number">L'âge doit être un nombre !</span>
-					<span ng-show="myForm.age.$error.integer">L'âge doit être un entier !</span>
-				</span><br/>
-				age = {{ obj.age }}<br/>
-				Email :
-				<input required ng-class="{error: isError(myForm.email)}" type="email" name="email"  ng-model="obj.email" ng-model-options="options" />
-				<span ng-show="isError(myForm.email)">
-					<span ng-show="myForm.email.$error.required">L'email ne doit pas être vide !</span>
-					<span ng-show="myForm.email.$error.email">L'email doit être valide !</span>
-				</span><br/>
-				Mot de passe :
-				<input required ng-class="{error: isError(myForm.password)}" type="password" name="password"  ng-model="obj.password" ng-model-options="options" />
-				<span ng-show="isError(myForm.password)">
-					<span ng-show="myForm.password.$error.required">Le mot de passe ne doit pas être vide !</span>
-				</span><br/>
-				Entier a :
-				<input required integer ng-class="{error: isError(myForm.a)}" type="text" name="a"  ng-model="obj.a" ng-model-options="options" value="123" />
-				<span ng-show="isError(myForm.a)">
-					<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
-					<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
-				</span><br/>
-				Entier b :
-				<input required integer ng-class="{error: isError(myForm.b)}" type="text" name="b"  ng-model="obj.b" ng-model-options="options" />
-				<span ng-show="isError(myForm.b)">
-					<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
-					<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
-				</span><br/>
-				Entier c (doit être la somme de a et b) :
-				<input ui-validate-watch=" '[obj.a, obj.b]' " ui-validate=" {sum: 'sum($value, obj.a, obj.b)' } " required integer ng-class="{error: isError(myForm.c)}" type="text" name="c"  ng-model="obj.c" ng-model-options="options" />
-				<span ng-show="isError(myForm.c)">
-					<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
-					<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
-					<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
-				</span><br/>
+	<body>
+		<!-- bootstrap: the whole page must be wrapped in a container or container-fluid -->
+		<div class="container">
+			<h1>Exemple de formulaire avec "custom validation"</h1>
+			<h2>... et utilisation de Twitter Bootstrap</h2>
+			<div ng-app="mainApp" ng-controller="MainCtrl">
+				<form name="myForm" ng-submit="doSomething()" novalidate>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+						<label class="control-label" for="name">Nom</label>
+						<input
+							id="name"
+							name="name"
+							class="form-control"
+							placeholder="Entrer un nom"
+							type="text"
+							ng-model="obj.name"
+							ng-model-options="options"
+							required />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.name)"></span>
+						<span ng-show="isError(myForm.name)">
+							<span ng-show="myForm.name.$error.required">Le nom ne doit pas être vide !</span>
+						</span><br/>
+					</div>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.firstname)">
+						<label class="control-label" for="firstname">Prénom</label>
+						<input
+							id="firstname"
+							name="firstname"
+							class="form-control"
+							placeholder="Entrer un prénom (Juan, Yannis ou Jean-Louis)"
+							type="text"
+							ng-model="obj.firstname"
+							ng-model-options="options"
+							required
+							firstname />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.firstname)"></span>
+						<span ng-show="isError(myForm.firstname)">
+							<span ng-show="myForm.firstname.$error.required">Le prénom ne doit pas être vide !</span>
+							<span ng-show="myForm.firstname.$error.firstname">Le prénom doit être Juan, Yannis ou Jean-Louis !</span>
+						</span><br/>
+					</div>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.age)">
+						<label class="control-label" for="age">Age</label>
+						<input
+							id="age"
+							name="age"
+							class="form-control"
+							placeholder="Entrer un age"
+							type="text"
+							ng-model="obj.age"
+							required
+							integer
+							integer-input-only />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.age)"></span>
+						<span ng-show="isError(myForm.age)">
+							<span ng-show="myForm.age.$error.required">L'âge ne doit pas être vide !</span>
+							<span ng-show="myForm.age.$error.number">L'âge doit être un nombre !</span>
+							<span ng-show="myForm.age.$error.integer">L'âge doit être un entier !</span>
+						</span><br/>
+					</div>
+					age = {{ obj.age }}<br/>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.email)">
+						<label class="control-label" for="email">Email</label>
+						<input
+							id="email"
+							name="email"
+							class="form-control"
+							placeholder="Entrer votre email"
+							type="email"
+							ng-model="obj.email"
+							ng-model-options="options"
+							required />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.email)"></span>
+						<span ng-show="isError(myForm.email)">
+							<span ng-show="myForm.email.$error.required">L'email ne doit pas être vide !</span>
+							<span ng-show="myForm.email.$error.email">L'email doit être valide !</span>
+						</span><br/>
+					</div>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.password)">
+						<label class="control-label" for="password">Mot de passe</label>
+						<input
+							id="password"
+							name="password"
+							class="form-control"
+							placeholder="Entrer votre mot de passe"
+							type="password"
+							ng-model="obj.password"
+							ng-model-options="options"
+							required />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.password)"></span>
+						<span ng-show="isError(myForm.password)">
+							<span ng-show="myForm.password.$error.required">Le mot de passe ne doit pas être vide !</span>
+						</span><br/>
+					</div>
+					Entier a :
+					<input required integer ng-class="{error: isError(myForm.a)}" type="text" name="a"  ng-model="obj.a" ng-model-options="options" value="123" />
+					<span ng-show="isError(myForm.a)">
+						<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
+						<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
+					</span><br/>
+					Entier b :
+					<input required integer ng-class="{error: isError(myForm.b)}" type="text" name="b"  ng-model="obj.b" ng-model-options="options" />
+					<span ng-show="isError(myForm.b)">
+						<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
+						<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
+					</span><br/>
+					Entier c (doit être la somme de a et b) :
+					<input ui-validate-watch=" '[obj.a, obj.b]' " ui-validate=" {sum: 'sum($value, obj.a, obj.b)' } " required integer ng-class="{error: isError(myForm.c)}" type="text" name="c"  ng-model="obj.c" ng-model-options="options" />
+					<span ng-show="isError(myForm.c)">
+						<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
+						<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
+						<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
+					</span><br/>
 
-				<input type="submit" ng-disabled="myForm.$invalid" value="Valider" />
-			</form>
+					<input type="submit" ng-disabled="myForm.$invalid" value="Valider" />
+				</form>
+			</div>
 		</div>
+
+		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
 		<script src="app.js"></script>

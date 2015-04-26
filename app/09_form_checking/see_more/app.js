@@ -27,6 +27,20 @@
 
 		$scope.options = { updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} };
 
+		$scope.bootstrap = function(field) {
+			return {
+				'has-error': $scope.isError(field),
+				'has-success': !$scope.isError(field)
+			};
+		};
+
+		$scope.bootstrapGlyphicon = function(field) {
+			return {
+				'glyphicon-remove': $scope.isError(field),
+				'glyphicon-ok': field.$valid
+			};
+		};
+
 		window.x = $scope;
 	}]);
 
