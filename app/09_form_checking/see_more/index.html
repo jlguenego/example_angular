@@ -8,13 +8,20 @@
 		<meta charset="utf-8">
 		<title>Mon formulaire</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<style>
+.form {
+	background-color: #eee;
+}
+		</style>
 	</head>
 
 	<body>
 		<!-- bootstrap: the whole page must be wrapped in a container or container-fluid -->
-		<div class="container">
+		<div class="container form"><div class="row"><div class="col-md-12">
 			<h1>Exemple de formulaire avec "custom validation"</h1>
 			<h2>... et utilisation de Twitter Bootstrap</h2>
+		</div></div>
+		<div class="row"><div class="col-md-4">
 			<div ng-app="mainApp" ng-controller="MainCtrl">
 				<form name="myForm" ng-submit="doSomething()" novalidate>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
@@ -29,9 +36,7 @@
 							ng-model-options="options"
 							required />
 						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.name)"></span>
-						<span ng-show="isError(myForm.name)">
-							<span ng-show="myForm.name.$error.required">Le nom ne doit pas être vide !</span>
-						</span><br/>
+						<span class="help-inline" ng-show="isError(myForm.name) && myForm.name.$error.required">Le nom ne doit pas être vide !</span>
 					</div>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.firstname)">
 						<label class="control-label" for="firstname">Prénom</label>
@@ -49,7 +54,7 @@
 						<span ng-show="isError(myForm.firstname)">
 							<span ng-show="myForm.firstname.$error.required">Le prénom ne doit pas être vide !</span>
 							<span ng-show="myForm.firstname.$error.firstname">Le prénom doit être Juan, Yannis ou Jean-Louis !</span>
-						</span><br/>
+						</span>
 					</div>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.age)">
 						<label class="control-label" for="age">Age</label>
@@ -68,9 +73,8 @@
 							<span ng-show="myForm.age.$error.required">L'âge ne doit pas être vide !</span>
 							<span ng-show="myForm.age.$error.number">L'âge doit être un nombre !</span>
 							<span ng-show="myForm.age.$error.integer">L'âge doit être un entier !</span>
-						</span><br/>
+						</span>
 					</div>
-					age = {{ obj.age }}<br/>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.email)">
 						<label class="control-label" for="email">Email</label>
 						<input
@@ -86,7 +90,7 @@
 						<span ng-show="isError(myForm.email)">
 							<span ng-show="myForm.email.$error.required">L'email ne doit pas être vide !</span>
 							<span ng-show="myForm.email.$error.email">L'email doit être valide !</span>
-						</span><br/>
+						</span>
 					</div>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.password)">
 						<label class="control-label" for="password">Mot de passe</label>
@@ -102,7 +106,26 @@
 						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.password)"></span>
 						<span ng-show="isError(myForm.password)">
 							<span ng-show="myForm.password.$error.required">Le mot de passe ne doit pas être vide !</span>
-						</span><br/>
+						</span>
+					</div>
+					<div class="form-group has-feedback" ng-class="bootstrap(myForm.confirmPassword)">
+						<label class="control-label" for="confirmPassword">Confirmation du mot de passe</label>
+						<input
+							id="confirmPassword"
+							name="confirmPassword"
+							class="form-control"
+							placeholder="Entrer à nouveau votre mot de passe"
+							type="password"
+							ng-model="obj.confirmPassword"
+							ng-model-options="options"
+							ui-validate=" '$value == obj.password' "
+							ui-validate-watch=" 'obj.password' "
+							required />
+						<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.confirmPassword)"></span>
+						<span ng-show="isError(myForm.confirmPassword)">
+							<span ng-show="myForm.confirmPassword.$error.required">Le mot de passe ne doit pas être vide !</span>
+							<span ng-show="myForm.confirmPassword.$error.validator">Les deux mots de passe doivent être identiques !</span>
+						</span>
 					</div>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.a)">
 						<label class="control-label" for="password">Entier a</label>
@@ -120,7 +143,7 @@
 						<span ng-show="isError(myForm.a)">
 							<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
 							<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
-						</span><br/>
+						</span>
 					</div>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.b)">
 						<label class="control-label" for="password">Entier b</label>
@@ -138,7 +161,7 @@
 						<span ng-show="isError(myForm.b)">
 							<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
 							<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
-						</span><br/>
+						</span>
 					</div>
 					<div class="form-group has-feedback" ng-class="bootstrap(myForm.c)">
 						<label class="control-label" for="password">Entier (doit être la somme de a et b)</label>
@@ -159,13 +182,13 @@
 							<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
 							<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
 							<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
-						</span><br/>
+						</span>
 					</div>
 
-					<input type="submit" ng-disabled="myForm.$invalid" value="Valider" />
+					<input type="submit" ng-disabled="myForm.$invalid" value="Valider" class="btn btn-primary" />
 				</form>
 			</div>
-		</div>
+		</div></div></div>
 
 		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
