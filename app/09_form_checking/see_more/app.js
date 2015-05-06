@@ -33,7 +33,6 @@
 				'has-success': !$scope.isError(field)
 			};
 		};
-
 		$scope.bootstrapGlyphicon = function(field) {
 			return {
 				'glyphicon-remove': $scope.isError(field),
