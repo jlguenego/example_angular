@@ -11,7 +11,7 @@ exports.config = {
 
 	chromeOnly: true,
 
-	baseUrl: 'http://localhost:8000/25_protractor/',
+	baseUrl: 'http://localhost:8000/app/25_protractor/',
 
 	framework: 'jasmine',
 
