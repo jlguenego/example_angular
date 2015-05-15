@@ -19,7 +19,10 @@
     "protractor": "1.0.0",
     "serve-index": "1.6.2",
     "serve-static": "1.9.1",
-    "socket.io": "1.1.0"
+    "socket.io": "1.1.0",
+    "jscs": "1.13.1",
+    "jshint": "2.7.0",
+    "grunt-cli": "0.1.13"
   },
   "scripts": {
     "postinstall": "bower install",
