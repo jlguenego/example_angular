@@ -8,7 +8,7 @@
 	var path = require('path');
 
 	var root = __dirname + '/../..';
-	var port = 9000;
+	var port = 8000;
 
 	var serveIndex = require('serve-index');
 
