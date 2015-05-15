@@ -3,14 +3,13 @@ module.exports = function(config) {
 
 	config.set({
 
-		basePath: '../../',
+		basePath: '../../../',
 
 		files: [
 		'bower_components/angular/angular.js',
-		'bower_components/angular-route/angular-route.js',
 		'bower_components/angular-mocks/angular-mocks.js',
-		'24_karma/app/*.js',
-		'24_karma/test/unit/**/*.js'
+		'app/24_karma/app/*.js',
+		'app/24_karma/test/unit/**/*.js'
 		],
 
 		autoWatch: true,
