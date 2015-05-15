@@ -4,9 +4,9 @@
 	var fs = require('fs');
 	var path = require('path');
 
-	var root = path.normalize(__dirname + '/../..');
+	var root = path.normalize(__dirname + '/../../..');
 	var angularLocaleDir = path.normalize(root + '/bower_components/angular-i18n');
-	var localeDir = path.normalize(root + '/27_i18n/i18n/locale');
+	var localeDir = path.normalize(root + '/app/27_i18n/i18n/locale');
 
 	function main() {
 		var localeFiles = fs.readdirSync(angularLocaleDir);
@@ -16,7 +16,7 @@
 		}
 
 		localeFiles.forEach(function(fname) {
-			if (!fname.match(/\.js$/)) {
+			if (!fname.match(/angular-locale_.*\.js$/)) {
 				return;
 			}
 			createLocaleFile(fname);

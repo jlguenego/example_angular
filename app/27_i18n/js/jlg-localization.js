@@ -10,11 +10,13 @@
 			var localeRes = $resource('i18n/locale/locale_:locale.json');
 
 			this.refresh = function() {
+				console.log('start');
 				this.translation = i18nRes.get({locale: $locale.id});
 
 				var newLocale = localeRes.get({locale: $locale.id}, function(newLocale) {
 					for (var property in newLocale) {
 						if ($locale.hasOwnProperty(property)) {
+							console.log(property);
 							$locale[property] = newLocale[property];
 						}
 					}
@@ -26,10 +28,11 @@
 	]);
 
 	app.filter('i18n', ['jlg.localization.i18nService', function(i18nService) {
-		return function(text) {
+		var filter = function(text) {
 			var result = text;
 			var args = Array.prototype.slice.call(arguments, 1);
 			var translation = i18nService.translation;
+			console.log(translation);
 
 			if (translation.hasOwnProperty(text)) {
 				result = translation[text];
@@ -86,5 +89,7 @@
 
 			return result;
 		};
+		filter.$stateful = true;
+		return filter;
 	}]);
 })();
