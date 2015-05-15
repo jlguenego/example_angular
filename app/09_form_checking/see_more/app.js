@@ -25,7 +25,7 @@
 			return field.$invalid && field.$touched && field.$dirty;
 		};
 
-		$scope.options = { updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} };
+		$scope.options = { updateOn: 'default blur', debounce: {default: 500, blur: 0} };
 
 		$scope.bootstrap = function(field) {
 			return {
@@ -94,14 +94,14 @@
 		};
 	});
 
-	app.directive('integerInputOnly', function () {
+	app.directive('integerInputOnly', function() {
 		return {
 			require: 'ngModel',
 			restrict: 'A',
 			link: function(scope, element, attrs, ctrl) {
 				var previousValue = '';
 				ctrl.$parsers.push(function(value) {
-					if ((value == '') || (value == '-') || INTEGER_REGEXP.test(value)) {
+					if ((value === '') || (value === '-') || INTEGER_REGEXP.test(value)) {
 						previousValue = value;
 						return value;
 					}
