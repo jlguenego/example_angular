@@ -24,7 +24,7 @@
 				$controller = $injector.get('$controller');
 				$location = $injector.get('$location');
 				$scope = $rootScope.$new();
-				jasmine.getJSONFixtures().fixturesPath = 'base/24_karma2/test/mock';
+				jasmine.getJSONFixtures().fixturesPath = 'base/app/24_karma2/test/mock';
 
 			}));
 

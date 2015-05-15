@@ -3,7 +3,7 @@ module.exports = function(config) {
 
 	config.set({
 
-		basePath: '../../',
+		basePath: '../../../',
 
 		files: [
 		'bower_components/jquery/jquery.js',
@@ -12,9 +12,9 @@ module.exports = function(config) {
 		'bower_components/angular-route/angular-route.js',
 		'bower_components/angular-resource/angular-resource.js',
 		'bower_components/angular-mocks/angular-mocks.js',
-		'24_karma2/app/*.js',
-		'24_karma2/test/unit/**/*.js',
-		{ pattern: '24_karma2/test/mock/**/*.json', watched: true, served: true, included: false }
+		'app/24_karma2/app/*.js',
+		'app/24_karma2/test/unit/**/*.js',
+		{ pattern: 'app/24_karma2/test/mock/**/*.json', watched: true, served: true, included: false }
 		],
 
 		autoWatch: true,
