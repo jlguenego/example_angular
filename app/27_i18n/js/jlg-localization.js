@@ -3,6 +3,10 @@
 
 	var app = angular.module('jlg.localization', ['ngLocale', 'ngResource']);
 
+	app.run(['$filter', function($filter) {
+		$filter('date').$stateful = true;
+	}]);
+
 	app.service('jlg.localization.i18nService', ['$locale', '$resource',
 		function JLGI18NService($locale, $resource) {
 
