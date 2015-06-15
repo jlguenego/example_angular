@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<title>My First Angular directive</title>
+		<link rel="stylesheet" href="style.css"/>
+	</head>
+	<body>
+		<my-menu init="tmpl/main.html"></my-menu>
+
+		<script type="text/ng-template" id="tmpl/main.html">
+<button ng-click="menu.open('tmpl/a.html')">a</button>
+<button ng-click="menu.open('tmpl/b.html')">b</button>
+<button ng-click="menu.back()">back</button>
+		</script>
+
+		<script type="text/ng-template" id="tmpl/a.html">
+<button ng-click="menu.back()">back</button>
+menu a
+		</script>
+
+		<script type="text/ng-template" id="tmpl/b.html">
+<button ng-click="menu.open('tmpl/b1.html')">b1</button>
+<button ng-click="menu.open('tmpl/b2.html')">b2</button>
+<button ng-click="menu.back()">back</button>
+		</script>
+		<script type="text/ng-template" id="tmpl/b1.html">
+<button ng-click="menu.back()">back</button>
+menu b1
+		</script>
+		<script type="text/ng-template" id="tmpl/b2.html">
+<button ng-click="menu.back()">back</button>
+menu b2
+		</script>
+		<script src="../../bower_components/angular/angular.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
