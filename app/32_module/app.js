@@ -15,30 +15,34 @@
 		var $compile = $injector.get('$compile');
 		var $animate = $injector.get('$animate');
 
-		var animate = function(element, from, to, done) {
-			console.log('animateLeft', arguments);
-			element.css({
-				position: 'absolute',
-				top: 0,
-				left: from,
-				display: 'block'
-			});
 
-			jQuery(element).animate({
-				left: to
-			}, 400, done);
-
-			return function(cancel) {
-				if(cancel) {
-					element.stop();
-				}
-			};
-		};
 
 		return {
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
 				console.log('link', arguments);
+				var width = element.width();
+				console.log('width', width);
+				var duration = 400;
+				var animate = function(element, from, to, done) {
+					console.log('animateLeft', arguments);
+					element.css({
+						position: 'absolute',
+						top: 0,
+						left: from,
+						display: 'block'
+					});
+
+					jQuery(element).animate({
+						left: to
+					}, duration, done);
+
+					return function(cancel) {
+						if(cancel) {
+							element.stop();
+						}
+					};
+				};
 				scope.menu = {
 					lastPages: [],
 					open: function(target) {
@@ -52,11 +56,11 @@
 							div.append(response);
 							element.append(div);
 							if (self.lastPages.length >= 2) {
-								animate(element.children().eq(self.lastPages.length - 2), 0, -500);
+								animate(element.children().eq(self.lastPages.length - 2), 0, -width);
 							}
 							var elt = element.children().eq(self.lastPages.length - 1);
 							$compile(elt)(scope);
-							animate(elt, 500, 0);
+							animate(elt, width, 0);
 						}).catch(function(error) {
 							console.log('error', error);
 						});
@@ -71,12 +75,12 @@
 						var e = element.children().eq(this.lastPages.length - 1);
 						var elt = element.children().eq(this.lastPages.length - 2);
 
-						animate(e, 0, 500, function() {
+						animate(e, 0, width, function() {
 							console.log('coucou');
 							e.remove();
 						});
 
-						animate(elt, -500, 0);
+						animate(elt, -width, 0);
 						this.lastPages.pop();
 					}
 				};

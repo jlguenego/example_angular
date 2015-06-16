@@ -1,12 +1,25 @@
 jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
 	display: inline-block;
-	width: 200px;
-	height: 100px;
+	width: 400px;
+	height: 500px;
 	border: 1px solid black;
 	overflow: hidden;
 	position: relative;
 }
 
+._menu {
+	width: 400px;
+	height: 500px;
+}
+
 .active {
 	background-color: blue;
+}
+
+.jlg-back {
+	cursor: pointer;
+}
+
+.jlg-back:hover {
+	color: black;
 }

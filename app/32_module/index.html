@@ -2,38 +2,88 @@
 <html ng-app="myApp">
 	<head>
 		<title>My First Angular directive</title>
+		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
 		<jlg-menu init="tmpl/main.html"></jlg-menu>
 
 		<script type="text/ng-template" id="tmpl/main.html">
-<button ng-click="menu.open('tmpl/a.html')">a</button>
-<button ng-click="menu.open('tmpl/b.html')">b</button>
-<button ng-click="menu.back()">back</button>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+			<h3 onclick="" class="jlg-back pull-left panel-title" ng-click="menu.back()">&lt; Main</h3>
+			<h3 class="panel-title text-center">Main</h3>
+	</div>
+	<div class="panel-body">
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+
+	</div>
+</div>
+
 		</script>
 
 		<script type="text/ng-template" id="tmpl/a.html">
-<button ng-click="menu.back()">back</button>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; Main</h3>
+		<h3 class="panel-title text-center">A</h3>
+	</div>
+	<div class="panel-body">
 menu a
 		</script>
 
 		<script type="text/ng-template" id="tmpl/b.html">
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; Main</h3>
+		<h3 class="panel-title text-center">B</h3>
+	</div>
+	<div class="panel-body">
 <button ng-click="menu.open('tmpl/b1.html')">b1</button>
 <button ng-click="menu.open('tmpl/b2.html')">b2</button>
-<button ng-click="menu.back()">back</button>
+	</div>
+</div>
 		</script>
 		<script type="text/ng-template" id="tmpl/b1.html">
-<button ng-click="menu.back()">back</button>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; B</h3>
+		<h3 class="panel-title text-center">B1</h3>
+	</div>
+	<div class="panel-body">
 menu b1
+	</div>
+</div>
 		</script>
 		<script type="text/ng-template" id="tmpl/b2.html">
-<button ng-click="menu.back()">back</button>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; B</h3>
+		<h3 class="panel-title text-center">B2</h3>
+	</div>
+	<div class="panel-body">
 menu b2
+	</div>
+</div>
 		</script>
 
 
 		<script src="../../bower_components/jquery/jquery.min.js"></script>
+		<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="../../bower_components/angular/angular.min.js"></script>
 		<script src="../../bower_components/angular-animate/angular-animate.min.js"></script>
 		<script src="app.js"></script>
