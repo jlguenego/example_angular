@@ -8,12 +8,32 @@
 		$rootScope.coucou = 3;
 	}]);
 
-	app.directive('myMenu', ['$injector', function($injector) {
+	app.directive('jlgMenu', ['$injector', function($injector) {
 
 		var $rootScope = $injector.get('$rootScope');
 		var $templateRequest = $injector.get('$templateRequest');
 		var $compile = $injector.get('$compile');
 		var $animate = $injector.get('$animate');
+
+		var animate = function(element, from, to, done) {
+			console.log('animateLeft', arguments);
+			element.css({
+				position: 'absolute',
+				top: 0,
+				left: from,
+				display: 'block'
+			});
+
+			jQuery(element).animate({
+				left: to
+			}, 400, done);
+
+			return function(cancel) {
+				if(cancel) {
+					element.stop();
+				}
+			};
+		};
 
 		return {
 			restrict: 'EAC',
@@ -25,17 +45,18 @@
 						var self = this;
 						console.log('target', target);
 						this.lastPages.push(target);
+						var level = '_level_' + this.lastPages.length;
 						$templateRequest(this.lastPages[this.lastPages.length - 1], true).then(function(response) {
 							console.log('response', response);
-							var div = angular.element('<div class="menu"></div>');
+							var div = angular.element('<div class="_menu ' + level + '"></div>');
 							div.append(response);
 							element.append(div);
 							if (self.lastPages.length >= 2) {
-								$animate.removeClass(element.children().eq(self.lastPages.length - 2), 'active');
+								animate(element.children().eq(self.lastPages.length - 2), 0, -500);
 							}
 							var elt = element.children().eq(self.lastPages.length - 1);
 							$compile(elt)(scope);
-							$animate.addClass(elt, 'active');
+							animate(elt, 500, 0);
 						}).catch(function(error) {
 							console.log('error', error);
 						});
@@ -50,12 +71,12 @@
 						var e = element.children().eq(this.lastPages.length - 1);
 						var elt = element.children().eq(this.lastPages.length - 2);
 
-						$animate.removeClass(e, 'active').then(function() {
+						animate(e, 0, 500, function() {
 							console.log('coucou');
 							e.remove();
 						});
 
-						$animate.addClass(elt, 'active');
+						animate(elt, -500, 0);
 						this.lastPages.pop();
 					}
 				};
@@ -65,59 +86,5 @@
 			}
 		};
 	}]);
-
-	app.animation('.menu', function() {
-
-		var animateLeft = function(element, className, done) {
-			console.log('animateLeft', arguments);
-			if(className != 'active') {
-				return;
-			}
-			element.css({
-				position: 'absolute',
-				top: 0,
-				left: 500,
-				display: 'block'
-			});
-
-			jQuery(element).animate({
-				left: 0
-			}, 2000, done);
-
-			return function(cancel) {
-				if(cancel) {
-					element.stop();
-				}
-			};
-		}
-
-		var animateRight = function(element, className, done) {
-			console.log('animateRight', arguments);
-			if(className != 'active') {
-				return;
-			}
-			element.css({
-				position: 'absolute',
-				left: 0,
-				top: 0
-			});
-
-			jQuery(element).animate({
-				left: -500
-			}, 2000, done);
-
-			return function(cancel) {
-				if(cancel) {
-					element.stop();
-				}
-			};
-		}
-
-		return {
-			addClass: animateLeft,
-			removeClass: animateRight
-		};
-
-	});
 
 })();
