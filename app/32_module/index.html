@@ -5,13 +5,13 @@
 		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="style.css"/>
 	</head>
-	<body>
+	<body ng-class="{desktop: isDesktop, mobile: isMobile}">
 		<jlg-menu init="tmpl/main.html"></jlg-menu>
 
 		<script type="text/ng-template" id="tmpl/main.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-			<h3 onclick="" class="jlg-back pull-left panel-title" ng-click="menu.back()">&lt; Main</h3>
+			<h3 onclick="" class="jlg-back pull-left panel-title" ng-click="menu.back()">&lt; Truc</h3>
 			<h3 class="panel-title text-center">Main</h3>
 	</div>
 	<div class="panel-body">

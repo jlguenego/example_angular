@@ -20,6 +20,6 @@ jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
 	cursor: pointer;
 }
 
-.jlg-back:hover {
+.desktop .jlg-back:hover {
 	color: black;
 }

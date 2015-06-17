@@ -5,7 +5,13 @@
 
 	app.run(['$injector', function($injector) {
 		var $rootScope = $injector.get('$rootScope');
-		$rootScope.coucou = 3;
+
+		$rootScope.isDesktop = !('ontouchstart' in window);
+		$rootScope.isMobile = ('ontouchstart' in window);
+		$rootScope.isLandscape = function() {
+			return window.innerWidth > window.innerHeight;
+		};
+
 	}]);
 
 	app.directive('jlgMenu', ['$injector', function($injector) {
