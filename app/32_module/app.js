@@ -13,7 +13,7 @@
 		};
 		$rootScope.showConfig = false;
 
-		$rootScope.openConfig = function() {
+		$rootScope.toggleConfig = function() {
 			$rootScope.showConfig = !$rootScope.showConfig;
 		};
 

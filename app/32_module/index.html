@@ -26,7 +26,7 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<div class="navbar-form navbar-left" >
-					        <button ng-click="openConfig()" class="btn btn-default">Config</button>
+					        <button ng-click="toggleConfig()" class="btn btn-default">Config</button>
 						</div>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
@@ -34,12 +34,12 @@
 			<div jlg-map id="map"></div>
 		</div>
 
-		<jlg-menu init="tmpl/main.html" ng-if="showConfig"></jlg-menu>
+		<jlg-menu init="tmpl/main.html" ng-show="showConfig"></jlg-menu>
 		<script type="text/ng-template" id="tmpl/main.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-			<h3 class="jlg-back panel-title pull-left" ng-click="openConfig()"><span class="glyphicon glyphicon-chevron-left"></span>Close</h3>
-			<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="openConfig()"></h3>
+			<h3 class="jlg-back panel-title pull-left" ng-click="toggleConfig()"><span class="glyphicon glyphicon-chevron-left"></span>Close</h3>
+			<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig()"></h3>
 			<h3 class="panel-title text-center"><strong>Main</strong></h3>
 	</div>
 	<div class="panel-body">
@@ -233,8 +233,8 @@
 		<script type="text/ng-template" id="tmpl/a.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
-		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; Main</h3>
+		<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig()"></h3>
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()"><span class="glyphicon glyphicon-chevron-left"></span> Main</h3>
 		<h3 class="panel-title text-center">A</h3>
 	</div>
 	<div class="panel-body">
@@ -244,8 +244,8 @@ menu a
 		<script type="text/ng-template" id="tmpl/b.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
-		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; Main</h3>
+		<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig()"></h3>
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()"><span class="glyphicon glyphicon-chevron-left"></span> Main</h3>
 		<h3 class="panel-title text-center">B</h3>
 	</div>
 	<div class="panel-body">
@@ -257,8 +257,8 @@ menu a
 		<script type="text/ng-template" id="tmpl/b1.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
-		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; B</h3>
+		<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig()"></h3>
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()"><span class="glyphicon glyphicon-chevron-left"></span> B</h3>
 		<h3 class="panel-title text-center">B1</h3>
 	</div>
 	<div class="panel-body">
@@ -269,8 +269,8 @@ menu b1
 		<script type="text/ng-template" id="tmpl/b2.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
-		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; B</h3>
+		<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig()"></h3>
+		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()"><span class="glyphicon glyphicon-chevron-left"></span> B</h3>
 		<h3 class="panel-title text-center">B2</h3>
 	</div>
 	<div class="panel-body">
