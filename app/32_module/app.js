@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('myApp', ['ngAnimate']);
+	var app = angular.module('myApp', []);
 
 	app.run(['$injector', function($injector) {
 		var $rootScope = $injector.get('$rootScope');
@@ -19,16 +19,14 @@
 		var $rootScope = $injector.get('$rootScope');
 		var $templateRequest = $injector.get('$templateRequest');
 		var $compile = $injector.get('$compile');
-		var $animate = $injector.get('$animate');
-
 
 
 		return {
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
 				console.log('link', arguments);
-				var width = element.width();
-				console.log('width', width);
+
+
 				var duration = 400;
 				var animate = function(element, from, to, done) {
 					console.log('animateLeft', arguments);
@@ -49,9 +47,28 @@
 						}
 					};
 				};
-				scope.menu = {
-					lastPages: [],
-					open: function(target) {
+
+				var Menu = function() {
+
+					var width = 420;
+					var height = window.innerHeight;
+					console.log('height', height);
+					var refresh = function(event) {
+						console.log('resize');
+						height = window.innerHeight;
+
+						if ($rootScope.isMobile) {
+							width = window.innerWidth;
+						}
+						element.width(width);
+						element.height(height);
+					};
+
+					window.onresize = refresh;
+
+
+					this.lastPages = [];
+					this.open = function(target) {
 						var self = this;
 						console.log('target', target);
 						this.lastPages.push(target);
@@ -67,11 +84,12 @@
 							var elt = element.children().eq(self.lastPages.length - 1);
 							$compile(elt)(scope);
 							animate(elt, width, 0);
+							refresh();
 						}).catch(function(error) {
 							console.log('error', error);
 						});
 					},
-					back: function() {
+					this.back = function() {
 						console.log('back', this.lastPages);
 						var self = this;
 						if (this.lastPages.length <= 1) {
@@ -84,12 +102,15 @@
 						animate(e, 0, width, function() {
 							console.log('coucou');
 							e.remove();
+
 						});
 
 						animate(elt, -width, 0);
 						this.lastPages.pop();
+						refresh();
 					}
 				};
+				scope.menu = new Menu();
 				console.log('arguments', arguments);
 				console.log('attrs', attrs);
 				scope.menu.open(attrs.init);

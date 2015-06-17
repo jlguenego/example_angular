@@ -1,13 +1,40 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
 	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
 		<title>My First Angular directive</title>
 		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body ng-class="{desktop: isDesktop, mobile: isMobile}">
-		<jlg-menu init="tmpl/main.html"></jlg-menu>
+		<div class="main-container" ng-cloak>
+			<nav class="navbar navbar-default navbar-inverse navbar-fixed-bottom">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#"><img src="img/jlg_consulting_black.png" /></a>
+					</div>
 
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<div class="navbar-form navbar-left" >
+					        <button ng-click="openConfig()" class="btn btn-default">Config</button>
+						</div>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+			<div jlg-map id="map"></div>
+		</div>
+
+		<jlg-menu init="tmpl/main.html"></jlg-menu>
 		<script type="text/ng-template" id="tmpl/main.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
@@ -31,6 +58,172 @@
 		<button ng-click="menu.open('tmpl/a.html')">a</button>
 		<button ng-click="menu.open('tmpl/b.html')">b</button>
 
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
+		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+			<label class="control-label" for="streetViewControl">Street view control</label>
+			<span style="float:right;">
+				<input
+					id="streetViewControl"
+					name="streetViewControl"
+					class="form-control"
+					type="text"
+					ng-model="cfg.map.streetViewControl"
+					data-size="mini"
+					bs-switch />
+			</span>
+		</div>
+		<button ng-click="menu.open('tmpl/a.html')">a</button>
+		<button ng-click="menu.open('tmpl/b.html')">b</button>
 	</div>
 </div>
 
