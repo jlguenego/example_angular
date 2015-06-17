@@ -38,8 +38,9 @@
 		<script type="text/ng-template" id="tmpl/main.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-			<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="openConfig()">&lt; Close</h3>
-			<h3 class="panel-title text-center">Main</h3>
+			<h3 class="jlg-back panel-title pull-left" ng-click="openConfig()"><span class="glyphicon glyphicon-chevron-left"></span>Close</h3>
+			<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="openConfig()"></h3>
+			<h3 class="panel-title text-center"><strong>Main</strong></h3>
 	</div>
 	<div class="panel-body">
 		<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
@@ -232,6 +233,7 @@
 		<script type="text/ng-template" id="tmpl/a.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
+		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
 		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; Main</h3>
 		<h3 class="panel-title text-center">A</h3>
 	</div>
@@ -242,6 +244,7 @@ menu a
 		<script type="text/ng-template" id="tmpl/b.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
+		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
 		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; Main</h3>
 		<h3 class="panel-title text-center">B</h3>
 	</div>
@@ -254,6 +257,7 @@ menu a
 		<script type="text/ng-template" id="tmpl/b1.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
+		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
 		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; B</h3>
 		<h3 class="panel-title text-center">B1</h3>
 	</div>
@@ -265,6 +269,7 @@ menu b1
 		<script type="text/ng-template" id="tmpl/b2.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
+		<h3 class="jlg-back panel-title pull-right" ng-click="openConfig()">X</h3>
 		<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="menu.back()">&lt; B</h3>
 		<h3 class="panel-title text-center">B2</h3>
 	</div>
