@@ -34,11 +34,11 @@
 			<div jlg-map id="map"></div>
 		</div>
 
-		<jlg-menu init="tmpl/main.html"></jlg-menu>
+		<jlg-menu init="tmpl/main.html" ng-if="showConfig"></jlg-menu>
 		<script type="text/ng-template" id="tmpl/main.html">
 <div class="panel panel-primary">
 	<div class="panel-heading">
-			<h3 onclick="" class="jlg-back pull-left panel-title" ng-click="menu.back()">&lt; Truc</h3>
+			<h3 onclick="" class="jlg-back panel-title pull-left" ng-click="openConfig()">&lt; Close</h3>
 			<h3 class="panel-title text-center">Main</h3>
 	</div>
 	<div class="panel-body">

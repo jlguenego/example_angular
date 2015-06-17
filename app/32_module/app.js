@@ -11,6 +11,11 @@
 		$rootScope.isLandscape = function() {
 			return window.innerWidth > window.innerHeight;
 		};
+		$rootScope.showConfig = false;
+
+		$rootScope.openConfig = function() {
+			$rootScope.showConfig = !$rootScope.showConfig;
+		};
 
 	}]);
 
