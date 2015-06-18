@@ -1,6 +1,7 @@
 jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
 	display: inline-block;
-	position: relative;
+	position: absolute;
+	top: 0;
 	background-color: #eee;
 	z-index: 2000;
 	overflow-x: hidden;
