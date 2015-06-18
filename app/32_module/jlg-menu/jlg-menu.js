@@ -3,7 +3,6 @@
 
 	var app = angular.module('jlgMenu', []);
 
-
 	app.run(['$injector', function($injector) {
 		var $rootScope = $injector.get('$rootScope');
 
@@ -18,19 +17,18 @@
 	}]);
 
 	app.directive('jlgMenu', ['$injector', function($injector) {
-
 		var $rootScope = $injector.get('$rootScope');
 		var $templateRequest = $injector.get('$templateRequest');
 		var $compile = $injector.get('$compile');
-
 
 		return {
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
 				console.log('link', arguments);
-				var name = attrs.name || 'menu';
 
+				var name = attrs.name || 'menu';
 				var duration = 400;
+
 				var animate = function(element, from, to, done) {
 					console.log('animateLeft', arguments);
 					element.css({
@@ -56,6 +54,7 @@
 					var width = 420;
 					var height = window.innerHeight;
 					console.log('height', height);
+
 					var refresh = function(event) {
 						console.log('resize');
 						height = window.innerHeight;
@@ -87,13 +86,12 @@
 						var panel = angular.element('<div class="panel panel-primary"></div>');
 						var head = angular.element('<div class="panel-heading"></div>');
 
-
-
 						if (this.lastPages.length >= 2) {
 							var backTitle = this.lastPages[this.lastPages.length - 2].title;
 							var back = angular.element('<h3 class="jlg-back panel-title pull-left" ng-click="' + name + '.back()"><span class="glyphicon glyphicon-chevron-left"></span>' + backTitle + '</h3>');
 							head.append(back);
 						}
+
 						var close = angular.element('<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig(\'' + name + '\')"></h3>');
 						head.append(close);
 						var title = angular.element('<h3 class="panel-title text-center">' + this.lastPages[this.lastPages.length - 1].title + '</h3>');
@@ -105,7 +103,6 @@
 						return panel;
 					};
 
-
 					this.lastPages = [];
 					this.open = function(target, title) {
 						title = title || target;
@@ -116,6 +113,7 @@
 							title: title
 						});
 						var level = '_level_' + this.lastPages.length;
+
 						$templateRequest(this.lastPages[this.lastPages.length - 1].tmpl, true).then(function(response) {
 							console.log('response', response);
 							var panel = self.makePanel(response);
@@ -143,9 +141,7 @@
 						var elt = element.children().eq(this.lastPages.length - 2);
 
 						animate(e, 0, width, function() {
-							console.log('coucou');
 							e.remove();
-
 						});
 
 						animate(elt, -width, 0);
@@ -157,19 +153,18 @@
 						if (attrs.reset != 'true') {
 							return;
 						}
+
 						var length = this.lastPages.length;
 						if (length <= 1) {
 							return;
 						}
-
 
 						for (var i = 0; i < length; i++) {
 							element.children().eq(0).remove();
 							this.lastPages.pop();
 						}
 
-						this.open(attrs.init, attrs.title);
-
+						this.open(attrs.init, attrs.jlgTitle);
 
 						refresh();
 					};
@@ -178,7 +173,7 @@
 				$rootScope[name] = new Menu();
 				console.log('arguments', arguments);
 				console.log('attrs', attrs);
-				$rootScope[name].open(attrs.init, attrs.title);
+				$rootScope[name].open(attrs.init, attrs.jlgTitle);
 			}
 		};
 	}]);
