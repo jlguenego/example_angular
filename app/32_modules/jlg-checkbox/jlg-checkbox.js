@@ -21,13 +21,12 @@
 				$compile(div)(scope);
 				element.after(div);
 				var duration = 100;
+				var left = 2;
+				var right = 18;
 
 				var animate = function(element, from, to, done) {
 					element.css({
-						position: 'absolute',
-						top: 0,
-						left: from,
-						display: 'block'
+						left: left
 					});
 
 					jQuery(element).velocity({
@@ -45,9 +44,17 @@
 					console.log('switch');
 					console.log('scope[ngModel]', scope[ngModel]);
 					scope[ngModel] = !scope[ngModel];
-					var from = scope[ngModel] ? 0 : 20;
-					var to = scope[ngModel] ? 20 : 0;
-					animate(angular.element('.jlg-checkbox-div span'), from, to);
+					var from = scope[ngModel] ? left : right;
+					var to = scope[ngModel] ? right : left;
+					var span = angular.element('.jlg-checkbox-div span');
+					if (scope[ngModel]) {
+						animate(span, from, to, function() {
+							span.addClass('glyphicon glyphicon-ok');
+						});
+					} else {
+						span.removeClass('glyphicon glyphicon-ok');
+						animate(span, from, to);
+					}
 				};
 			}
 		};

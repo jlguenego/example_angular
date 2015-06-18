@@ -6,15 +6,31 @@
 	border: 1px solid black;
 	display: block;
 	height: 50px;
-	width: 60px;
+	width: 70px;
 	position: relative;
+	border-radius: 8px;
+	background-color: #337ab7;
+	border-color: #337ab7;
 }
 
 .jlg-checkbox-div > span {
 	border: 1px solid black;
 	display: block;
-	height: 48px;
+	height: 44px;
 	width: 48px;
 	position: absolute;
-	left: 0px;
+	top: 2px;
+	left: 2px;
+	border-radius: 8px;
+	font-size: 38px;
+	text-align: center;
+	background-color: white;
+	border-color: #337ab7;
+
+
+	-moz-box-shadow: 0px 2px 5px 0px #656565;
+	-webkit-box-shadow: 0px 2px 5px 0px #656565;
+	-o-box-shadow: 0px 2px 5px 0px #656565;
+	box-shadow: 0px 2px 5px 0px #656565;
+	filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=180, Strength=5);
 }
