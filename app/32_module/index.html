@@ -26,7 +26,7 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<div class="navbar-form navbar-left" >
-					        <button ng-click="toggleConfig()" class="btn btn-default">Config</button>
+					        <button ng-click="toggleConfig('juan')" class="btn btn-default">Config</button>
 						</div>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
@@ -34,7 +34,7 @@
 			<div jlg-map id="map"></div>
 		</div>
 
-		<jlg-menu init="tmpl/main.html" title="Main" ng-show="showConfig"></jlg-menu>
+		<jlg-menu name="juan" init="tmpl/main.html" title="Main" reset="true" ng-show="showConfig"></jlg-menu>
 		<script type="text/ng-template" id="tmpl/main.html">
 <div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
 	<label class="control-label" for="streetViewControl">Street view control</label>
@@ -49,8 +49,8 @@
 			bs-switch />
 	</span>
 </div>
-<button ng-click="menu.open('tmpl/a.html', 'Menu A')">a</button>
-<button ng-click="menu.open('Menu B')">b</button>
+<button ng-click="juan.open('tmpl/a.html', 'Menu A')">a</button>
+<button ng-click="juan.open('Menu B')">b</button>
 		</script>
 
 		<script type="text/ng-template" id="tmpl/a.html">
@@ -58,10 +58,10 @@ menu a
 		</script>
 
 		<script type="text/ng-template" id="Menu B">
-<button ng-click="menu.open('tmpl/b1.html')">b1</button>
-<button ng-click="menu.open('tmpl/b2.html')">b2</button>
+<button ng-click="juan.open('Menu B1')">b1</button>
+<button ng-click="juan.open('tmpl/b2.html')">b2</button>
 		</script>
-		<script type="text/ng-template" id="tmpl/b1.html">
+		<script type="text/ng-template" id="Menu B1">
 menu b1
 		</script>
 		<script type="text/ng-template" id="tmpl/b2.html">

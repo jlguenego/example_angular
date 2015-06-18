@@ -13,8 +13,11 @@
 		};
 		$rootScope.showConfig = false;
 
-		$rootScope.toggleConfig = function() {
+		$rootScope.toggleConfig = function(name) {
 			$rootScope.showConfig = !$rootScope.showConfig;
+			if ($rootScope.showConfig) {
+				$rootScope[name].reset();
+			}
 		};
 
 	}]);
@@ -30,7 +33,7 @@
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
 				console.log('link', arguments);
-
+				var name = attrs.name || 'menu';
 
 				var duration = 400;
 				var animate = function(element, from, to, done) {
@@ -81,7 +84,7 @@
 
 						if (this.lastPages.length >= 2) {
 							var backTitle = this.lastPages[this.lastPages.length - 2].title;
-							var back = angular.element('<h3 class="jlg-back panel-title pull-left" ng-click="menu.back()"><span class="glyphicon glyphicon-chevron-left"></span>' + backTitle + '</h3>');
+							var back = angular.element('<h3 class="jlg-back panel-title pull-left" ng-click="' + name + '.back()"><span class="glyphicon glyphicon-chevron-left"></span>' + backTitle + '</h3>');
 							head.append(back);
 						}
 						var close = angular.element('<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig()"></h3>');
@@ -122,7 +125,7 @@
 						}).catch(function(error) {
 							console.log('error', error);
 						});
-					},
+					};
 					this.back = function() {
 						console.log('back', this.lastPages);
 						var self = this;
@@ -142,12 +145,35 @@
 						animate(elt, -width, 0);
 						this.lastPages.pop();
 						refresh();
-					}
+					};
+					this.reset = function() {
+						console.log('reset');
+						if (attrs.reset != 'true') {
+							return;
+						}
+						var self = this;
+						var length = this.lastPages.length;
+						if (length <= 1) {
+							return;
+						}
+
+
+						for (var i = 0; i < length; i++) {
+							element.children().eq(0).remove();
+							this.lastPages.pop();
+						}
+
+						this.open(attrs.init, attrs.title);
+
+
+						refresh();
+					};
 				};
-				scope.menu = new Menu();
+
+				$rootScope[name] = new Menu();
 				console.log('arguments', arguments);
 				console.log('attrs', attrs);
-				scope.menu.open(attrs.init, attrs.title);
+				$rootScope[name].open(attrs.init, attrs.title);
 			}
 		};
 	}]);
