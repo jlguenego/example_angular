@@ -2,7 +2,7 @@ jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
 	display: inline-block;
 	position: absolute;
 	top: 0;
-	background-color: #eee;
+	background-color: hsla(0, 0%, 80%, 0.5);
 	z-index: 2000;
 	overflow-x: hidden;
 	overflow-y: auto;
