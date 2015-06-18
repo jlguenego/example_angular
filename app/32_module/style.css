@@ -4,11 +4,11 @@ jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
 	background-color: #eee;
 	z-index: 2000;
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: auto;
 	-webkit-overflow-scrolling: touch;
 }
 
-.desktop jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
+.jlg-desktop jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
 	width: 400px;
 	height: 1000px;
 }
@@ -19,20 +19,11 @@ jlg-menu, [jlg-menu], [data-jlg-menu], [x-jlg-menu], .jlg-menu {
 	padding: 15px;
 }
 
-
-
-.active {
-	background-color: blue;
-}
-
 .jlg-back {
 	cursor: pointer;
 }
 
-.desktop .jlg-back:hover {
+.jlg-desktop .jlg-back:hover {
 	color: black;
 }
 
-.navbar-brand img {
-	width: 150px;
-}
