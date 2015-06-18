@@ -71,17 +71,46 @@
 
 					window.onresize = refresh;
 
+					this.makePanel = function(response) {
+						console.log('response', response);
+						console.log('this', this);
+						var panel = angular.element('<div class="panel panel-primary"></div>');
+						var head = angular.element('<div class="panel-heading"></div>');
+
+
+
+						if (this.lastPages.length >= 2) {
+							var backTitle = this.lastPages[this.lastPages.length - 2].title;
+							var back = angular.element('<h3 class="jlg-back panel-title pull-left" ng-click="menu.back()"><span class="glyphicon glyphicon-chevron-left"></span>' + backTitle + '</h3>');
+							head.append(back);
+						}
+						var close = angular.element('<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig()"></h3>');
+						head.append(close);
+						var title = angular.element('<h3 class="panel-title text-center">' + this.lastPages[this.lastPages.length - 1].title + '</h3>');
+						head.append(title);
+
+						var body = angular.element('<div class="panel-body">' + response + '</div>');
+						panel.append(head);
+						panel.append(body);
+						return panel;
+					};
+
 
 					this.lastPages = [];
-					this.open = function(target) {
+					this.open = function(target, title) {
+						title = title || target;
 						var self = this;
 						console.log('target', target);
-						this.lastPages.push(target);
+						this.lastPages.push({
+							tmpl: target,
+							title: title
+						});
 						var level = '_level_' + this.lastPages.length;
-						$templateRequest(this.lastPages[this.lastPages.length - 1], true).then(function(response) {
+						$templateRequest(this.lastPages[this.lastPages.length - 1].tmpl, true).then(function(response) {
 							console.log('response', response);
+							var panel = self.makePanel(response);
 							var div = angular.element('<div class="_menu ' + level + '"></div>');
-							div.append(response);
+							div.append(panel);
 							element.append(div);
 							if (self.lastPages.length >= 2) {
 								animate(element.children().eq(self.lastPages.length - 2), 0, -width);
@@ -118,7 +147,7 @@
 				scope.menu = new Menu();
 				console.log('arguments', arguments);
 				console.log('attrs', attrs);
-				scope.menu.open(attrs.init);
+				scope.menu.open(attrs.init, attrs.title);
 			}
 		};
 	}]);
