@@ -7,9 +7,13 @@
 		<title>JLG Menu</title>
 		<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
 		<link rel="stylesheet" href="jlg-menu/style.css"/>
+		<link rel="stylesheet" href="jlg-checkbox/style.css"/>
 	</head>
 	<body>
 		<div class="main-container" ng-cloak>
+			<input type="checkbox" ng-model="coucou" jlg-checkbox /><br/>
+			coucou = {{ coucou }}
+
 			<nav class="navbar navbar-default navbar-inverse navbar-fixed-bottom">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
@@ -74,7 +78,9 @@ menu b2
 		<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script src="../../bower_components/angular/angular.min.js"></script>
 		<script src="../../bower_components/angular-animate/angular-animate.min.js"></script>
+		<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 		<script src="jlg-menu/jlg-menu.js"></script>
+		<script src="jlg-checkbox/jlg-checkbox.js"></script>
 		<script src="app.js"></script>
 	</body>
 </html>

@@ -1,0 +1,20 @@
+.jlg-checkbox, [jlg-checkbox] {
+	display: none;
+}
+
+.jlg-checkbox-div {
+	border: 1px solid black;
+	display: block;
+	height: 50px;
+	width: 60px;
+	position: relative;
+}
+
+.jlg-checkbox-div > span {
+	border: 1px solid black;
+	display: block;
+	height: 48px;
+	width: 48px;
+	position: absolute;
+	left: 0px;
+}
