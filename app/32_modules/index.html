@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="jlg-checkbox/style.css"/>
 	</head>
 	<body>
-		<div class="main-container" ng-cloak>
+		<div class="main-container" ng-cloak ng-init="hello = false; a = true">
 			<input type="checkbox" ng-model="coucou" jlg-checkbox /><br/>
 			coucou = {{ coucou }}<br/>
 			<input type="checkbox" ng-model="hello" jlg-checkbox /><br/>

@@ -41,21 +41,26 @@
 				};
 
 				scope.switch = function(ngModel) {
-					console.log('switch');
-					console.log('scope[' + ngModel + ']', scope[ngModel]);
 					scope[ngModel] = !scope[ngModel];
-					var from = scope[ngModel] ? left : right;
-					var to = scope[ngModel] ? right : left;
+					scope.set(ngModel);
+				};
+
+				scope.set = function(ngModel) {
+					console.log('set');
+					console.log('scope[' + ngModel + ']', scope[ngModel]);
+
 					var span = angular.element('.jlg-checkbox-div.' + ngModel + ' span');
 					if (scope[ngModel]) {
-						animate(span, from, to, function() {
+						animate(span, left, right, function() {
 							span.addClass('glyphicon glyphicon-ok');
 						});
 					} else {
 						span.removeClass('glyphicon glyphicon-ok');
-						animate(span, from, to);
+						animate(span, right, left);
 					}
 				};
+
+				scope.set(ngModel);
 			}
 		};
 	}]);
