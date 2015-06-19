@@ -96,8 +96,8 @@
 						head.append(close);
 						var title = angular.element('<h3 class="panel-title text-center">' + this.lastPages[this.lastPages.length - 1].title + '</h3>');
 						head.append(title);
-
-						var body = angular.element('<div class="panel-body">' + response + '</div>');
+						response = response.replace(/<\s*jlg-line\s*\/\s*>/g, '</li><li class="list-group-item">');
+						var body = angular.element('<ul class="list-group"><li class="list-group-item">' + response + '</li></ul>');
 						panel.append(head);
 						panel.append(body);
 						return panel;
