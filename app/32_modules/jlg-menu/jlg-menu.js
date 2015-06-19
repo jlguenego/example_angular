@@ -104,7 +104,12 @@
 					};
 
 					this.lastPages = [];
+					var lastTarget;
 					this.open = function(target, title) {
+						if (target == lastTarget) {
+							return;
+						}
+						lastTarget = target;
 						title = title || target;
 
 						console.log('target', target);
@@ -133,6 +138,7 @@
 					};
 					this.back = function() {
 						console.log('back', this.lastPages);
+						lastTarget = undefined;
 						if (this.lastPages.length <= 1) {
 							return;
 						}

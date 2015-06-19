@@ -17,12 +17,12 @@
 				console.log('attrs', attrs);
 				var ngModel = attrs['ngModel'];
 				console.log('ngModel', ngModel);
-				var div = angular.element('<div ng-click="switch(\'' + ngModel + '\')" class="jlg-checkbox-div ' + ngModel + '"><span></span></div>');
+				var div = angular.element('<div ng-click="switch(\'' + ngModel + '\')" id="jlg-checkbox-' + ngModel + '" class="jlg-checkbox-div"><span></span></div>');
 				$compile(div)(scope);
 				element.after(div);
 				var duration = 100;
 				var left = 2;
-				var right = 18;
+				var right = 12;
 
 				var animate = function(element, from, to, done) {
 					element.css({
@@ -41,16 +41,23 @@
 				};
 
 				scope.switch = function(ngModel) {
-					scope[ngModel] = !scope[ngModel];
+					var bool = scope.$eval(ngModel);
+					if (bool) {
+						scope.$eval(ngModel + ' = false');
+					} else {
+						scope.$eval(ngModel + ' = true');
+					}
+					console.log('scope', scope);
 					scope.set(ngModel);
 				};
 
 				scope.set = function(ngModel) {
 					console.log('set');
-					console.log('scope[' + ngModel + ']', scope[ngModel]);
 
-					var span = angular.element('.jlg-checkbox-div.' + ngModel + ' span');
-					if (scope[ngModel]) {
+					var n =  ngModel.replace(/[.]/g, '\\.');
+					var span = angular.element('#jlg-checkbox-' + n + ' span');
+					console.log('span', span);
+					if (scope.$eval(ngModel)) {
 						animate(span, left, right, function() {
 							span.addClass('glyphicon glyphicon-ok');
 						});
@@ -59,6 +66,10 @@
 						animate(span, right, left);
 					}
 				};
+
+				scope.$watch(ngModel, function() {
+					scope.set(ngModel);
+				});
 
 				scope.set(ngModel);
 			}

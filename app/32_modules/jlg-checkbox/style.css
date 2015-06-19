@@ -5,8 +5,8 @@
 .jlg-checkbox-div {
 	border: 1px solid black;
 	display: block;
-	height: 50px;
-	width: 70px;
+	height: 32px;
+	width: 48px;
 	position: relative;
 	border-radius: 8px;
 	background-color: #337ab7;
@@ -16,13 +16,13 @@
 .jlg-checkbox-div > span {
 	border: 1px solid black;
 	display: block;
-	height: 44px;
-	width: 48px;
+	height: 26px;
+	width: 32px;
 	position: absolute;
 	top: 2px;
 	left: 2px;
 	border-radius: 8px;
-	font-size: 38px;
+	font-size: 20px;
 	text-align: center;
 	background-color: white;
 	border-color: #337ab7;
