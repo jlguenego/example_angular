@@ -13,14 +13,11 @@
 		return {
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
-				console.log('scope', scope);
-				console.log('attrs', attrs);
 				var ngModel = attrs['ngModel'];
-				console.log('ngModel', ngModel);
 				var div = angular.element('<div ng-click="switch(\'' + ngModel + '\')" id="jlg-checkbox-' + ngModel + '" class="jlg-checkbox-div"><span></span></div>');
 				$compile(div)(scope);
 				element.after(div);
-				var duration = 100;
+				var duration = 0;
 				var left = 2;
 				var right = 12;
 
@@ -47,16 +44,13 @@
 					} else {
 						scope.$eval(ngModel + ' = true');
 					}
-					console.log('scope', scope);
 					scope.set(ngModel);
 				};
 
 				scope.set = function(ngModel) {
-					console.log('set');
 
 					var n =  ngModel.replace(/[.]/g, '\\.');
 					var span = angular.element('#jlg-checkbox-' + n + ' span');
-					console.log('span', span);
 					if (scope.$eval(ngModel)) {
 						animate(span, left, right, function() {
 							span.addClass('glyphicon glyphicon-ok');

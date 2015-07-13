@@ -7,7 +7,6 @@
 		var $rootScope = $injector.get('$rootScope');
 
 		$rootScope.toggleConfig = function(name) {
-			console.log('name', name);
 			$rootScope[name].visible = !$rootScope[name].visible;
 			if ($rootScope[name].visible) {
 				$rootScope[name].reset();
@@ -24,13 +23,11 @@
 		return {
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
-				console.log('link', arguments);
 
 				var name = attrs.name || 'menu';
 				var duration = 400;
 
 				var animate = function(element, from, to, done) {
-					console.log('animateLeft', arguments);
 					element.css({
 						position: 'absolute',
 						top: 0,
@@ -53,10 +50,8 @@
 					var self = this;
 					var width = 420;
 					var height = window.innerHeight;
-					console.log('height', height);
 
 					var refresh = function(event) {
-						console.log('resize');
 						height = window.innerHeight;
 
 						if (self.isMobile) {
@@ -81,8 +76,6 @@
 					this.visible = false;
 
 					this.makePanel = function(response) {
-						console.log('response', response);
-						console.log('this', this);
 						var panel = angular.element('<div class="panel panel-primary"></div>');
 						var head = angular.element('<div class="panel-heading"></div>');
 
@@ -112,7 +105,6 @@
 						lastTarget = target;
 						title = title || target;
 
-						console.log('target', target);
 						this.lastPages.push({
 							tmpl: target,
 							title: title
@@ -120,7 +112,6 @@
 						var level = '_level_' + this.lastPages.length;
 
 						$templateRequest(this.lastPages[this.lastPages.length - 1].tmpl, true).then(function(response) {
-							console.log('response', response);
 							var panel = self.makePanel(response);
 							var div = angular.element('<div class="_menu ' + level + '"></div>');
 							div.append(panel);
@@ -133,11 +124,10 @@
 							animate(elt, width, 0);
 							refresh();
 						}).catch(function(error) {
-							console.log('error', error);
+							console.error('error', error);
 						});
 					};
 					this.back = function() {
-						console.log('back', this.lastPages);
 						lastTarget = undefined;
 						if (this.lastPages.length <= 1) {
 							return;
@@ -155,7 +145,6 @@
 						refresh();
 					};
 					this.reset = function() {
-						console.log('reset');
 						if (attrs.reset != 'true') {
 							return;
 						}
@@ -177,8 +166,6 @@
 				};
 
 				$rootScope[name] = new Menu();
-				console.log('arguments', arguments);
-				console.log('attrs', attrs);
 				$rootScope[name].open(attrs.init, attrs.jlgTitle);
 			}
 		};
