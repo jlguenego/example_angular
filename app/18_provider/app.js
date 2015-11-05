@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 	var app = angular.module('myApp', []);
-	app.value('hash', { name: 'md5', hash: function(n) { return new Hashes.MD5().hex(n); }
+	app.value('hash', { name: 'md5', compute: function(n) { return new Hashes.MD5().hex(n); }
 	});
 	app.provider('passwordService', function() {
 		var salt = 'default';
@@ -11,7 +11,7 @@
 		this.$get = ['hash', '$log', function(hash, $log) {
 			return {
 				hash: function(login, password) {
-					var r = hash.hash(login + password + salt);
+					var r = hash.compute(login + password + salt);
 					$log.debug('hash = ', r);
 					return r;
 				}
