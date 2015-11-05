@@ -3,7 +3,7 @@
 	var app = angular.module('myApp', []);
 	app.value('hash', {
 		name: 'md5',
-		hash: function(n) {
+		compute: function(n) {
 			return new Hashes.MD5().hex(n);
 		}
 	});
