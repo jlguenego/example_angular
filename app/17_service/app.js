@@ -1,13 +1,17 @@
 (function() {
 	'use strict';
 	var app = angular.module('myApp', []);
-	app.value('hash', { name: 'md5', hash: function(n) { return new Hashes.MD5().hex(n); }
+	app.value('hash', { name: 'md5', compute: function(n) { return new Hashes.MD5().hex(n); }
 	});
 	app.service('passwordService', ['hash', '$log', function PasswordService(hash, $log) {
 		var self = this;
 		this.hash = function(login, password) {
-			var r = hash.hash(login + password);
-			$log.debug('hash = ', r, self);
+			if (login == undefined) {
+				login = '';
+			}
+			password = (password == undefined) ? '' : password;
+			var r = hash.compute(login + password);
+			$log.debug('hash(' + login + password + ') = ', r, self);
 			return r;
 		};
 	}]);
