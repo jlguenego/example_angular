@@ -41,7 +41,7 @@
 
 	app.controller('MainCtrl', ['$scope', '$q', function($scope, $q) {
 		var box = $('.box');
-		initial(box);
+		initial();
 
 		var movePromise = function(isRight) {
 			var deferred = $q.defer();
@@ -89,6 +89,7 @@
 			}
 		};
 		f();
+		
 
 
 	}]);
