@@ -1,35 +1,22 @@
-(function() {
-	'use strict';
+var express = require('express'); // charge ExpressJS
+var serveIndex = require('serve-index');
 
-	var http = require('http');
-	var finalhandler = require('finalhandler');
-	var serveStatic = require('serve-static');
-	var serveIndex = require('serve-index');
-	var path = require('path');
+var app = express();
+app.use('/app/22_resource/*', function(req, res, next) {
+	console.log('req.url', req.url);
+	setTimeout(function() {
+		next();
+	}, 2000);
+});
 
-	var rootDir = path.normalize(__dirname + '/../..');
+app.use(express.static('.'));
+app.use(serveIndex('.', {icons: true}));
 
-	var serve = serveStatic(rootDir, {index: ['index.html', 'index.htm']});
+app.use(function(req, res, next) {
+	console.log('404: Page not Found', req.url);
+	next();
+});
 
-	// Serve directory indexes for public/ftp folder (with icons)
-	var index = serveIndex(rootDir, {icons: true});
-
-	// Create server
-	var server = http.createServer(function(req, res) {
-		var done = finalhandler(req, res);
-
-		setTimeout(function() {
-			serve(req, res, function onNext(err) {
-				if (err) {
-					return done(err);
-				}
-				index(req, res, done);
-			});
-		}, 2000);
-	});
-
-	// Listen
-	server.listen(8000);
-
-	console.log('Server started on port 8000');
-})();
+app.listen(8000, function() {
+	console.log('server started on port 8000');
+});

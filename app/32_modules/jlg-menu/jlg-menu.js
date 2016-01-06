@@ -40,7 +40,7 @@
 					}, duration, done);
 
 					return function(cancel) {
-						if(cancel) {
+						if (cancel) {
 							element.stop();
 						}
 					};

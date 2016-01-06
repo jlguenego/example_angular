@@ -13,7 +13,7 @@
 		return {
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
-				var ngModel = attrs['ngModel'];
+				var ngModel = attrs.ngModel;
 				var div = angular.element('<div ng-click="switch(\'' + ngModel + '\')" id="jlg-checkbox-' + ngModel + '" class="jlg-checkbox-div"><span></span></div>');
 				$compile(div)(scope);
 				element.after(div);
@@ -31,7 +31,7 @@
 					}, duration, done);
 
 					return function(cancel) {
-						if(cancel) {
+						if (cancel) {
 							element.stop();
 						}
 					};
