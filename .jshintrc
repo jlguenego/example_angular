@@ -99,6 +99,7 @@
 		"by"          : true,
 		"$"           : true,
 		"Hashes"      : true,
+		"FastClick"   : true,
 
 		// Jasmine
 		"jasmine"     : true,

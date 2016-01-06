@@ -6,10 +6,10 @@
 	app.service('passwordService', ['hash', '$log', function PasswordService(hash, $log) {
 		var self = this;
 		this.hash = function(login, password) {
-			if (login == undefined) {
+			if (login === undefined) {
 				login = '';
 			}
-			password = (password == undefined) ? '' : password;
+			password = (password === undefined) ? '' : password;
 			var r = hash.compute(login + password);
 			$log.debug('hash(' + login + password + ') = ', r, self);
 			return r;
