@@ -23,6 +23,7 @@
     "spin.js": "2.0.1",
     "angular-spinner": "0.6.1",
     "jlg-i18n": "0.0.2",
-    "fastclick": "1.0.6"
+    "fastclick": "1.0.6",
+    "jquery-ui": "~1.11.4"
   }
 }
