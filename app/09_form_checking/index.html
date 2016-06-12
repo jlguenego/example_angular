@@ -2,23 +2,24 @@
 <html>
 	<head>
 		<title>My First Controller</title>
+		<link rel="stylesheet" href="../../../bower_components/angular/angular-csp.css" />
 	</head>
 	<style>
-input.ng-dirty.ng-valid, textarea.ng-dirty.ng-valid, select.ng-dirty.ng-valid {
+form .ng-dirty.ng-valid {
 	background-color: #DFFFDF;
 }
 
-input.ng-dirty.ng-invalid, textarea.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid {
+form .ng-dirty.ng-invalid {
 	background-color: #FFCACA;
 }
 
-input.ng-pristine, textarea.ng-pristine, select.ng-pristine {
+form .ng-pristine {
 	background-color: #FFFFD9;
 }
 	</style>
 	<body ng-app="mainApp" >
 		<div ng-controller="MainCtrl as ctrl">
-			<form name="myForm" ng-submit="ctrl.add(); myForm.$setPristine()" novalidate>
+			<form name="myForm" ng-submit="ctrl.add(); myForm.$setPristine()" autocomplete="off" novalidate>
 				<fieldset>
 					Select your note :
 					<select ng-model="ctrl.object.select"
