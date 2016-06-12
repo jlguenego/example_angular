@@ -16,7 +16,6 @@
     "karma": "0.12.16",
     "karma-chrome-launcher": "0.1.4",
     "karma-jasmine": "0.1.5",
-    "protractor": "1.0.0",
     "serve-index": "1.6.2",
     "serve-static": "1.9.1",
     "socket.io": "1.1.0",
@@ -37,6 +36,7 @@
     "preprotractor": "npm run update-webdriver",
     "protractor": "protractor app/25_protractor/test/protractor-conf.js",
     "start22": "node app/22_resource/server.js",
+	"start25": "node app/25_protractor/server.js",
     "start28": "node app/28_websocket/server.js",
     "start30": "node app/30_ajax/server.js"
   }

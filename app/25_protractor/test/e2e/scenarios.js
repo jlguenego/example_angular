@@ -16,6 +16,13 @@
 				input.sendKeys('coucou');
 				expect(text.getText()).toEqual('coucou');
 			});
+			
+			it('should call the webservice that wait for 2s and catch the message', function() {
+				var button = element(by.css('button'));
+				var webServiceMsg = element(by.css('#webServiceMsg'));
+				button.click();
+				expect(webServiceMsg.getText()).toEqual('This is the webservice content');
+			});
 		});
 	});
 })();

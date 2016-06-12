@@ -2,12 +2,18 @@
 <html>
 	<head>
 		<title>My First Protractor Unit Test</title>
+		<link rel="stylesheet" href="../../../bower_components/angular/angular-csp.css">
 	</head>
 
-	<body ng-app="">
+	<body ng-app="myApp" ng-cloak>
 		<h1>My First Protractor Unit Test</h1>
 		<h1>{{message}}</h1>
-		<input type="text" ng-model="message" />
-		<script src="../../../bower_components/angular/angular.min.js"></script>
+		<input type="text" ng-model="message" /><br/>
+		<br/>
+		<button ng-click="callWebService();">Call me !</button><br/>
+		<span id="webServiceMsg">{{webserviceMsg}}</span><br/>
+		<p>Note: Do not forget to install a jdk 8 and protractor in global for the latest version</p>
+		<script src="../../../bower_components/angular/angular.js"></script>
+		<script src="app.js"></script>
 	</body>
 </html>
