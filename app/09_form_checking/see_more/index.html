@@ -11,6 +11,7 @@
 		<title>Mon formulaire</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.10/angular-csp.css">
+		<link rel="stylesheet" href="../../../bower_components/bootstrap-daterangepicker/daterangepicker.css" />
 		<style>
 .form {
 	background-color: #eee;
@@ -34,179 +35,197 @@
 							<h3 class="panel-title">Formulaire à remplir</h3>
 						</div>
 						<div class="panel-body">
-						<form name="myForm" ng-submit="doSomething()" novalidate>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
-								<label class="control-label" for="name">Nom</label>
-								<input
-									id="name"
-									name="name"
-									class="form-control"
-									placeholder="Entrer un nom"
-									type="text"
-									ng-model="obj.name"
-									ng-model-options="options"
-									required />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.name)"></span>
-								<span class="help-inline" ng-show="isError(myForm.name) && myForm.name.$error.required">Le nom ne doit pas être vide !</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.firstname)">
-								<label class="control-label" for="firstname">Prénom</label>
-								<input
-									id="firstname"
-									name="firstname"
-									class="form-control"
-									placeholder="Entrer un prénom (Juan, Yannis ou Jean-Louis)"
-									type="text"
-									ng-model="obj.firstname"
-									ng-model-options="options"
-									required
-									firstname />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.firstname)"></span>
-								<span ng-show="isError(myForm.firstname)">
-									<span ng-show="myForm.firstname.$error.required">Le prénom ne doit pas être vide !</span>
-									<span ng-show="myForm.firstname.$error.firstname">Le prénom doit être Juan, Yannis ou Jean-Louis !</span>
-								</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.age)">
-								<label class="control-label" for="age">Age</label>
-								<input
-									id="age"
-									name="age"
-									class="form-control"
-									placeholder="Entrer un age"
-									type="text"
-									ng-model="obj.age"
-									required
-									integer
-									integer-input-only />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.age)"></span>
-								<span ng-show="isError(myForm.age)">
-									<span ng-show="myForm.age.$error.required">L'âge ne doit pas être vide !</span>
-									<span ng-show="myForm.age.$error.number">L'âge doit être un nombre !</span>
-									<span ng-show="myForm.age.$error.integer">L'âge doit être un entier !</span>
-								</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.email)">
-								<label class="control-label" for="email">Email</label>
-								<input
-									id="email"
-									name="email"
-									class="form-control"
-									placeholder="Entrer votre email"
-									type="email"
-									ng-model="obj.email"
-									ng-model-options="options"
-									required />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.email)"></span>
-								<span ng-show="isError(myForm.email)">
-									<span ng-show="myForm.email.$error.required">L'email ne doit pas être vide !</span>
-									<span ng-show="myForm.email.$error.email">L'email doit être valide !</span>
-								</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.password)">
-								<label class="control-label" for="password">Mot de passe</label>
-								<input
-									id="password"
-									name="password"
-									class="form-control"
-									placeholder="Entrer votre mot de passe"
-									type="password"
-									ng-model="obj.password"
-									ng-model-options="options"
-									required />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.password)"></span>
-								<span ng-show="isError(myForm.password)">
-									<span ng-show="myForm.password.$error.required">Le mot de passe ne doit pas être vide !</span>
-								</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.confirmPassword)">
-								<label class="control-label" for="confirmPassword">Confirmation du mot de passe</label>
-								<input
-									id="confirmPassword"
-									name="confirmPassword"
-									class="form-control"
-									placeholder="Entrer à nouveau votre mot de passe"
-									type="password"
-									ng-model="obj.confirmPassword"
-									ng-model-options="options"
-									ui-validate=" '$value == obj.password' "
-									ui-validate-watch=" 'obj.password' "
-									required />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.confirmPassword)"></span>
-								<span ng-show="isError(myForm.confirmPassword)">
-									<span ng-show="myForm.confirmPassword.$error.required">Le mot de passe ne doit pas être vide !</span>
-									<span ng-show="myForm.confirmPassword.$error.validator">Les deux mots de passe doivent être identiques !</span>
-								</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.a)">
-								<label class="control-label" for="password">Entier a</label>
-								<input
-									id="a"
-									name="a"
-									class="form-control"
-									placeholder="Entrer un entier a"
-									type="text"
-									ng-model="obj.a"
-									required
-									integer
-									integer-input-only />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.a)"></span>
-								<span ng-show="isError(myForm.a)">
-									<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
-									<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
-								</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.b)">
-								<label class="control-label" for="password">Entier b</label>
-								<input
-									id="b"
-									name="b"
-									class="form-control"
-									placeholder="Entrer un entier b"
-									type="text"
-									ng-model="obj.b"
-									required
-									integer
-									integer-input-only />
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.b)"></span>
-								<span ng-show="isError(myForm.b)">
-									<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
-									<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
-								</span>
-							</div>
-							<div class="form-group has-feedback" ng-class="bootstrap(myForm.c)">
-								<label class="control-label" for="password">Entier (doit être la somme de a et b)</label>
-								<input
-									id="c"
-									name="c"
-									class="form-control"
-									placeholder="Entrer un entier c"
-									type="text"
-									ng-model="obj.c"
-									required
-									integer
-									integer-input-only
-									ui-validate-watch=" '[obj.a, obj.b]' " ui-validate=" {sum: 'sum($value, obj.a, obj.b)' } "
-								/>
-								<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.c)"></span>
-								<span ng-show="isError(myForm.c)">
-									<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
-									<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
-									<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
-								</span>
-							</div>
-
-							<input type="submit" ng-disabled="myForm.$invalid" value="Valider" class="btn btn-primary" />
-						</form>
-					</div>
+							<form name="myForm" ng-submit="doSomething()" novalidate>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.name)">
+									<label class="control-label" for="name">Nom</label>
+									<input
+										id="name"
+										name="name"
+										class="form-control"
+										placeholder="Entrer un nom"
+										type="text"
+										ng-model="obj.name"
+										ng-model-options="options"
+										required />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.name)"></span>
+									<span class="help-inline" ng-show="isError(myForm.name) && myForm.name.$error.required">Le nom ne doit pas être vide !</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.firstname)">
+									<label class="control-label" for="firstname">Prénom</label>
+									<input
+										id="firstname"
+										name="firstname"
+										class="form-control"
+										placeholder="Entrer un prénom (Juan, Yannis ou Jean-Louis)"
+										type="text"
+										ng-model="obj.firstname"
+										ng-model-options="options"
+										required
+										firstname />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.firstname)"></span>
+									<span ng-show="isError(myForm.firstname)">
+										<span ng-show="myForm.firstname.$error.required">Le prénom ne doit pas être vide !</span>
+										<span ng-show="myForm.firstname.$error.firstname">Le prénom doit être Juan, Yannis ou Jean-Louis !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.age)">
+									<label class="control-label" for="age">Age</label>
+									<input
+										id="age"
+										name="age"
+										class="form-control"
+										placeholder="Entrer un age"
+										type="text"
+										ng-model="obj.age"
+										required
+										integer
+										integer-input-only />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.age)"></span>
+									<span ng-show="isError(myForm.age)">
+										<span ng-show="myForm.age.$error.required">L'âge ne doit pas être vide !</span>
+										<span ng-show="myForm.age.$error.number">L'âge doit être un nombre !</span>
+										<span ng-show="myForm.age.$error.integer">L'âge doit être un entier !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.email)">
+									<label class="control-label" for="email">Email</label>
+									<input
+										id="email"
+										name="email"
+										class="form-control"
+										placeholder="Entrer votre email"
+										type="email"
+										ng-model="obj.email"
+										ng-model-options="options"
+										required />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.email)"></span>
+									<span ng-show="isError(myForm.email)">
+										<span ng-show="myForm.email.$error.required">L'email ne doit pas être vide !</span>
+										<span ng-show="myForm.email.$error.email">L'email doit être valide !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.password)">
+									<label class="control-label" for="password">Mot de passe</label>
+									<input
+										id="password"
+										name="password"
+										class="form-control"
+										placeholder="Entrer votre mot de passe"
+										type="password"
+										ng-model="obj.password"
+										ng-model-options="options"
+										required />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.password)"></span>
+									<span ng-show="isError(myForm.password)">
+										<span ng-show="myForm.password.$error.required">Le mot de passe ne doit pas être vide !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.confirmPassword)">
+									<label class="control-label" for="confirmPassword">Confirmation du mot de passe</label>
+									<input
+										id="confirmPassword"
+										name="confirmPassword"
+										class="form-control"
+										placeholder="Entrer à nouveau votre mot de passe"
+										type="password"
+										ng-model="obj.confirmPassword"
+										ng-model-options="options"
+										ui-validate=" '$value == obj.password' "
+										ui-validate-watch=" 'obj.password' "
+										required />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.confirmPassword)"></span>
+									<span ng-show="isError(myForm.confirmPassword)">
+										<span ng-show="myForm.confirmPassword.$error.required">Le mot de passe ne doit pas être vide !</span>
+										<span ng-show="myForm.confirmPassword.$error.validator">Les deux mots de passe doivent être identiques !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.a)">
+									<label class="control-label" for="password">Entier a</label>
+									<input
+										id="a"
+										name="a"
+										class="form-control"
+										placeholder="Entrer un entier a"
+										type="text"
+										ng-model="obj.a"
+										required
+										integer
+										integer-input-only />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.a)"></span>
+									<span ng-show="isError(myForm.a)">
+										<span ng-show="myForm.a.$error.required">a ne doit pas être vide !</span>
+										<span ng-show="myForm.a.$error.integer">a doit être un entier !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.b)">
+									<label class="control-label" for="password">Entier b</label>
+									<input
+										id="b"
+										name="b"
+										class="form-control"
+										placeholder="Entrer un entier b"
+										type="text"
+										ng-model="obj.b"
+										required
+										integer
+										integer-input-only />
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.b)"></span>
+									<span ng-show="isError(myForm.b)">
+										<span ng-show="myForm.b.$error.required">b ne doit pas être vide !</span>
+										<span ng-show="myForm.b.$error.integer">b doit être un entier !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.c)">
+									<label class="control-label" for="password">Entier (doit être la somme de a et b)</label>
+									<input
+										id="c"
+										name="c"
+										class="form-control"
+										placeholder="Entrer un entier c"
+										type="text"
+										ng-model="obj.c"
+										required
+										integer
+										integer-input-only
+										ui-validate-watch=" '[obj.a, obj.b]' " ui-validate=" {sum: 'sum($value, obj.a, obj.b)' } "
+									/>
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.c)"></span>
+									<span ng-show="isError(myForm.c)">
+										<span ng-show="myForm.c.$error.required">c ne doit pas être vide !</span>
+										<span ng-show="myForm.c.$error.integer">c doit être un entier !</span>
+										<span ng-show="myForm.c.$error.sum">c doit être la somme de a et b !</span>
+									</span>
+								</div>
+								<div class="form-group has-feedback" ng-class="bootstrap(myForm.daterange)">
+									<label class="control-label" for="daterange">Start/End date</label>
+									<input
+										id="daterange"
+										name="daterange"
+										class="form-control"
+										placeholder="Enter a range date"
+										type="daterangepicker"
+										ng-model="obj.daterange"
+										required
+									/>
+									<span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="bootstrapGlyphicon(myForm.daterange)"></span>
+									<span ng-show="isError(myForm.daterange)">
+										<span ng-show="myForm.daterange.$error.required">daterange ne doit pas être vide !</span>
+									</span>
+								</div>
+								<input type="submit" ng-model="obj._submit" ng-disabled="myForm.$invalid" value="Valider" class="btn btn-primary" />
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../../../bower_components/moment/moment.js"></script>
 		<script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 		<script src="../../../bower_components/angular/angular.min.js"></script>
+		<script src="../../../bower_components/angular-jlg-daterangepicker/dist/angular-jlg-daterangepicker.min.js"></script>
 		<script src="../../../bower_components/angular-ui-utils/ui-utils.min.js"></script>
 		<script src="app.js"></script>
 	</body>

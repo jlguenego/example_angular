@@ -1,11 +1,12 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('mainApp', ['ui.validate']);
+	var app = angular.module('mainApp', ['ui.validate', 'jlg-daterangepicker']);
 
 	app.controller('MainCtrl', ['$scope', function($scope) {
 		$scope.obj = {};
 		$scope.doSomething = function() {
+			alert('Wonderful!');
 			console.log('something');
 		};
 		$scope.$watch('myForm', function() {
