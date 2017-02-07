@@ -46,6 +46,7 @@
 	for (var i = 0; i < 3; i++) {
 		console.log(i);
 	}
+	console.log(i);
 
 	function myTest2(a, b, c) {
 		console.log('start');
