@@ -9,14 +9,12 @@
 			// Save the original $log.debug()
 			var debugFn = $delegate.debug;
 
-			$delegate.debug = function() {
-				var args = Array.prototype.slice.call(arguments);
-
-				args.unshift('coucou:');
-
-				// Call the original with the output prepended with formatted timestamp
-				debugFn.apply(null, args);
-			};
+			$delegate.debug = console.log.bind(
+				window.console,
+				'%cDecorated Debug: %c ouah le css... ;) %c %s',
+				'color: green',
+				'color: yellow; background-color: blue',
+				'color: blue');
 
 			return $delegate;
 		}]);
@@ -31,7 +29,7 @@
 		try {
 			arguments.slice();
 		} catch (e) {
-			console.error(e);
+			console.log(e.message);
 		}
 
 		// Demo of the purpose of the apply function
