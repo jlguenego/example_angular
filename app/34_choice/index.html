@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+	<head>
+		<title>Composant</title>
+		<link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body ng-controller="MainCtrl as $ctrl">
+		<p>Liste de villes</p>
+		<my-select value="$ctrl.value" title="Choisir une ville" choices="$ctrl.cities"></my-select>
+		<p>Ville séléctionnée : {{$ctrl.value}}</p>
+		<script src="../../bower_components/angular/angular.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>

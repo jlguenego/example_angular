@@ -1,0 +1,16 @@
+my-select {
+	display: block;
+}
+
+my-select fake-input {
+	display: block;
+	height: 30px;
+	padding: 0px 10px;
+	border: 1px solid black;
+	line-height: 30px;
+}
+
+my-select item {
+	display: block;
+	border-bottom: 1px solid black;
+}

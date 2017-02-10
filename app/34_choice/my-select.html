@@ -1,0 +1,18 @@
+<fake-input ng-click="$ctrl.start()">{{$ctrl.value}}</fake-input>
+<mask ng-show="$ctrl.editMode">
+	<my-table>
+		<header-row>
+			<left ng-click="$ctrl.stop()"><i class="fa fa-times" aria-hidden="true"></i></left>
+			<center>{{$ctrl.title}}</center>
+			<right><i class="fa fa-check" aria-hidden="true"></i></right>
+		</header-row>
+		<input-row>
+			<input type="text" ng-model="$ctrl.pattern" />
+		</input-row>
+		<list-row>
+			<item ng-show="$ctrl.value" class="selected">{{$ctrl.value}}</item>
+			<item ng-click="$ctrl.select(choice)" ng-repeat="choice in $ctrl.choices | filter : $ctrl.filter track by $index">{{choice}}</item>
+		</list-row>
+	</my-table>
+</mask>
+
