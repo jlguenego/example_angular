@@ -23,8 +23,7 @@
 			var body = $document.find('body').eq(0);
 			
 			ctrl.refresh = function() {
-				console.log('refresh');
-				$element.find('list')[0].scrollTop = 0;
+				$element.find('fixed-list')[0].scrollTop = 0;
 			};
 			
 			ctrl.start = function() {
@@ -50,7 +49,6 @@
 			}
 			
 			ctrl.filter = function(value) {
-				console.log('filter', arguments)
 				if (ctrl.pattern && value.toLowerCase().indexOf(ctrl.pattern.toLowerCase()) == -1) {
 					return false;
 				}

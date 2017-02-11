@@ -10,9 +10,9 @@
 			<input type="text" ng-model="$ctrl.pattern" ng-change="$ctrl.refresh()" />
 		</input-block>
 	</fixed>
-	<list>
+	<fixed-list>
 		<item ng-click="$ctrl.stop()" ng-show="$ctrl.value" class="selected">{{$ctrl.value}}</item>
 		<item ng-click="$ctrl.select(choice)" ng-repeat="choice in $ctrl.choices | filter : $ctrl.filter track by $index">{{choice}}</item>
-	</list>
+	</fixed-list>
 </mask>
 

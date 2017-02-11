@@ -94,7 +94,7 @@ my-select input {
 	font-size: 30px;
 }
 
-my-select list {
+my-select fixed-list {
 	display: block;
 	position: fixed;
 	overflow-y: auto;
