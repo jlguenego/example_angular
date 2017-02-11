@@ -1,11 +1,33 @@
+* {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	padding: 10px;
+}
+
+.noscroll {
+	position:fixed;
+	overflow-y: noscroll;
+}
+
 my-select {
 	display: block;
 }
 
 my-select fake-input {
 	display: block;
+	width: 100%;
 	height: 30px;
 	padding: 0px 10px;
+	margin: 0px;
 	border: 1px solid black;
 	line-height: 30px;
 }
@@ -23,56 +45,74 @@ my-select mask {
 	background-color: hsla(0, 50%, 100%, 0.9);
 }
 
-my-select my-table {
-	display: table;
-	table-layout: fixed;
+my-select fixed {
+	display: block;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 102;
 	width: 100%;
-	height: 100%;
-}
-
-my-select header-row {
-	display: table-row;
-	height: 60px;
+	height: 160px;
+	background-color: green;
 }
 
 my-select header {
 	display: table;
 	table-layout: fixed;
 	width: 100%;
-	height: 100%;
+	height: 60px;
+	background-color: hsla(240, 100%, 95%, 0.9);
 }
 
-my-select header-row left, my-select header-row right, my-select header-row center {
+my-select header left, my-select header right, my-select header center {
 	display: table-cell;
 }
-my-select header-row left, my-select header-row right {
-	width: 20px;
+my-select header left, my-select header right {
+	width: 40px;
+	text-align: center;
 }
 
-my-select input-row {
-	display: table-row;
-	width: 100%;
-	height: 100px;
+.fa {
+	font-size: 30px;
+	line-height: 40px;
 }
 
-my-select list-row {
-	display: table-row;
-	width: 100%;
-	background-color: hsla(0, 50%, 80%, 1);
-}
-
-my-select block-overflow {
+my-select input-block {
 	display: block;
 	width: 100%;
-	height: 100%;
-	overflow-y: auto;
-	background-color: hsla(0, 50%, 80%, 1);
+	height: 100px;
+	padding: 10px;
 }
+
+my-select input {
+	display: block;
+	width: 100%;
+	height: 80px;
+	margin: 0px;
+	padding: 10px;
+	font-size: 30px;
+}
+
+my-select list {
+	display: block;
+	position: fixed;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 101;
+	width: 100%;
+	height: 100%;
+	padding: 160px 0px 0px;
+}
+
 
 my-select item {
 	display: block;
 	width: 100%;
 	height: 100px;
-	
 	border-bottom: 1px solid black;
 }

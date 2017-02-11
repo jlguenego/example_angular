@@ -16,17 +16,32 @@
 			title: '@',
 			choices: '<',
 		},
-		controller: function MySelect() {
+		controller: function MySelect($element, $document, $window) {
 			console.log('MySelect', arguments);
 			var ctrl = this;
 			ctrl.editMode = false;
+			var body = $document.find('body').eq(0);
+			
+			ctrl.refresh = function() {
+				console.log('refresh');
+				$element.find('list')[0].scrollTop = 0;
+			};
 			
 			ctrl.start = function() {
 				ctrl.editMode = true;
+				ctrl.lastSaved = $window.scrollY;
+				body.addClass('noscroll');
 			};
 			
 			ctrl.stop = function() {
 				ctrl.editMode = false;
+				body.removeClass('noscroll');
+				$window.scrollTo(0, ctrl.lastSaved);
+			};
+			
+			ctrl.cancel = function() {
+				ctrl.value = undefined;
+				ctrl.stop();
 			};
 			
 			ctrl.select = function(choice) {
