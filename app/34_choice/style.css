@@ -10,7 +10,69 @@ my-select fake-input {
 	line-height: 30px;
 }
 
+my-select mask {
+	display: block;
+	position: fixed;
+	z-index: 100;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: hsla(0, 50%, 100%, 0.9);
+}
+
+my-select my-table {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+my-select header-row {
+	display: table-row;
+	height: 60px;
+}
+
+my-select header {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+my-select header-row left, my-select header-row right, my-select header-row center {
+	display: table-cell;
+}
+my-select header-row left, my-select header-row right {
+	width: 20px;
+}
+
+my-select input-row {
+	display: table-row;
+	width: 100%;
+	height: 100px;
+}
+
+my-select list-row {
+	display: table-row;
+	width: 100%;
+	background-color: hsla(0, 50%, 80%, 1);
+}
+
+my-select block-overflow {
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	background-color: hsla(0, 50%, 80%, 1);
+}
+
 my-select item {
 	display: block;
+	width: 100%;
+	height: 100px;
+	
 	border-bottom: 1px solid black;
 }
