@@ -39,5 +39,10 @@ my-select-local fixed-list item {
 	line-height: 100px;
 }
 
+my-select-local fixed-list item.first {
+	color: red;
+}
+
+
 /* mobile */
 

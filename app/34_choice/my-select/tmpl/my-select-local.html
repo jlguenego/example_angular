@@ -16,8 +16,8 @@
 </mobile>
 <pc>
 	<fixed-list>
-		<item ng-click="$ctrl.c.stop()" ng-show="$ctrl.c.value" class="selected">{{$ctrl.c.value}}</item>
-		<item ng-click="$ctrl.c.select(choice)" ng-repeat="choice in $ctrl.c.choices | filter : $ctrl.c.filter track by $index">{{choice}}</item>
+		<item ng-click="$ctrl.c.stop()" ng-show="$ctrl.c.value" class="first selected">{{$ctrl.c.value}}</item>
+		<item ng-click="$ctrl.c.select(choice)" ng-class="{first: $first && !$ctrl.c.value}" ng-repeat="choice in $ctrl.c.filteredChoices track by $index">{{choice}}</item>
 	</fixed-list>	
 </pc>
 
