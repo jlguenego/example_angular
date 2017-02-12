@@ -12,16 +12,18 @@
 	<body ng-controller="MainCtrl as $ctrl">
 		<jlg-responsive></jlg-responsive>
 		<views>
-			<general-view>
-				<p>Liste de villes</p>
-				<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x
-				<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x<br/>x
-				<my-select placeholder="Choisir une ville" value="$ctrl.value" title="Choisir une ville" choices="$ctrl.cities"></my-select>
-				<p>Ville séléctionnée : {{$ctrl.value}}</p>
-			</general-view>
-			<local-view>
-				Local view (pub)
-			</local-view>
+			<left>
+				<general-view>
+					<p>Liste de villes</p>
+					<my-select placeholder="Choisir une ville" value="$ctrl.value" title="Choisir une ville" choices="$ctrl.cities"></my-select>
+					<p>Ville séléctionnée : {{$ctrl.value}}</p>
+				</general-view>
+			</left>
+			<right>
+				<local-view>
+					Local view (pub)
+				</local-view>
+			</right>
 		</views>
 		
 		<script src="../../bower_components/angular/angular.js"></script>

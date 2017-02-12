@@ -22,3 +22,20 @@ my-select fake-input {
 my-select fake-input[filled] {
 	color: black;
 }
+
+my-select-local {
+	display: block;
+}
+
+my-select-local fixed-list {
+	display: block;
+	height: 100%;
+}
+
+my-select-local fixed-list item {
+	display: block;
+	height: 100px;
+}
+
+/* mobile */
+

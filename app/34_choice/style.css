@@ -27,8 +27,17 @@ body {
 	padding: 10px;
 }
 
-.pc general-view, .pc local-view {
+.pc left, .pc right {
 	display: table-cell;
+	height: 100px;
 	border: 1px solid black;
 	padding: 10px;
+}
+
+.pc general-view, .pc local-view {
+	display: block;
+	overflow-y: auto;
+	height: 450px;
+	padding: 0px;
+	margin: 0px;
 }
