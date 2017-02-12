@@ -94,7 +94,7 @@ my-select-local fixed-list item.first {
 	font-size: 30px;
 }
 
-.mobile my-select-local fixed-list {
+.mobile my-select-local fixed-list-mobile {
 	display: block;
 	position: fixed;
 	overflow-y: auto;

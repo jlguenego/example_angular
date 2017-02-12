@@ -28,6 +28,10 @@
 				localView.html('<my-select-local c="$ctrl"></my-select-local>');
 				$compile(localView.contents())($scope);
 				localView.addClass('mobile-visible');
+				if (!$scope.$root.isMobile) {
+					ctrl.lastSaved = $window.scrollY;
+					body.addClass('noscroll');
+				}
 			};
 			
 			ctrl.stop = function() {
@@ -35,6 +39,10 @@
 				localView.html('');
 				$compile(localView.contents())($scope);
 				localView.removeClass('mobile-visible');
+				if (!$scope.$root.isMobile) {
+					body.removeClass('noscroll');
+					$window.scrollTo(0, ctrl.lastSaved);
+				}
 			};
 			
 			ctrl.select = function(choice) {
@@ -84,6 +92,10 @@
 		controller: function MySelect() {
 			console.log('MySelect', arguments);
 			var ctrl = this;
+			
+			ctrl.refresh = function() {
+				$element.find('fixed-list-mobile')[0].scrollTop = 0;
+			};
 		}
 	});
 })();
