@@ -21,9 +21,11 @@
 			this.refresh = function() {
 				var body = $document.find('body').eq(0);
 				body.removeClass('pc');
+				body.removeClass('mobile');
 				if (mobilecheck()) {
 					console.log('mobile mode');
 					this.css = 'pc, [pc] { display: none !important} mobile, [mobile] { display: block}';
+					body.addClass('mobile');
 					$rootScope.isMobile = true;
 				} else {
 					console.log('pc mode');

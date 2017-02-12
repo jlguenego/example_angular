@@ -20,26 +20,43 @@
 			
 			ctrl.start = function() {
 				ctrl.editMode = true;
-				$timeout(function() { $element.find('input')[0].focus(); }, 0);
+				if (!$scope.$root.isMobile) {
+					$timeout(function() { $element.find('input')[0].focus(); }, 0);
+				}
 				
-				localView.html('<my-select-local c="$ctrl"></my-select-local');
+				
+				localView.html('<my-select-local c="$ctrl"></my-select-local>');
 				$compile(localView.contents())($scope);
+				localView.addClass('mobile-visible');
 			};
 			
 			ctrl.stop = function() {
 				ctrl.editMode = false;
+				localView.html('');
+				$compile(localView.contents())($scope);
+				localView.removeClass('mobile-visible');
 			};
 			
 			ctrl.select = function(choice) {
+				console.log('select', arguments);
 				ctrl.value = choice;
 				ctrl.stop();
 			};
 			
+			ctrl.cancel = function() {
+				ctrl.select(undefined);
+			};
+			
 			ctrl.selectFirst = function() {
-				if (!ctrl.value) {
-					ctrl.value = ctrl.filteredChoices[0];
-				}
-				ctrl.stop();
+				console.log('selectFirst');
+				// must wait to be sure ng-click execute before !
+				$timeout(function() {
+					console.log('selectFirst timeout');
+					if (!ctrl.value) {
+						ctrl.value = ctrl.filteredChoices[0];
+					}
+					ctrl.stop();
+				}, 200);
 			};
 			
 			ctrl.filter = function(value) {
