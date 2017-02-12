@@ -18,7 +18,7 @@ body {
 	overflow-y: noscroll;
 }
 
-.desktop views {
+.pc views {
 	display: table;
 	table-layout: fixed;
 	width: 700px;
@@ -27,7 +27,7 @@ body {
 	padding: 10px;
 }
 
-.desktop general-view, .desktop local-view {
+.pc general-view, .pc local-view {
 	display: table-cell;
 	border: 1px solid black;
 	padding: 10px;

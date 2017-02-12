@@ -9,7 +9,8 @@
 		<link rel="stylesheet" href="my-select.css" />
 		<link rel="stylesheet" href="style.css" />
 	</head>
-	<body ng-controller="MainCtrl as $ctrl" class="desktop">
+	<body ng-controller="MainCtrl as $ctrl">
+		<jlg-responsive></jlg-responsive>
 		<views>
 			<general-view>
 				<p>Liste de villes</p>
@@ -24,6 +25,7 @@
 		</views>
 		
 		<script src="../../bower_components/angular/angular.js"></script>
+		<script src="../../bower_components/angular-sanitize/angular-sanitize.js"></script>
 		<script src="app.js"></script>
 	</body>
 </html>

@@ -1,18 +1,30 @@
-<fake-input ng-click="$ctrl.start()">{{$ctrl.value}}</fake-input>
-<mask ng-show="$ctrl.editMode">
-	<fixed>
-		<header>
-			<left ng-click="$ctrl.cancel()"><i class="fa fa-times" aria-hidden="true"></i></left>
-			<center>{{$ctrl.title}}</center>
-			<right ng-click="$ctrl.stop()"><i class="fa fa-check" aria-hidden="true"></i></right>
-		</header>
-		<input-block>
-			<input type="text" ng-model="$ctrl.pattern" ng-change="$ctrl.refresh()" />
-		</input-block>
-	</fixed>
-	<fixed-list>
-		<item ng-click="$ctrl.stop()" ng-show="$ctrl.value" class="selected">{{$ctrl.value}}</item>
-		<item ng-click="$ctrl.select(choice)" ng-repeat="choice in $ctrl.choices | filter : $ctrl.filter track by $index">{{choice}}</item>
-	</fixed-list>
-</mask>
+<mobile>
+	<fake-input ng-click="$ctrl.start()">{{$ctrl.value}}</fake-input>
+	<mask ng-show="$ctrl.editMode">
+		<fixed>
+			<header>
+				<left ng-click="$ctrl.cancel()"><i class="fa fa-times" aria-hidden="true"></i></left>
+				<center>{{$ctrl.title}}</center>
+				<right ng-click="$ctrl.stop()"><i class="fa fa-check" aria-hidden="true"></i></right>
+			</header>
+			<input-block>
+				<input type="text" ng-model="$ctrl.pattern" ng-change="$ctrl.refresh()" />
+			</input-block>
+		</fixed>
+		<fixed-list>
+			<item ng-click="$ctrl.stop()" ng-show="$ctrl.value" class="selected">{{$ctrl.value}}</item>
+			<item ng-click="$ctrl.select(choice)" ng-repeat="choice in $ctrl.choices | filter : $ctrl.filter track by $index">{{choice}}</item>
+		</fixed-list>
+	</mask>
+</mobile>
+<pc>
+	<fake-input ng-hide="$ctrl.editMode" ng-click="$ctrl.startPc()">{{$ctrl.value}}</fake-input>
+	<input ng-show="$ctrl.editMode" type="text" ng-model="$ctrl.pattern" />
+	<local-view-content>
+		<fixed-list>
+			<item ng-click="$ctrl.stop()" ng-show="$ctrl.value" class="selected">{{$ctrl.value}}</item>
+			<item ng-click="$ctrl.select(choice)" ng-repeat="choice in $ctrl.choices | filter : $ctrl.filter track by $index">{{choice}}</item>
+		</fixed-list>
+	</local-view-content>
+</pc>
 

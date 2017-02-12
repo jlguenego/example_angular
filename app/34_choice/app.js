@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('myApp', []);
+	var app = angular.module('myApp', ['ngSanitize']);
 	
 	window.mobilecheck = function() {
 		var check = false;
@@ -11,21 +11,33 @@
 		return check;
 	};
 	
-	app.run(function($rootScope, $window, $document) {
-		'ngInject';
-		
-		
-		var onresize = function() {
-			var body = $document.find('body').eq(0);
-			body.removeClass('desktop');
-			$rootScope.isMobile = mobilecheck();
-			if (!$rootScope.isMobile) {
-				body.addClass('desktop');
-			}
-		};
-		$window.onresize = onresize;
-		onresize();
-	})
+	app.component('jlgResponsive', {
+		template: '<style ng-bind-html="$ctrl.css"></style>',
+		controller: function($scope, $window, $document) {
+			'ngInject';
+			console.log('jlgResponsive controller', arguments, this);
+			var ctrl = this;
+
+			this.refresh = function() {
+				var body = $document.find('body').eq(0);
+				body.removeClass('pc');
+				if (mobilecheck()) {
+					console.log('mobile mode');
+					this.css = 'pc { display: none !important} mobile { display: block}';
+				} else {
+					console.log('pc mode');
+					this.css = 'mobile { display: none !important} pc { display: block}';
+					body.addClass('pc');
+				}
+			};
+			this.refresh();
+
+			$window.onresize = function() {
+				ctrl.refresh();
+				$scope.$apply();
+			};
+		}
+	});
 
 	app.controller('MainCtrl', function MainCtrl() {
 		
@@ -82,6 +94,10 @@
 				}
 				return true;
 			}
+			
+			// PC part
+			var localViewElt = $element.find('pc').find('local-view-content');
+			
 		}
 	});
 })();
