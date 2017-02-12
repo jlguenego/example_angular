@@ -11,7 +11,7 @@ my-select fake-input, my-select input {
 	padding: 0px;
 	padding: 5px;
 	border: 1px solid black;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 20px;
 }
 
@@ -19,7 +19,7 @@ my-select fake-input {
 	color: hsla(0, 0%, 50%, 1);
 }
 
-my-select fake-input[filled] {
+my-select fake-input.filled {
 	color: black;
 }
 
@@ -29,12 +29,14 @@ my-select-local {
 
 my-select-local fixed-list {
 	display: block;
-	height: 100%;
 }
 
 my-select-local fixed-list item {
 	display: block;
 	height: 100px;
+	padding: 0px 10px;
+	border-bottom: 1px solid black;
+	line-height: 100px;
 }
 
 /* mobile */

@@ -23,6 +23,15 @@
 				localView.html('<my-select-local c="$ctrl"></my-select-local');
 				$compile(localView.contents())($scope);
 			};
+			
+			ctrl.stop = function() {
+				ctrl.editMode = false;
+			};
+			
+			ctrl.select = function(choice) {
+				ctrl.value = choice;
+				ctrl.stop();
+			};
 		}
 	});
 	
