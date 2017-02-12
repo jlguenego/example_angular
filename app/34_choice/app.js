@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('myApp', ['ngSanitize']);
+	var app = angular.module('myApp', ['my-select', 'ngSanitize']);
 	
 	window.mobilecheck = function() {
 		var check = false;
@@ -13,7 +13,7 @@
 	
 	app.component('jlgResponsive', {
 		template: '<style ng-bind-html="$ctrl.css"></style>',
-		controller: function($scope, $window, $document) {
+		controller: function($scope, $window, $document, $rootScope) {
 			'ngInject';
 			console.log('jlgResponsive controller', arguments, this);
 			var ctrl = this;
@@ -23,11 +23,13 @@
 				body.removeClass('pc');
 				if (mobilecheck()) {
 					console.log('mobile mode');
-					this.css = 'pc { display: none !important} mobile { display: block}';
+					this.css = 'pc, [pc] { display: none !important} mobile, [mobile] { display: block}';
+					$rootScope.isMobile = true;
 				} else {
 					console.log('pc mode');
-					this.css = 'mobile { display: none !important} pc { display: block}';
+					this.css = 'mobile, [mobile] { display: none !important} pc, [pc] { display: block}';
 					body.addClass('pc');
+					$rootScope.isMobile = false;
 				}
 			};
 			this.refresh();
@@ -46,58 +48,4 @@
 		];
 	});
 	
-	app.component('mySelect', {
-		templateUrl: 'my-select.html',
-		bindings: {
-			value: '=',
-			title: '@',
-			choices: '<',
-		},
-		controller: function MySelect($element, $document, $window) {
-			console.log('MySelect', arguments);
-			var ctrl = this;
-			ctrl.editMode = false;
-			var body = $document.find('body').eq(0);
-			
-			ctrl.refresh = function() {
-				$element.find('fixed-list')[0].scrollTop = 0;
-			};
-			
-			ctrl.start = function() {
-				ctrl.editMode = true;
-				ctrl.lastSaved = $window.scrollY;
-				body.addClass('noscroll');
-			};
-			
-			ctrl.stop = function() {
-				ctrl.editMode = false;
-				body.removeClass('noscroll');
-				$window.scrollTo(0, ctrl.lastSaved);
-			};
-			
-			ctrl.cancel = function() {
-				ctrl.value = undefined;
-				ctrl.stop();
-			};
-			
-			ctrl.select = function(choice) {
-				ctrl.value = choice;
-				ctrl.stop();
-			}
-			
-			ctrl.filter = function(value) {
-				if (ctrl.pattern && value.toLowerCase().indexOf(ctrl.pattern.toLowerCase()) == -1) {
-					return false;
-				}
-				if (value === ctrl.value) {
-					return false;
-				}
-				return true;
-			}
-			
-			// PC part
-			var localViewElt = $element.find('pc').find('local-view-content');
-			
-		}
-	});
 })();
