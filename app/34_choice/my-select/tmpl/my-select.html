@@ -1,0 +1,4 @@
+<fake-input ng-hide="$ctrl.editMode" ng-click="$ctrl.start()" ng-class="{filled: $ctrl.value !== undefined}">{{$ctrl.value || $ctrl.placeholder}}</fake-input>
+<input ng-show="$ctrl.editMode" type="text" ng-model="$ctrl.pattern" ng-blur="$ctrl.selectFirst()"/>
+
+

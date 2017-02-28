@@ -13,7 +13,8 @@
 			$log.debug('authenticate');
 			$rootScope.state = 'not logged';
 			$rootScope.errorMessage = undefined;
-			$http.get('data/login.json').success(function(data) {
+			$http.get('data/login.json').then(function(response) {
+				var data = response.data;
 				if (!(data.logins && data.logins instanceof Array)) {
 					$log.debug(data.logins);
 					$log.error('json not well formatted');
@@ -29,7 +30,7 @@
 				} else {
 					$rootScope.errorMessage = 'bad login/password';
 				}
-			}).error(function(data, status, headers, config) {
+			}).catch(function(error) {
 				$rootScope.errorMessage = 'technical error';
 			});
 			$log.error('bad login');

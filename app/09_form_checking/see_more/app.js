@@ -9,9 +9,6 @@
 			alert('Wonderful!');
 			console.log('something');
 		};
-		$scope.$watch('myForm', function() {
-			console.log($scope.myForm);
-		}, true);
 
 		$scope.sum = function(c, a, b) {
 			console.log('a = ', a);

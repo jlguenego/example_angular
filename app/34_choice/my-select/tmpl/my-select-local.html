@@ -1,0 +1,23 @@
+<mobile>
+	<fixed>
+		<header>
+			<left ng-click="$ctrl.c.cancel()"><i class="fa fa-times" aria-hidden="true"></i></left>
+			<center>{{$ctrl.c.title}}</center>
+			<right ng-click="$ctrl.c.stop()"><i class="fa fa-check" aria-hidden="true"></i></right>
+		</header>
+		<input-block>
+			<input type="text" ng-model="$ctrl.c.pattern" ng-change="$ctrl.c.refresh()" />
+		</input-block>
+	</fixed>
+	<fixed-list-mobile>
+		<item ng-click="$ctrl.c.stop()" ng-show="$ctrl.c.value" class="selected">{{$ctrl.c.value}}</item>
+		<item ng-click="$ctrl.c.select(choice)" ng-repeat="choice in $ctrl.c.choices | filter : $ctrl.c.filter track by $index">{{choice}}</item>
+	</fixed-list-mobile>
+</mobile>
+<pc>
+	<fixed-list>
+		<item ng-click="$ctrl.c.stop()" ng-show="$ctrl.c.value" class="first selected">{{$ctrl.c.value}}</item>
+		<item ng-click="$ctrl.c.select(choice)" ng-class="{first: $first && !$ctrl.c.value}" ng-repeat="choice in $ctrl.c.filteredChoices track by $index">{{choice}}</item>
+	</fixed-list>	
+</pc>
+

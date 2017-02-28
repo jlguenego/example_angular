@@ -1,0 +1,118 @@
+/* pc */
+
+my-select {
+	display:block;
+}
+
+my-select fake-input, my-select input {
+	display: block;
+	width: 100%;
+	height: 30px;
+	padding: 0px;
+	padding: 5px;
+	border: 1px solid black;
+	font-size: 16px;
+	line-height: 20px;
+}
+
+my-select fake-input {
+	color: hsla(0, 0%, 50%, 1);
+}
+
+my-select fake-input.filled {
+	color: black;
+}
+
+my-select-local {
+	display: block;
+}
+
+my-select-local fixed-list {
+	display: block;
+}
+
+my-select-local fixed-list item {
+	display: block;
+	height: 100px;
+	padding: 0px 10px;
+	border-bottom: 1px solid black;
+	line-height: 100px;
+}
+
+my-select-local fixed-list item.first {
+	color: red;
+}
+
+
+/* mobile */
+.mobile my-select-local fixed {
+	display: block;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 102;
+	width: 100%;
+	height: 160px;
+	background-color: green;
+}
+
+.mobile my-select-local header {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	height: 60px;
+	background-color: hsla(240, 100%, 95%, 0.9);
+}
+
+.mobile my-select-local header left, .mobile my-select-local header right, .mobile my-select-local header center {
+	display: table-cell;
+}
+.mobile my-select-local header left, .mobile my-select-local header right {
+	width: 40px;
+	text-align: center;
+}
+
+.mobile .fa {
+	font-size: 30px;
+	line-height: 40px;
+}
+
+.mobile my-select-local input-block {
+	display: block;
+	width: 100%;
+	height: 100px;
+	padding: 10px;
+}
+
+.mobile my-select-local input {
+	display: block;
+	width: 100%;
+	height: 80px;
+	margin: 0px;
+	padding: 10px;
+	font-size: 30px;
+}
+
+.mobile my-select-local fixed-list-mobile {
+	display: block;
+	position: fixed;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 101;
+	width: 100%;
+	height: 100%;
+	padding: 160px 0px 0px;
+}
+
+
+.mobile my-select-local item {
+	display: block;
+	width: 100%;
+	height: 100px;
+	border-bottom: 1px solid black;
+}

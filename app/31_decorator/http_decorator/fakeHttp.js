@@ -7,12 +7,12 @@
 
 	var fakeHttpExample = [{
 		key: function(config) {
-			return config.url.match(new RegExp('http://bot.whatismyipaddress..*/'));
+			return config.url.match(new RegExp('api.ipify.org'));
 		},
 		value: function(config) {
 			console.log('config = ', config);
 			return {
-				data: '91.35.249.115',
+				data: '{"ip":"01.02.03.04"}',
 				headers: function() {
 					return 'headers not implemented';
 				}
@@ -21,12 +21,12 @@
 	},
 	{
 		key: function(config) {
-			return config.url.match(new RegExp('http://google.com'));
+			return config.url.match(new RegExp('nominatim.openstreetmap.org'));
 		},
 		value: function(config) {
 			console.log('config = ', config);
 			return {
-				data: '<html><body>fake google</body></html>',
+				data: '{"fake": "response"}',
 				headers: function() {
 					return 'headers not implemented';
 				}
@@ -45,7 +45,7 @@
 
 			var wrapper = function() {
 				var config = arguments[0];
-				$log.debug('custom http...');
+				$log.debug('custom http...', arguments);
 				var a = window.fakeHttp.filter(function(x) {
 					return x.key(config);
 				});
