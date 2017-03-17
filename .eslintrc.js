@@ -1,16 +1,25 @@
 module.exports = {
-	extends: 'google',
+	extends: ['google', 'eslint:recommended'],
 	parserOptions: {
 		ecmaVersion: 6,
 		sourceType: 'script',
 	},
 	rules: {
 		'no-var': 0,
+		'no-console': 0,
 		'prefer-rest-params': 0,
 		'max-len': ['error', 120],
 		'comma-dangle': 0,
 		'require-jsdoc': 0,
 		'padded-blocks': 0,
 		'prefer-spread': 0,
+		'no-use-before-define': 'error'
 	},
+	env: {
+		browser: true,
+		node: true
+	},
+    globals: {
+        angular: true
+    }
 };

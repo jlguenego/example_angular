@@ -26,9 +26,11 @@
 	garfield.eat();
 
 	function myTest() {
+		// eslint-disable-next-line no-use-before-define
 		x = 25;
 		console.log('x=' + x);
 
+		// eslint-disable-next-line no-constant-condition
 		if (true) {
 			var x;
 			console.log('x=' + x);
@@ -52,7 +54,7 @@
 		console.log(a, b, c);
 		console.log(arguments);
 		console.log(arguments[3]);
-		console.log(typeof arguments);
+		console.log('is arguments an Array ?', arguments.constructor === Array);
 		Array.prototype.forEach.call(arguments, function(n, i) {
 			console.log(n, i);
 		});
