@@ -22,11 +22,13 @@ module.exports = {
 		jasmine: true,
 	},
     globals: {
+		jQuery: true,
         angular: true,
 		inject: true,
 		browser: true,
 		element: true,
 		by: true,
 		getJSONFixture: true,
+		FastClick: true,
     }
 };

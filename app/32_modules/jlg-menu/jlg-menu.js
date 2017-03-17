@@ -81,16 +81,22 @@
 
 						if (this.lastPages.length >= 2) {
 							var backTitle = this.lastPages[this.lastPages.length - 2].title;
-							var back = angular.element('<h3 class="jlg-back panel-title pull-left" ng-click="' + name + '.back()"><span class="glyphicon glyphicon-chevron-left"></span>' + backTitle + '</h3>');
+							var back = angular.element('<h3 class="jlg-back panel-title pull-left" ng-click="' +
+								name + '.back()"><span class="glyphicon glyphicon-chevron-left"></span>' +
+								backTitle + '</h3>');
 							head.append(back);
 						}
 
-						var close = angular.element('<h3 class="jlg-back panel-title pull-right glyphicon glyphicon-remove" ng-click="toggleConfig(\'' + name + '\')"></h3>');
+						var close = angular.element(
+							'<h3 class="jlg-back panel-title pull-right glyphicon ' +
+							'glyphicon-remove" ng-click="toggleConfig(\'' + name + '\')"></h3>');
 						head.append(close);
-						var title = angular.element('<h3 class="panel-title text-center">' + this.lastPages[this.lastPages.length - 1].title + '</h3>');
+						var title = angular.element('<h3 class="panel-title text-center">' +
+							this.lastPages[this.lastPages.length - 1].title + '</h3>');
 						head.append(title);
 						response = response.replace(/<\s*jlg-line\s*\/\s*>/g, '</li><li class="list-group-item">');
-						var body = angular.element('<ul class="list-group"><li class="list-group-item">' + response + '</li></ul>');
+						var body = angular.element('<ul class="list-group"><li class="list-group-item">' +
+							response + '</li></ul>');
 						panel.append(head);
 						panel.append(body);
 						return panel;

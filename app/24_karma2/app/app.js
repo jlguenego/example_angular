@@ -9,7 +9,8 @@
 		$rootScope.login = undefined;
 	}]);
 
-	app.config(['$routeProvider', '$locationProvider', '$logProvider', function($routeProvider, $locationProvider, $logProvider) {
+	app.config(['$routeProvider', '$locationProvider', '$logProvider',
+		function($routeProvider, $locationProvider, $logProvider) {
 		$locationProvider
 			.html5Mode(false)
 			.hashPrefix('');

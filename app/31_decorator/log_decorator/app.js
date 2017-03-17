@@ -7,7 +7,7 @@
 
 		$provide.decorator('$log', ['$delegate', function($delegate) {
 			// Save the original $log.debug()
-			var debugFn = $delegate.debug;
+			// var debugFn = $delegate.debug;
 
 			$delegate.debug = console.log.bind(
 				window.console,
