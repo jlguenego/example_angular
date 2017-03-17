@@ -26,14 +26,13 @@
 				$rootScope = $injector.get('$rootScope');
 				$controller = $injector.get('$controller');
 				$scope = $rootScope.$new();
-				ctrl = $controller('authentication.MainCtrl', {$scope: $scope });
+				ctrl = $controller('authentication.MainCtrl', {$scope: $scope});
 			}));
 
 			afterEach(function() {
 				$http.verifyNoOutstandingExpectation();
 				$http.verifyNoOutstandingRequest();
 			});
-
 
 
 			it('should authenticate the user', function() {

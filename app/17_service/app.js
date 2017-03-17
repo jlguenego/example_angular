@@ -1,7 +1,9 @@
 (function() {
 	'use strict';
 	var app = angular.module('myApp', []);
-	app.value('hash', { name: 'md5', compute: function(n) { return new Hashes.MD5().hex(n); }
+	app.value('hash', {name: 'md5', compute: function(n) {
+ return new Hashes.MD5().hex(n);
+}
 	});
 	app.service('passwordService', ['hash', '$log', function PasswordService(hash, $log) {
 		var self = this;

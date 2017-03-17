@@ -108,7 +108,9 @@
 					console.log('running interceptor request ', config);
 					console.log('arguments ', arguments);
 					usSpinnerService.spin('spinner-1');
-					return $timeout(function() { return config; }, 2000);
+					return $timeout(function() {
+ return config;
+}, 2000);
 				},
 
 				// optional method
@@ -122,7 +124,6 @@
 					}
 					return $q.reject(rejection);
 				},
-
 
 
 				// optional method

@@ -5,7 +5,7 @@
 	var serveIndex = require('serve-index');
 
 	var app = express();
-	
+
 	app.use(express.static('.'));
 	app.use(serveIndex('.', {icons: true}));
 

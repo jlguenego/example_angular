@@ -2,7 +2,9 @@
 	'use strict';
 	var app = angular.module('myApp', []);
 	app.constant('salt', 'sel de Guerande');
-	app.value('hash', { name: 'md5', hash: function(n) { return new Hashes.MD5().hex(n); }
+	app.value('hash', {name: 'md5', hash: function(n) {
+ return new Hashes.MD5().hex(n);
+}
 	});
 	app.provider('passwordService', ['salt', function(salt) {
 		var mySalt = salt;

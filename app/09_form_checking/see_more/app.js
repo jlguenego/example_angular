@@ -23,7 +23,7 @@
 			return field.$invalid && field.$touched && field.$dirty;
 		};
 
-		$scope.options = { updateOn: 'default blur', debounce: {default: 500, blur: 0} };
+		$scope.options = {updateOn: 'default blur', debounce: {default: 500, blur: 0}};
 
 		$scope.bootstrap = function(field) {
 			return {
@@ -80,7 +80,9 @@
 						return true;
 					}
 
-					if (firstnames.map(function(n) { return n.toLowerCase(); }).indexOf(viewValue.toLowerCase()) > -1) {
+					if (firstnames.map(function(n) {
+ return n.toLowerCase();
+}).indexOf(viewValue.toLowerCase()) > -1) {
 						// it is valid
 						return true;
 					}

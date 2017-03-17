@@ -2,7 +2,7 @@
 	'use strict';
 
 	var app = angular.module('my-select', []);
-	
+
 	app.component('mySelect', {
 		templateUrl: 'my-select/tmpl/my-select.html',
 		bindings: {
@@ -18,14 +18,16 @@
 			var localView = $document.find('local-view');
 			console.log('localView', localView);
 			ctrl.editMode = false;
-			
+
 			ctrl.start = function() {
 				ctrl.editMode = true;
 				if (!$scope.$root.isMobile) {
-					$timeout(function() { $element.find('input')[0].focus(); }, 0);
+					$timeout(function() {
+ $element.find('input')[0].focus();
+}, 0);
 				}
-				
-				
+
+
 				localView.html('<my-select-local c="$ctrl"></my-select-local>');
 				$compile(localView.contents())($scope);
 				localView.addClass('mobile-visible');
@@ -34,7 +36,7 @@
 					body.addClass('noscroll');
 				}
 			};
-			
+
 			ctrl.stop = function() {
 				ctrl.editMode = false;
 				localView.html('');
@@ -45,17 +47,17 @@
 					$window.scrollTo(0, ctrl.lastSaved);
 				}
 			};
-			
+
 			ctrl.select = function(choice) {
 				console.log('select', arguments);
 				ctrl.value = choice;
 				ctrl.stop();
 			};
-			
+
 			ctrl.cancel = function() {
 				ctrl.select(undefined);
 			};
-			
+
 			ctrl.selectFirst = function() {
 				console.log('selectFirst');
 				// must wait to be sure ng-click execute before !
@@ -67,7 +69,7 @@
 					ctrl.stop();
 				}, 200);
 			};
-			
+
 			ctrl.filter = function(value) {
 				if (ctrl.pattern && value.toLowerCase().indexOf(ctrl.pattern.toLowerCase()) == -1) {
 					return false;
@@ -76,15 +78,15 @@
 					return false;
 				}
 				return true;
-			}
-			
+			};
+
 			$scope.$watchGroup(['$ctrl.pattern', '$ctrl.value'], function() {
 				console.log('refresh filteredChoices');
-				ctrl.filteredChoices = ctrl.choices.filter(ctrl.filter).slice(0,20);
-			}); 
+				ctrl.filteredChoices = ctrl.choices.filter(ctrl.filter).slice(0, 20);
+			});
 		}
 	});
-	
+
 	app.component('mySelectLocal', {
 		templateUrl: 'my-select/tmpl/my-select-local.html',
 		bindings: {
@@ -93,7 +95,7 @@
 		controller: function MySelect() {
 			console.log('MySelect', arguments);
 			var ctrl = this;
-			
+
 			ctrl.refresh = function() {
 				$element.find('fixed-list-mobile')[0].scrollTop = 0;
 			};

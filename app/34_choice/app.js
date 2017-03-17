@@ -2,7 +2,7 @@
 	'use strict';
 
 	var app = angular.module('myApp', ['my-select', 'ngSanitize']);
-	
+
 	window.mobilecheck = function() {
 		var check = false;
 		/* eslint-disable */
@@ -10,7 +10,7 @@
 		/* eslint-enable */
 		return check;
 	};
-	
+
 	app.component('jlgResponsive', {
 		template: '<style ng-bind-html="$ctrl.css"></style>',
 		controller: function($scope, $window, $document, $rootScope) {
@@ -44,10 +44,10 @@
 	});
 
 	app.controller('MainCtrl', function MainCtrl() {
-		
+
 		this.cities = ['Saulxures les Nancy', 'Lunéville', 'Chanteheux', 'Nancy', 'Cachan',
 			'San Francisco', 'Foster city', 'Sunnyvale', 'Charenton Le Pont', 'Torcy', 'Chatswood', 'Auckland', 'Fribourg'
 		];
 	});
-	
+
 })();

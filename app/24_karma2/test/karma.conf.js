@@ -14,7 +14,7 @@ module.exports = function(config) {
 		'bower_components/angular-mocks/angular-mocks.js',
 		'app/24_karma2/app/*.js',
 		'app/24_karma2/test/unit/**/*.js',
-		{ pattern: 'app/24_karma2/test/mock/**/*.json', watched: true, served: true, included: false }
+		{pattern: 'app/24_karma2/test/mock/**/*.json', watched: true, served: true, included: false}
 		],
 
 		autoWatch: true,
