@@ -14,6 +14,7 @@
 		controller: function MySelect($scope, $element, $document, $window, $compile, $timeout) {
 			console.log('MySelect', arguments);
 			var ctrl = this;
+			var body = angular.element($document[0].body);
 			var localView = $document.find('local-view');
 			console.log('localView', localView);
 			ctrl.editMode = false;
@@ -28,7 +29,7 @@
 				localView.html('<my-select-local c="$ctrl"></my-select-local>');
 				$compile(localView.contents())($scope);
 				localView.addClass('mobile-visible');
-				if (!$scope.$root.isMobile) {
+				if ($scope.$root.isMobile) {
 					ctrl.lastSaved = $window.scrollY;
 					body.addClass('noscroll');
 				}
@@ -39,7 +40,7 @@
 				localView.html('');
 				$compile(localView.contents())($scope);
 				localView.removeClass('mobile-visible');
-				if (!$scope.$root.isMobile) {
+				if ($scope.$root.isMobile) {
 					body.removeClass('noscroll');
 					$window.scrollTo(0, ctrl.lastSaved);
 				}
