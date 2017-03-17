@@ -18,7 +18,7 @@
     "karma": "0.13.22",
     "karma-chrome-launcher": "1.0.1",
     "karma-jasmine": "1.0.2",
-    "protractor": "3.3.0",
+    "protractor": "",
     "serve-index": "1.6.2",
     "serve-static": "1.9.1",
     "socket.io": "1.1.0"
