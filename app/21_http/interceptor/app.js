@@ -1,5 +1,4 @@
 (function() {
-	/* jshint -W117 */
 	'use strict';
 
 	var app = angular.module('mainApp', ['angularSpinner']);
@@ -157,5 +156,4 @@
 
 		console.log('interceptors', $httpProvider.interceptors);
 	}]);
-	/* jshint +W117 */
 })();

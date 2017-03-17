@@ -1,6 +1,5 @@
 (function() {
 	'use strict';
-	/* jshint -W117 */
 
 	describe('welcome', function() {
 		beforeEach(module('welcome'));
@@ -13,9 +12,6 @@
 			var $controller = undefined;
 			var $rootScope = undefined;
 			var $location = undefined;
-			var ctrl = undefined;
-
-
 
 			beforeEach(inject(function($injector) {
 				$http = $injector.get('$httpBackend');
@@ -25,26 +21,21 @@
 				$location = $injector.get('$location');
 				$scope = $rootScope.$new();
 				jasmine.getJSONFixtures().fixturesPath = 'base/app/24_karma2/test/mock';
-
 			}));
 
-			afterEach(function() {
-
-			});
-
-
+			afterEach(function() {});
 
 			it('should print the welcome message', function() {
 				$rootScope.login = 'juan';
 				$rootScope.state = 'logged';
-				ctrl = $controller('welcome.MainCtrl', {$scope: $scope });
+				ctrl = $controller('welcome.MainCtrl', {$scope: $scope});
 
 				expect($rootScope.message).toEqual('Welcome juan!');
 			});
 
 			it('should redirect to authentication', function() {
 				$rootScope.state = 'not logged';
-				ctrl = $controller('welcome.MainCtrl', {$scope: $scope });
+				ctrl = $controller('welcome.MainCtrl', {$scope: $scope});
 
 				expect($location.url()).toEqual('/login');
 			});
@@ -57,7 +48,7 @@
 				serviceRequestHandler.respond(getJSONFixture('juan.json'));
 
 				$http.expectGET('data/juan.json');
-				ctrl = $controller('welcome.MainCtrl', {$scope: $scope });
+				ctrl = $controller('welcome.MainCtrl', {$scope: $scope});
 				$http.flush();
 				expect($rootScope.serviceJson.services).toEqual([
 					'mail',
@@ -68,10 +59,7 @@
 				$http.verifyNoOutstandingExpectation();
 				$http.verifyNoOutstandingRequest();
 			});
-
-
 		});
 	});
-	/* jshint +W117 */
 })();
 

@@ -1,5 +1,4 @@
 (function() {
-	/* jshint -W117 */
 	'use strict';
 
 
@@ -86,5 +85,4 @@
 
 		$scope.particule = particules[0];
 	}]);
-	/* jshint +W117 */
 })();
