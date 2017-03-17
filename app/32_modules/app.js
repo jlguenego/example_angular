@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('myApp', ['jlgMenu', 'jlgCheckbox']);
+	angular.module('myApp', ['jlgMenu', 'jlgCheckbox']);
 
 
 })();

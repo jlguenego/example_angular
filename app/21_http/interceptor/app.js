@@ -117,11 +117,6 @@
 				requestError: function(rejection) {
 					usSpinnerService.stop('spinner-1');
 					console.log('running interceptor requestError ', rejection);
-
-					// do something on error
-					if (canRecover(rejection)) {
-						return responseOrNewPromise;
-					}
 					return $q.reject(rejection);
 				},
 

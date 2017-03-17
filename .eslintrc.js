@@ -21,14 +21,17 @@ module.exports = {
 		node: true,
 		jasmine: true,
 	},
-    globals: {
+	globals: {
 		jQuery: true,
-        angular: true,
+		$: true,
+		angular: true,
 		inject: true,
 		browser: true,
 		element: true,
 		by: true,
 		getJSONFixture: true,
 		FastClick: true,
-    }
+		io: true,
+		Promise: true,
+	}
 };

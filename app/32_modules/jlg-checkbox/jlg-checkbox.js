@@ -14,7 +14,8 @@
 			restrict: 'EAC',
 			link: function(scope, element, attrs, ctrl) {
 				var ngModel = attrs.ngModel;
-				var div = angular.element('<div ng-click="switch(\'' + ngModel + '\')" id="jlg-checkbox-' + ngModel + '" class="jlg-checkbox-div"><span></span></div>');
+				var div = angular.element('<div ng-click="switch(\'' + ngModel + '\')" id="jlg-checkbox-' +
+					ngModel + '" class="jlg-checkbox-div"><span></span></div>');
 				$compile(div)(scope);
 				element.after(div);
 				var duration = 0;
