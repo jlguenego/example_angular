@@ -2,6 +2,7 @@
 	"indent_with_tabs": true,
 	"preserve_newlines": true,
 	"end_with_newline": true,
+	"eol": "\n",
 	"html": {
 
 	},
