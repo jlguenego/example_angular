@@ -13,13 +13,20 @@ module.exports = {
 		'require-jsdoc': 0,
 		'padded-blocks': 0,
 		'prefer-spread': 0,
-		'no-use-before-define': 'error'
+		'no-use-before-define': 'error',
+		'no-undef-init': 'error',
 	},
 	env: {
 		browser: true,
-		node: true
+		node: true,
+		jasmine: true,
 	},
     globals: {
-        angular: true
+        angular: true,
+		inject: true,
+		browser: true,
+		element: true,
+		by: true,
+		getJSONFixture: true,
     }
 };

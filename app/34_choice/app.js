@@ -22,7 +22,7 @@
 				var body = $document.find('body').eq(0);
 				body.removeClass('pc');
 				body.removeClass('mobile');
-				if (mobilecheck()) {
+				if (window.mobilecheck()) {
 					console.log('mobile mode');
 					this.css = 'pc, [pc] { display: none !important} mobile, [mobile] { display: block}';
 					body.addClass('mobile');
@@ -46,7 +46,8 @@
 	app.controller('MainCtrl', function MainCtrl() {
 
 		this.cities = ['Saulxures les Nancy', 'Lunéville', 'Chanteheux', 'Nancy', 'Cachan',
-			'San Francisco', 'Foster city', 'Sunnyvale', 'Charenton Le Pont', 'Torcy', 'Chatswood', 'Auckland', 'Fribourg'
+			'San Francisco', 'Foster city', 'Sunnyvale', 'Charenton Le Pont', 'Torcy', 'Chatswood',
+			'Auckland', 'Fribourg'
 		];
 	});
 

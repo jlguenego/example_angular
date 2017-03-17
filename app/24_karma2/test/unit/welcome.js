@@ -5,13 +5,12 @@
 		beforeEach(module('welcome'));
 
 		describe('welcome.MainCtrl', function() {
-			var $scope = undefined;
-			var $controller = undefined;
-			var $http = undefined;
-			var serviceRequestHandler = undefined;
-			var $controller = undefined;
-			var $rootScope = undefined;
-			var $location = undefined;
+			var $scope;
+			var $controller;
+			var $http;
+			var serviceRequestHandler;
+			var $rootScope;
+			var $location;
 
 			beforeEach(inject(function($injector) {
 				$http = $injector.get('$httpBackend');
@@ -28,14 +27,14 @@
 			it('should print the welcome message', function() {
 				$rootScope.login = 'juan';
 				$rootScope.state = 'logged';
-				ctrl = $controller('welcome.MainCtrl', {$scope: $scope});
+				$controller('welcome.MainCtrl', {$scope: $scope});
 
 				expect($rootScope.message).toEqual('Welcome juan!');
 			});
 
 			it('should redirect to authentication', function() {
 				$rootScope.state = 'not logged';
-				ctrl = $controller('welcome.MainCtrl', {$scope: $scope});
+				$controller('welcome.MainCtrl', {$scope: $scope});
 
 				expect($location.url()).toEqual('/login');
 			});
@@ -48,7 +47,7 @@
 				serviceRequestHandler.respond(getJSONFixture('juan.json'));
 
 				$http.expectGET('data/juan.json');
-				ctrl = $controller('welcome.MainCtrl', {$scope: $scope});
+				$controller('welcome.MainCtrl', {$scope: $scope});
 				$http.flush();
 				expect($rootScope.serviceJson.services).toEqual([
 					'mail',

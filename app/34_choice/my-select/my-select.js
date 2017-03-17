@@ -92,7 +92,7 @@
 		bindings: {
 			c: '=',
 		},
-		controller: function MySelect() {
+		controller: function MySelect($element) {
 			console.log('MySelect', arguments);
 			var ctrl = this;
 

@@ -5,14 +5,11 @@
 		beforeEach(module('authentication'));
 
 		describe('authentication.MainCtrl', function() {
-			var $scope = undefined;
-			var $controller = undefined;
-			var $http = undefined;
-			var loginRequestHandler = undefined;
-			var $controller = undefined;
-			var $rootScope = undefined;
-			var ctrl = undefined;
-
+			var $scope;
+			var $controller;
+			var $http;
+			var loginRequestHandler;
+			var $rootScope;
 
 			beforeEach(inject(function($injector) {
 				$http = $injector.get('$httpBackend');
@@ -26,7 +23,7 @@
 				$rootScope = $injector.get('$rootScope');
 				$controller = $injector.get('$controller');
 				$scope = $rootScope.$new();
-				ctrl = $controller('authentication.MainCtrl', {$scope: $scope});
+				$controller('authentication.MainCtrl', {$scope: $scope});
 			}));
 
 			afterEach(function() {
