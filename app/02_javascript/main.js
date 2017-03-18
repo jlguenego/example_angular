@@ -28,6 +28,7 @@
 	function myTest() {
 		// eslint-disable-next-line no-use-before-define
 		x = 25;
+		// eslint-disable-next-line no-use-before-define
 		console.log('x=' + x);
 
 		// eslint-disable-next-line no-constant-condition

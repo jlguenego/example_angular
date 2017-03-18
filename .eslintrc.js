@@ -33,5 +33,6 @@ module.exports = {
 		FastClick: true,
 		io: true,
 		Promise: true,
+		Hashes: true,
 	}
 };

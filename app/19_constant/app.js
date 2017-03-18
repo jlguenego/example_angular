@@ -2,9 +2,11 @@
 	'use strict';
 	var app = angular.module('myApp', []);
 	app.constant('salt', 'sel de Guerande');
-	app.value('hash', {name: 'md5', hash: function(n) {
- return new Hashes.MD5().hex(n);
-}
+	app.value('hash', {
+		name: 'md5',
+		hash: function(n) {
+			return new Hashes.MD5().hex(n);
+		}
 	});
 	app.provider('passwordService', ['salt', function(salt) {
 		var mySalt = salt;
@@ -27,12 +29,14 @@
 	app.config(['passwordServiceProvider', function(passwordServiceProvider) {
 		console.log('salt ', passwordServiceProvider.salt());
 	}]);
-	app.controller('MyController', ['passwordService', 'hash', '$scope', 'salt', function(passwordService, hash, $scope, salt) {
-		$scope.hash = hash;
-		$scope.$watch('password + login', function() {
-			$scope.passwordHash = passwordService.hash($scope.login, $scope.password);
-		});
-		$scope.salt = salt;
+	app.controller('MyController', ['passwordService', 'hash', '$scope', 'salt',
+		function(passwordService, hash, $scope, salt) {
+			$scope.hash = hash;
+			$scope.$watch('password + login', function() {
+				$scope.passwordHash = passwordService.hash($scope.login, $scope.password);
+			});
+			$scope.salt = salt;
 
-	}]);
+		}
+	]);
 })();
