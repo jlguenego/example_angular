@@ -75,18 +75,13 @@
 		//		});
 
 
-		var goAhead = true;
 		var f = function() {
-			if (goAhead) {
-				var choice = (Math.random() - 0.5) >= 0;
-				var promise = $q.when(movePromise(choice));
-				promise.then(function() {
-					f();
-				}).catch(function() {
-					console.log('BOUM');
-					goAhead = false;
-				});
-			}
+			var choice = (Math.random() - 0.5) >= 0;
+			movePromise(choice).then(function() {
+				f();
+			}).catch(function() {
+				console.log('BOUM');
+			});
 		};
 		f();
 	}]);
