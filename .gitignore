@@ -1,4 +1,2 @@
-*bower_components*
-*node_modules*
-*.log
-*.bak
+node_modules/
+

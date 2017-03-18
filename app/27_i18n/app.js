@@ -4,7 +4,7 @@
 	var app = angular.module('myApp', ['jlgI18n']);
 
 	app.config(['jlgI18nServiceProvider', function(jlgI18nServiceProvider) {
-		jlgI18nServiceProvider.localeDir('../../bower_components/jlg-i18n/locale');
+		jlgI18nServiceProvider.localeDir('../../node_modules/jlg-i18n/locale');
 	}]);
 
 	app.controller('MyController', ['$scope', '$locale', 'jlgI18nService',

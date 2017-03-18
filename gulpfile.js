@@ -7,7 +7,7 @@ const gulpIf = require('gulp-if');
 gulp.task('default', ['eslint']);
 
 const path = {
-	lint: ['**/*.js', '!node_modules/**/*', '!bower_components/**/*', '!**/*.min.js']
+	lint: ['**/*.js', '!node_modules/**/*', '!**/*.min.js']
 };
 
 

@@ -6,12 +6,12 @@ module.exports = function(config) {
 		basePath: '../../../',
 
 		files: [
-		'bower_components/jquery/dist/jquery.js',
-		'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
-		'bower_components/angular/angular.js',
-		'bower_components/angular-route/angular-route.js',
-		'bower_components/angular-resource/angular-resource.js',
-		'bower_components/angular-mocks/angular-mocks.js',
+		'node_modules/jquery/dist/jquery.js',
+		'node_modules/jasmine-jquery/lib/jasmine-jquery.js',
+		'node_modules/angular/angular.js',
+		'node_modules/angular-route/angular-route.js',
+		'node_modules/angular-resource/angular-resource.js',
+		'node_modules/angular-mocks/angular-mocks.js',
 		'app/24_karma2/app/*.js',
 		'app/24_karma2/test/unit/**/*.js',
 		{pattern: 'app/24_karma2/test/mock/**/*.json', watched: true, served: true, included: false}
