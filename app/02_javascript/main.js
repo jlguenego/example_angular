@@ -70,4 +70,10 @@
 		console.log(n, i);
 	});
 
+	// Cast to number
+	var a = '34';
+	console.log('typeof a', typeof a);
+	console.log('typeof +a', typeof +a);
+
+
 })();
