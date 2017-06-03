@@ -6,9 +6,13 @@
   "repository": "https://github.com/jlguenego/example_angular",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "6.24.1",
+    "babel-loader": "7.0.0",
+    "babel-preset-env": "1.5.1",
     "eslint": "3.17.1",
     "eslint-config-google": "0.7.1",
     "express": "4.15.2",
+    "extract-text-webpack-plugin": "2.1.0",
     "finalhandler": "0.3.3",
     "gulp": "3.9.1",
     "gulp-debug": "3.1.0",
@@ -17,11 +21,13 @@
     "karma": "0.13.22",
     "karma-chrome-launcher": "1.0.1",
     "karma-jasmine": "1.0.2",
+    "ng-annotate-loader": "0.6.1",
     "protractor": "",
     "serve-index": "1.6.2",
     "serve-static": "1.9.1",
     "socket.io": "1.1.0",
-    "webpack": "2.6.1"
+    "webpack": "2.6.1",
+    "webpack-dev-middleware": "1.10.2"
   },
   "dependencies": {
     "angular": "1.6.2",

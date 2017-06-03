@@ -1,20 +1,28 @@
-(function() {
-	'use strict';
 
-	var express = require('express'); // charge ExpressJS
-	var serveIndex = require('serve-index');
+'use strict';
 
-	var app = express();
+const express = require('express'); // charge ExpressJS
+const serveIndex = require('serve-index');
 
-	app.use(express.static('.'));
-	app.use(serveIndex('.', {icons: true}));
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config.js');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 
-	app.use(function(req, res, next) {
-		console.log('404: Page not Found', req.url);
-		next();
-	});
+var app = express();
 
-	app.listen(8000, function() {
-		console.log('server started on port 8000');
-	});
-})();
+webpackConfig.output.path = '/';
+const compiler = webpack(webpackConfig);
+app.use('/wpk/', webpackDevMiddleware(compiler, {}));
+
+app.use(express.static('.'));
+app.use(serveIndex('.', { icons: true }));
+
+app.use(function (req, res, next) {
+	console.log('404: Page not Found', req.url);
+	next();
+});
+
+app.listen(8000, function () {
+	console.log('server started on port 8000');
+});
+
