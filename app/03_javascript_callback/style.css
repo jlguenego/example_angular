@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+body {
+	font-family: 'Indie Flower', cursive;
+	font-size: 2em;
+	line-height: 2em;
+}
+
+@keyframes h1-anim {
+	from   {transform: translate(2000px); }
+	to  {transform: translate(0px); }
+}
+
+@keyframes ul-anim {
+	from   {font-size: 5em; line-height: 20em; transform: translate(0px, 1000px); }
+	to  {font-size: 1em; line-height: 2em; transform: translate(0x, 0px); }
+}
+
+body>h1 {
+	animation: h1-anim 1s;
+}
+
+body>ul {
+	animation: ul-anim 1s;
+}
+
+body>ul>li {
+	line-height: 1em;
+	padding: 1em;
+}
