@@ -1,6 +1,9 @@
 (function() {
 	'use strict';
 
+	// the following fail in strict mode. Why ?
+	// toto = 5;
+
 	console.log('Hello World!');
 
 	var Animal = function() {
@@ -25,7 +28,10 @@
 	garfield.sleep();
 	garfield.eat();
 
+	// TODO: translate this in ES6.
+
 	function myTest() {
+		// Question: what does x is ?
 		// eslint-disable-next-line no-use-before-define
 		x = 25;
 		// eslint-disable-next-line no-use-before-define
@@ -45,11 +51,14 @@
 
 	myTest();
 
+	// Question: Why can we print i without error ? 
+	console.log(i);
 	for (var i = 0; i < 3; i++) {
 		console.log(i);
 	}
 	console.log(i);
 
+	// Every function is variadic. 
 	function myTest2(a, b, c) {
 		console.log('start');
 		console.log(a, b, c);
@@ -69,6 +78,11 @@
 	x.forEach(function(n, i) {
 		console.log(n, i);
 	});
+	x.length = 10;
+	console.log('x', x);
+	x['!@#$%asdf'] = 'hello';
+	x.$coucou = 'yeah';
+	console.log('x', x);
 
 	// Cast to number
 	var a = '34';
