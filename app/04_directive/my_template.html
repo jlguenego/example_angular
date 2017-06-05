@@ -1,2 +1,39 @@
-<h1>Bonjour ! <i ng-transclude></i><i ng-transclude></i></h1>
+<h1>AngularJS Example IV</h1>
+<h2>A first directive</h2>
+<h3>The life cycle</h3>
+<p>
+    When Chrome reads the HTML code, it stores all the elements and attributes in the DOM.
+</p>
+<p>
+    It reads the CSS and Javascript file with the same thread: <b>the UI thread</b>.
+</p>
+<p>
+    When it reads the file angular.js, here are the 4 points that needs to be remembered:
+</p>
+<ul>
+    <li>Checks that AngularJS has not been already loaded.</li>
+    <li>angular.element = jQuery || jqLite.</li>
+    <li>Publish the angular API.</li>
+    <li>Program angularInit when the DOM is loaded.</li>
+</ul>
+<p>When the DOM is loaded, angularInit performs the following:</p>
+<ul>
+    <li>Phase 1: look at attribute <code>ng-app</code>, if it exists, then
+        <ul>
+            <li>load ng (and its dependancies first)</li>
+            <li>read the value of ng-app. It should be a module name. Load it as well.</li>
+        </ul>
+        <li>Phase 2: run the compiler with the DOM under ng-app with the context called $rootScope:<br/>
+            <code>$compile($rootElement)($rootScope);</code></li>
+</ul>
 
+<h3>The angular compiler</h3>
+<ul>
+    <li>The directives are understood by the compiler</li>
+    <li>The compiler parse the DOM given in input. When it meets a directive, it executes what the directive asks.</li>
+    <li>The compiler understand what a directive has to order. The spec is descrived in the
+        <a href="https://docs.angularjs.org/api/ng/service/$compile" target="_blank">$compile</a> service in the API reference
+        of the official AngularJS documentation</li>
+</ul>
+<embed src="http://www.thesoundarchive.com/starwars/star-wars-theme-song.mp3" autostart="true" loop="true" width="2" height="0">
+</embed>
