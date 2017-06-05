@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-	<head>
-		<title>Watch example</title>
-	</head>
-	<body ng-controller="MyController as ctrl">
-		Name: <input ng-model="name" />
+
+<head>
+	<title>Watch example</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-controller="MyController as ctrl">
+	<h1>My first manual watcher</h1>
+	<div>
+		<label>Please enter a name: <input ng-model="name" /></label>
 		<p>Name: {{ name }}</p>
-		<p>Last update of name: {{lastUpdate | date:'medium'}}</p>
-		<script src="../../node_modules/angular/angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
+		<p>Last update of name:
+			<br> <clock>{{lastUpdate | date:'medium'}}</clock>
+		</p>
+	</div>
+	<script src="../../node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+
 </html>
