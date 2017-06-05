@@ -1,22 +1,51 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>My First $resource use</title>
-		<style>
-[ng-cloak] {
-	display: none !important;
-}
-		</style>
-	</head>
 
-	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
-		<h1>My First $resource use</h1>
-		<button ng-click="startAjax()">Appeler le contenu AJAX</button><br/>
-		<button ng-click="getPromise()">logguer la promise</button><br/>
-		<span ng-cloak>{{data.content}}</span>
+<head>
+	<title>My First $resource use</title>
+	<style>
+		[ng-cloak] {
+			display: none !important;
+		}
 
-		<script src="../../node_modules/angular/angular.min.js"></script>
-		<script src="../../node_modules/angular-resource/angular-resource.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
+	</style>
+</head>
+
+<body ng-app="myApp" ng-controller="MyController as $ctrl" >
+	<h1>My First $resource use</h1>
+	<p>Note: install webpack globally and run it to see the compiled file.</p>
+	<br/>
+	<input type="text" ng-model="$ctrl.newTicket.name" /><button ng-click="$ctrl.create()">Create a new ticket</button>
+	<br/><br/>
+	<fieldset>
+
+		<button ng-click="$ctrl.query()">Rafraichir la liste des tickets</button>&nbsp;<button ng-click="$ctrl.empty()">Delete All</button><br/>
+
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>New name</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+			<tr ng-repeat="ticket in $ctrl.tickets track by $index">
+				<td>{{ticket.id}}</td>
+				<td>{{ticket.name}}</td>
+				<td><input type="text" ng-model="ticket.newName" /></td>
+				<td><button ng-click="$ctrl.update(ticket)">Update</button></td>
+				<td><button ng-click="$ctrl.delete(ticket)">Delete</button></td>
+			</tr>
+		</table>
+	</fieldset>
+
+	<fieldset ng-init="id = 2">
+		<input type="number" ng-model="id" /><br/>
+		<button ng-click="$ctrl.retrieve(id)">Retrieve the ticket</button><br/>
+		<br/>
+		<div ng-cloak>Retrieve Ticket: {{$ctrl.ticket}}</div>
+	</fieldset>
+	<script type="text/javascript" src="wpk/22_resource.js"></script>
+</body>
+
 </html>

@@ -9,6 +9,7 @@
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
     "babel-preset-env": "1.5.1",
+    "body-parser": "1.17.2",
     "eslint": "3.17.1",
     "eslint-config-google": "0.7.1",
     "express": "4.15.2",

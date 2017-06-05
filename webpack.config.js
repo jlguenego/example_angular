@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		'22_resource': './app/22_resource/app.js',
+		bundle: './app/35_carousel/app.js'
 	},
 	output: {
 		filename: '[name].js',

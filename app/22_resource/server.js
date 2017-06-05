@@ -1,26 +1,37 @@
-(function() {
-	'use strict';
+'use strict';
 
-	var express = require('express'); // charge ExpressJS
-	var serveIndex = require('serve-index');
+const bodyParser = require('body-parser');
+const express = require('express');
+const serveIndex = require('serve-index');
 
-	var app = express();
-	app.use('/app/22_resource/*', function(req, res, next) {
-		console.log('req.url', req.url);
-		setTimeout(function() {
-			next();
-		}, 2000);
-	});
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackConfig = require('./webpack.config.js');
 
-	app.use(express.static('.'));
-	app.use(serveIndex('.', {icons: true}));
+const ws = require('./rest.js');
 
-	app.use(function(req, res, next) {
-		console.log('404: Page not Found', req.url);
-		next();
-	});
+const app = express();
 
-	app.listen(8000, function() {
-		console.log('server started on port 8000');
-	});
-})();
+// accept the POST, PUT request body as a json object.
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// webpack developement short loop.
+webpackConfig.output.path = '/';
+const compiler = webpack(webpackConfig);
+app.use('/app/22_resource/wpk/', webpackDevMiddleware(compiler, {}));
+
+app.use('/app/22_resource/ws', ws);
+
+app.use(express.static('.'));
+app.use(serveIndex('.', { icons: true }));
+
+app.use((req, res, next) => {
+	console.log('404: Page not Found', req.url);
+	next();
+});
+
+app.listen(8000, () => {
+	console.log('server started on port 8000');
+});
+
