@@ -1,3 +1,33 @@
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
 h1 {
-	font: 15px arial;
+	display: inline-block;
+	margin: 10px;
+	padding: 10px 20px;
+	text-align: center;
+	font: bold 50px Sans-serif;
+	background-color: hsl(0, 0%, 90%);
+	color: hsl(0, 0%, 20%);
+	border-radius: 20px;
+	transform: scale(1);
+	animation: cool-anim 5s ease-in-out infinite;
+}
+
+@keyframes cool-anim {
+	0%   {opacity: 0; background-color: hsl(0, 0%, 90%); transform: scale(0.5) rotate(-179deg);}
+	30%  {opacity: 1; background-color: hsl(0, 0%, 90%); transform: rotate(0deg); }
+	70%  {opacity: 1; background-color: hsl(0, 0%, 90%); transform: rotate(0deg); }
+    100% {opacity: 0; background-color: hsl(0, 0%, 90%); transform: scale(20) rotate(+179deg);}
 }
