@@ -10,12 +10,6 @@ body {
 	width: 800px;
 }
 
-@keyframes star-wars {
-	from   {transform: perspective( 600px ) rotateX( 45deg ) translateY(500px); }
-	to  {transform: perspective( 600px ) rotateX( 45deg ) translateY(-300px); }
-}
-
-
 h1 {
 	text-align: center;
 }
@@ -27,5 +21,27 @@ input {
 email {
 	font-size: 2em;
 	color: blue;
+	
+}
+
+@keyframes fadein {
+	0%   {opacity: 0; }
+	100% {opacity: 1; }
+}
+
+label {
+	opacity: 0;
+	animation: fadein 1s ease-in 1s forwards;
+}
+
+message {
+	display: block;
+	opacity: 0;
+	animation: fadein 1s ease-in 2s forwards;
+}
+
+h2, ul {
+	opacity: 0;
+	animation: fadein 1s ease-in 3s forwards;
 }
 
