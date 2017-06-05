@@ -3,12 +3,13 @@
 
 <head>
 	<title>My First Angular expression</title>
+	<link rel="stylesheet" href="../../node_modules/angular/angular-csp.css" />
 	<link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body ng-cloak ng-csp>
 	<h1>My first AngularJS expression</h1>
-	<label>Please enter your email : <input type="email" name="email" ng-model="myEmail"></label>
+	<label>Please enter your email: <input type="email" name="email" ng-model="myEmail"></label>
 	<message>Your email in uppercase is: <email>{{myEmail | uppercase}}</email></message>
 	<h2>Notes:</h2>
 	<ul>
@@ -16,6 +17,8 @@
 		<li><code>ng-model</code> synchronizes the input content with <code>$rootScope.myEmail</code>.</li>
 		<li>An expression put a watcher.</li>
 		<li>This is the watcher that evaluates and write the expression evaluation in the view.</li>
+		<li>Look at the generated class by AngularJS: ng-scope, ng-binding, ng-pristine, ng-dirty, ng-touched, etc.</li>
+		<li>Look at the ng-csp pseudo-directive</li>
 	</ul>
 	<h2>Questions:</h2>
 	<ul>

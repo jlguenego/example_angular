@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Varela Round', sans-serif;
+}
+
+body {
+	display: block;
+	margin: 0px auto;
+	width: 800px;
+	max-width: 100%;
+	padding: 20px;
+}
+
+h1 {
+	text-align: center;
+}
+
+button-group {
+	display: block;
+	font-size: 0;
+}
+
+button {
+	display: inline-block;
+	background-color: hsl(0, 0%, 90%);
+	margin: 0px 0px;
+	padding: 10px;
+	border: 1px solid hsl(0, 0%, 80%);
+	border-right: none;
+}
+
+button:hover {
+	background-color: hsl(0, 0%, 80%);
+}
+
+button:first-child {
+	border-radius: 3px 0px 0px 3px;
+}
+
+button:last-child {
+	border: 1px solid hsl(0, 0%, 80%);
+	border-radius: 0px 3px 3px 0px;
+}

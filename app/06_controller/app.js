@@ -10,6 +10,13 @@
 	var app = angular.module('myApp', []);
 
 	app.controller('MyController', function() {
-		this.person = someone;
+		this.show = function() {
+			this.person = someone;
+		};
+		
+		this.hide = function() {
+			this.person = undefined;
+		};
+
 	});
 })();

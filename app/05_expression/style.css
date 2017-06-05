@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
+* {
+	box-sizing: border-box;
+}
 body {
 	font-family: 'Varela Round', sans-serif;
 }
@@ -8,6 +11,8 @@ body {
 	display: block;
 	margin: 0px auto;
 	width: 800px;
+	max-width: 100%;
+	padding: 20px;
 }
 
 h1 {
@@ -36,6 +41,7 @@ label {
 
 message {
 	display: block;
+	margin-top: 2em;
 	opacity: 0;
 	animation: fadein 1s ease-in 2s forwards;
 }

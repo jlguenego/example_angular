@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>My First Controller</title>
-	</head>
+<html ng-app="myApp">
 
-	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
-		<h1>{{my_ctrl.person.lastname}}</h1>
-		<h2>{{my_ctrl.person.firstname}}</h2>
-		<p>{{my_ctrl.person.age}}</p>
-		<script src="../../node_modules/angular/angular.min.js"></script>
+<head>
+	<title>My First Controller</title>
+	<link rel="stylesheet" href="../../node_modules/angular/angular-csp.css" />
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body ng-csp ng-cloak ng-controller="MyController as $ctrl">
+	<h1>My first controller</h1>
+
+	<button-group>
+		<button ng-click="$ctrl.show()">Show</button>
+		<button ng-click="$ctrl.hide()">Hide</button>
+	</button-group>
+	<p>Last name: {{$ctrl.person.lastname}}</p>
+	<ph2>First name: {{$ctrl.person.firstname}}</p>
+		<p>Age: {{$ctrl.person.age}}</p>
+		<script src="../../node_modules/angular/angular.js"></script>
 		<script type="text/javascript" src="app.js"></script>
-	</body>
+</body>
+
 </html>
