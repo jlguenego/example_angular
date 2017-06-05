@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="">
-	<head>
-		<title>My First Angular expression</title>
-	</head>
-	<body>
-		<input type="email" ng-model="my_text"><br/>
-		My email is: {{my_text | uppercase}}
-		<script src="../../node_modules/angular/angular.min.js"></script>
-	</body>
+
+<head>
+	<title>My First Angular expression</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<h1>My first AngularJS expression</h1>
+	<label>Please enter your email : <input type="email" name="email" ng-model="myEmail"></label>
+	<br/><br/> Your email in uppercase is: <email>{{myEmail | uppercase}}</email>
+	<h2>Notes:</h2>
+	<ul>
+		<li><code>input</code> is a directive that optionally needs <code>ng-model</code>.</li>
+		<li><code>ng-model</code> synchronizes the input content with <code>$rootScope.myEmail</code>.</li>
+		<li>An expression put a watcher.</li>
+		<li>This is the watcher that evaluates and write the expression evaluation in the view.</li>
+	</ul>
+	<h2>Question:</h2>
+	<ul>
+		<li>How many watcheres are there in this example ?</li>
+		<li>Check with Batarang (chrome extension).</li>
+		<li>What is the bind-once ? Try it.</li>
+		<li>What is a filter ?</li>
+		<li>Why the name attributes ? (for Chrome of course...)</li>
+	</ul>
+	<script src="../../node_modules/angular/angular.js"></script>
+</body>
+
 </html>

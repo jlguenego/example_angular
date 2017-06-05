@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+body {
+	font-family: 'Roboto Slab', serif;
+}
+
+body {
+	display: block;
+	margin: 0px auto;
+	width: 800px;
+}
+
+@keyframes star-wars {
+	from   {transform: perspective( 600px ) rotateX( 45deg ) translateY(500px); }
+	to  {transform: perspective( 600px ) rotateX( 45deg ) translateY(-300px); }
+}
+
+
+h1 {
+	text-align: center;
+}
+
+input {
+	width: 400px;
+}
+
+email {
+	font-size: 2em;
+	color: blue;
+}
+
