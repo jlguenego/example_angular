@@ -18,10 +18,6 @@ let tickets = [
 ];
 let id = tickets.length + 1;
 
-function list() {
-	return tickets;
-}
-
 router.get('/tickets', (req, res, next) => {
 	res.json(tickets);
 });
