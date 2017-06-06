@@ -21,3 +21,16 @@ body>h1 {
 body>ul {
 	animation: ul-anim 1s;
 }
+
+keystroke {
+	padding: 3px;
+	border: 1px solid hsl(0, 0%, 90%);
+	border-radius: 2px;
+	font-family: fixed;
+	background-color: hsl(0, 0%, 95%);
+}
+
+code {
+	font-size: 1.2em;
+	color: hsl(0, 0%, 40%);
+}

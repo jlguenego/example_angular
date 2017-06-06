@@ -15,10 +15,19 @@
 		<button ng-click="$ctrl.hide()">Hide</button>
 	</button-group>
 	<p>Last name: {{$ctrl.person.lastname}}</p>
-	<ph2>First name: {{$ctrl.person.firstname}}</p>
-		<p>Age: {{$ctrl.person.age}}</p>
-		<script src="../../node_modules/angular/angular.js"></script>
-		<script type="text/javascript" src="app.js"></script>
+	<p>First name: {{$ctrl.person.firstname}}</p>
+	<p>Age: {{$ctrl.person.age}}</p>
+	<h2>Notes:</h2>
+	<p>Ng-controller does 3 steps:
+		<ul>
+			<li>Create a child scope: <code>$scope = $parent.$new(false);</code> </li>
+			<li>Instantiate a new controller of type MyController: <code>$scope.$ctrl = $controller('MyController');</code></li>
+			<li>Compile all the DOM under ng-controller with the $scope: <code>$compile($element.contents())($scope);</code></li>
+		</ul>
+		</li>
+	</p>
+	<script src="../../node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </body>
 
 </html>

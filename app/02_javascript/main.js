@@ -28,6 +28,8 @@
 	garfield.sleep();
 	garfield.eat();
 
+	console.log('garfield', garfield);
+
 	// TODO: translate this in ES6.
 
 	function myTest() {
@@ -35,18 +37,18 @@
 		// eslint-disable-next-line no-use-before-define
 		x = 25;
 		// eslint-disable-next-line no-use-before-define
-		console.log('x=' + x);
+		console.log('x', x);
 
 		// eslint-disable-next-line no-constant-condition
 		if (true) {
 			var x;
-			console.log('x=' + x);
+			console.log('x', x);
 			x = 32;
-			console.log('x=' + x);
+			console.log('x', x);
 		}
-		console.log('x=' + x);
+		console.log('x', x);
 		x += 1;
-		console.log('x=' + x);
+		console.log('x', x);
 	}
 
 	myTest();
@@ -77,6 +79,7 @@
 	console.log(x);
 	x.forEach(function(n, i) {
 		console.log(n, i);
+		console.log('arguments', arguments);
 	});
 	x.length = 10;
 	console.log('x', x);
@@ -87,7 +90,7 @@
 	// Cast to number
 	var a = '34';
 	console.log('typeof a', typeof a);
-	console.log('typeof +a', typeof +a);
+	console.log('typeof +a', typeof + a);
 
 
 })();
