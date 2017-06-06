@@ -4,18 +4,20 @@
 <head>
 	<title>My First Controller</title>
 	<link rel="stylesheet" href="../../node_modules/angular/angular-csp.css" />
+	<link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.css" />
 	<link rel="stylesheet" href="style.css" />
 </head>
 
 <body ng-cloak ng-app="mainApp">
 	<h1>Mon Premier formulaire</h1>
 	<div ng-controller="MainCtrl as ctrl">
-		<form name="myForm" ng-submit="ctrl.add(); myForm.$setPristine()" autocomplete="off" novalidate>
+		<form name="myForm" ng-submit="ctrl.add(); myForm.$setPristine()">
 			<fieldset>
-				Select your note :
+
 				<select ng-model="ctrl.object.select" ng-options="rate for rate in [5, 4, 3, 2, 1]" required>
-						<option value="">Rate</option>
-					</select><br /> Email : <input type="email" ng-model="ctrl.object.email" required/><br/> Your comment :<br/>
+					<option value="">Select your note</option>
+				</select><i class="fa fa-check" aria-hidden="true"></i>
+				<br> <label for="email">Email : </label><br><input type="email" name="email" id="email" ng-model="ctrl.object.email" required/><br/> Your comment :<br/>
 				<textarea ng-model="ctrl.object.text" rows="5" required></textarea><br/>
 
 				<input type="submit" value="Post" ng-disabled="myForm.$invalid" />
