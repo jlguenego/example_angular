@@ -2,15 +2,29 @@
 
 * {
     font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
 }
 form .ng-dirty.ng-valid {
-	background-color: hsla(120, 100%, 95%, 1);
+	border-color: hsl(120, 100%, 20%);
+    box-shadow: 2px 2px 6px hsl(0, 0%, 60%);
 }
 
 form .ng-dirty.ng-invalid {
-	background-color: hsla(0, 100%, 95%, 1);
+    background-color: hsl(0, 100%, 95%);
+	border-color: hsl(0, 100%, 50%);
+    box-shadow: 2px 2px 6px hsl(0, 0%, 60%);
 }
 
 form .ng-pristine {
-	background-color: hsla(60, 100%, 95%, 1);
+	border-color: black;
+}
+
+[ng-model] {
+    display: inline-block;
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    font-size: 1.1em;
 }
