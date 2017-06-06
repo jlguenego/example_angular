@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+    font-family: 'Raleway', sans-serif;
+}
+form .ng-dirty.ng-valid {
+	background-color: hsla(120, 100%, 95%, 1);
+}
+
+form .ng-dirty.ng-invalid {
+	background-color: hsla(0, 100%, 95%, 1);
+}
+
+form .ng-pristine {
+	background-color: hsla(60, 100%, 95%, 1);
+}
