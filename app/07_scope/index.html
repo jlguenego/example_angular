@@ -3,11 +3,12 @@
 
 <head>
 	<title>My First Controller</title>
+	<link rel="stylesheet" href="../../node_modules/angular/angular-csp.css" />
 	<link rel="stylesheet" href="style.css" />
 </head>
 
-<body ng-csp >
-	<div ng-app="myApp" ng-init="count = { value: 3 }">
+<body ng-csp>
+	<div ng-cloak ng-app="myApp" ng-init="count = { value: 3 }">
 		<h1>Scope tree</h1>
 		<div>
 			App Count: {{count}}
