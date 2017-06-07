@@ -2,9 +2,24 @@
 <html>
 	<head>
 		<title>My First View</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body ng-app="myApp" >
+		<header>
+			<site-id>
+				Mon joli site.
+			</site-id>
+			<menu>
+				<item><a href="#/">Accueil</a></item>
+				<item><a href="#/hello">Hello</a></item>
+				<item><a href="#/coucou">Coucou</a></item>
+				<item><a href="#/salut">Salut</a></item>
+			</menu>
+		</header>
 		<ng-view></ng-view>
+		<footer>
+			Maïté ©2017
+		</footer>
 		<script src="../../node_modules/angular/angular.js"></script>
 		<script src="../../node_modules/angular-route/angular-route.js"></script>
 		<script type="text/javascript" src="app.js"></script>
