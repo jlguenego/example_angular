@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	height: 100%;
+	font-family: 'Gloria Hallelujah', cursive;
+}
+
+html {
+	display: table;
+	margin: auto;
+}
+
+body {
+	display: table-cell;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+div {
+	display: inline-block;
+	text-align: center;
+	padding: 0px 50px;
+	border: 3px dashed grey;
+	border-radius: 0%;
+	white-space: nowrap;
+	animation: maite-anim 10s forwards;
+	font-size: 5em;
+}
+
+
+
+@keyframes maite-anim {
+	0% {
+		opacity: 0;
+		transform: scale(5) rotate(-359deg) translate(500px);
+	}
+	25% {
+		opacity: 1;
+		transform: scale(0.5) rotate(359deg) translate(0px);
+	}
+	50% {
+		transform: scale(0.5) rotate(359deg) translate(0px);
+		border-radius: 0%;
+	}
+	100% {
+		transform: scale(0.5) rotate(359deg) translate(0px);
+		border-radius: 100%;
+	}
+}
