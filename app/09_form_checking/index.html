@@ -17,11 +17,15 @@
 				<select name="mySelect" ng-model="ctrl.object.select" ng-options="rate for rate in [5, 4, 3, 2, 1]" required>
 					<option value="">Select your note</option>
 				</select><i ng-show="myForm.mySelect.$valid" class="fa fa-check" aria-hidden="true"></i><br>
+
+				<label for="_lastName">Last name : </label><br>
+				<input type="text" name="myLastName" id="_lastName" ng-model="ctrl.object.name" required>
+				<i ng-show="myForm.myLastName.$valid" class="fa fa-check" aria-hidden="true"></i><br>
+
 				<label for="_email">Email : </label><br>
 				<input type="email" name="myEmail" id="_email" ng-model="ctrl.object.email" required>
 				<i ng-show="myForm.myEmail.$valid" class="fa fa-check" aria-hidden="true"></i><br>
-				<input type="text" name="myName" id="_name" ng-model="ctrl.object.name" required>
-				<i ng-show="myForm.myName.$valid" class="fa fa-check" aria-hidden="true"></i><br>
+
 				<label for="_comment">Your comment : </label><br>
 				<textarea name="myComment" id="_comment" ng-model="ctrl.object.text" rows="5" required></textarea>
 				<i ng-show="myForm.myComment.$valid" class="fa fa-check" aria-hidden="true"></i><br>
