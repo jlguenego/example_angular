@@ -1,35 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
-body {
-	font-family: 'Roboto Slab', serif;
-	background-image: url(stars.jpg);
-	background-size: cover;
-	color: hsl(60, 100%, 90%);
-	font-weight: 600;
-	overflow: hidden;
-}
-
-body {
+body.star-wars {
 	display: block;
+	overflow: hidden;
 	margin: 0px auto;
 	width: 800px;
 	text-align: center;
+	background-image: url(stars.jpg);
+	background-size: cover;
+	color: hsl(60, 100%, 90%);
+	font-family: 'Roboto Slab', serif;
+	font-weight: 600;
 }
 
-@keyframes star-wars {
-	from   {transform: perspective( 600px ) rotateX( 45deg ) translateY(500px); }
-	to  {transform: perspective( 600px ) rotateX( 45deg ) translateY(-300px); }
+@keyframes star-wars-anim {
+	from {
+		transform: perspective( 600px) rotateX( 45deg) translateY(500px);
+	}
+	to {
+		transform: perspective( 600px) rotateX( 45deg) translateY(-300px);
+	}
 }
 
 
 
-my-first-directive {
+.star-wars my-first-directive {
 	display: inline-block;
 	width: 60%;
 	text-align: left;
-	animation: star-wars 60s linear infinite;
+	animation: star-wars-anim 60s linear infinite;
 }
 
-h1, h2 {
+h1,
+h2 {
 	text-align: center;
 }
