@@ -1,13 +1,24 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('myApp', []);
+	var app = angular.module('myApp', ['dep1', 'dep2']);
 	app.config(function() {
-		console.log('configuration of my app.');
+		console.log('configuration of myApp part 1.');
 	});
-	app.controller('MyController', ['$window', function MyController($window) {
-		this.sayHello = function(name) {
-			$window.alert('Hello ' + name);
-		};
-	}]);
+
+	app.config(function() {
+		console.log('configuration of myApp part 2.');
+	});
+
+	app.run(function() {
+		console.log('run of myApp part 1.');
+	});
+
+	app.run(function() {
+		console.log('run of myApp part 2.');
+	});
+
+	app.controller('MyController', function MyController() {
+		this.welcomeMsg = 'Hello Maïté!';
+	});
 })();
