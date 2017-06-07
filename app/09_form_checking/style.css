@@ -17,6 +17,7 @@ form .ng-dirty.ng-invalid {
 
 form .ng-pristine {
 	border-color: black;
+    box-shadow: 2px 2px 6px hsl(0, 0%, 60%);
 }
 
 [ng-model] {
@@ -26,5 +27,7 @@ form .ng-pristine {
     padding: 10px;
     border: 1px solid black;
     border-radius: 3px;
+    resize: none;
     font-size: 1.1em;
 }
+

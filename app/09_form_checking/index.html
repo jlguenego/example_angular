@@ -20,6 +20,8 @@
 				<label for="_email">Email : </label><br>
 				<input type="email" name="myEmail" id="_email" ng-model="ctrl.object.email" required>
 				<i ng-show="myForm.myEmail.$valid" class="fa fa-check" aria-hidden="true"></i><br>
+				<input type="text" name="myName" id="_name" ng-model="ctrl.object.name" required>
+				<i ng-show="myForm.myName.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 				<label for="_comment">Your comment : </label><br>
 				<textarea name="myComment" id="_comment" ng-model="ctrl.object.text" rows="5" required></textarea>
 				<i ng-show="myForm.myComment.$valid" class="fa fa-check" aria-hidden="true"></i><br>
