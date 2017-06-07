@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Vibur');
+@import url('https://fonts.googleapis.com/css?family=Lobster');
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 * {
@@ -8,6 +8,15 @@
 	font-family: 'Lato', sans-serif;
 }
 
+html, body {
+	min-width: 780px;
+}
+
+header {
+	display: block;
+	height: 100px;
+}
+
 site-id {
     display: inline-block;
 	margin: 5px;
@@ -15,20 +24,20 @@ site-id {
 }
 
 site-id * {
-	font-family: 'Vibur', cursive;
-	font-size: 3em;
+	font-family: 'Lobster', cursive;
+	font-size: 1.5em;
 	font-weight: bold;
 }
 
 red {
     padding: 10px;
 	color: red;
+	font-size: 2.5em;
 }
 
-green {
+gray {
     padding: 10px;
-	color: green;
-	font-size: 5em;
+	color: hsl(0, 0%, 90%)
 }
 
 blue {
@@ -36,6 +45,22 @@ blue {
 	color: blue;
 }
 
+menu {
+	display: block;
+	float: right;
+	padding: 30px 30px;
+}
+
+menu item {
+	display: inline-block;
+	padding: 0px 5px;
+}
+
+menu item a {
+	display: block;
+	padding: 15px;
+	background-color: hsl(0, 100%, 95%);
+}
 
 cover {
 	display: block;
@@ -43,6 +68,16 @@ cover {
 	background-size: cover;
 	background-position: center;
 	width: 100%;
-	height: 720px;
-	background-image: url("https://cdn.pixabay.com/photo/2017/05/19/15/16/countryside-2326787_960_720.jpg");
+	height: 300px;
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/MontBlanc2c.jpg/1280px-MontBlanc2c.jpg");
+	
+}
+
+footer {
+	display: block;
+	width: 100%;
+	height: 40px;
+	padding: 10px;
+	text-align: center;
+	color: hsl(0, 0%, 70%);
 }
