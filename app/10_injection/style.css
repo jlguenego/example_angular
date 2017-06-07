@@ -1,0 +1,46 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: 'Varela Round', sans-serif;
+}
+
+div {
+	text-align: center;
+}
+
+h1 {
+    margin: 30px;
+    text-align: center;
+}
+
+button {
+	display: inline-block;
+	width: 150px;
+	margin: 50px 20px;
+	padding: 5px;
+	background-color: hsl(240, 100%, 90%);
+	border: 1px solid hsl(240, 100%, 80%);
+	border-radius: 5px;
+	outline: none;
+	animation: button 1s forwards;
+}
+
+button:active {
+	background-color: hsl(240, 100%, 80%);
+}
+
+p {
+	margin: 10px 10px;
+	text-align: left;
+    font-family: fixed;
+}
+
+@keyframes button {
+	from {
+		margin-left: -164px;
+	}
+	to {
+		margin-left: 20px;
+	}
+}

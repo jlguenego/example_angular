@@ -2,10 +2,16 @@
 <html>
 	<head>
 		<title>My First Injection</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body ng-app="myApp" >
+		<h1>Dependancy injections</h1>
 		<div ng-controller="MyController">
 			<button ng-click="sayHello('Dupond')">Click Me!</button>
+			<button ng-click="sayHelloAgain('Dupond')">Click Me!</button>
+			<button ng-click="sayGoodbye('Durand')">Click Me!</button>
+			<button ng-click="sayGoodbyeAgain('Durand')">Click Me!</button>
+			<hr>
 		</div>
 		<script src="../../node_modules/angular/angular.js"></script>
 		<script type="text/javascript" src="app.js"></script>
