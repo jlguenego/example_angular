@@ -12,6 +12,10 @@ body {
 	padding: 20px;
 }
 
+h1 {
+    text-align: center;
+}
+
 fieldset,
 [ng-model],
 input[type=submit] {
