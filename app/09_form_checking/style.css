@@ -13,7 +13,7 @@ body {
 }
 
 h1 {
-    text-align: center;
+	text-align: center;
 }
 
 fieldset,
@@ -37,8 +37,8 @@ form .ng-pristine {
 
 comments,
 fieldset {
-    display: block;
-    margin: 20px 0px;
+	display: block;
+	margin: 20px 0px;
 	padding: 10px;
 	border: 1px solid black;
 	border-radius: 3px;
@@ -98,4 +98,20 @@ input[type=submit]:disabled {
 button:focus,
 input[type=submit]:disabled {
 	outline: none;
+}
+
+comment {
+	display: block;
+	margin: 10px;
+	padding: 10px;
+	background-color: hsl(0, 0%, 98%);
+}
+
+comment>ul {
+	padding-left: 5px;
+}
+
+comment>ul>li {
+    margin: 5px 0px;
+	list-style-type: none;
 }

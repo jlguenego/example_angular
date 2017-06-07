@@ -18,15 +18,15 @@
 					<option value="">Select your note</option>
 				</select><i ng-show="myForm.mySelect.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
-				<label for="_lastName">Last name : </label><br>
+				<label for="_lastName">Last name: </label><br>
 				<input type="text" name="myLastName" id="_lastName" ng-model="ctrl.object.name" required>
 				<i ng-show="myForm.myLastName.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
-				<label for="_email">Email : </label><br>
+				<label for="_email">Email: </label><br>
 				<input type="email" name="myEmail" id="_email" ng-model="ctrl.object.email" required>
 				<i ng-show="myForm.myEmail.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
-				<label for="_comment">Your comment : </label><br>
+				<label for="_comment">Your comment: </label><br>
 				<textarea name="myComment" id="_comment" ng-model="ctrl.object.text" rows="5" required></textarea>
 				<i ng-show="myForm.myComment.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
@@ -35,13 +35,14 @@
 		</form>
 		<comments>
 			<button id="delete" ng-disabled="ctrl.comments.length === 0" ng-click="ctrl.deleteAll()">Delete All</button>
-			<div ng-repeat="object in ctrl.comments track by $index">
+			<comment ng-repeat="object in ctrl.comments track by $index">
 				<ul>
-					<li>Rate: {{object.select}}</li>
-					<li>Email: {{object.email}}</li>
-					<li>Text: {{object.text}}</li>
+					<li><b>Rate: </b>{{object.select}}</li>
+					<li><b>Last name: </b>{{object.name}}</li>
+					<li><b>Email: </b>{{object.email}}</li>
+					<li><b>Text: </b>{{object.text}}</li>
 				</ul>
-			</div>
+			</comment>
 		</comments>
 	</div>
 	<script src="../../node_modules/angular/angular.js"></script>
