@@ -31,7 +31,10 @@ form .ng-pristine {
 	border-color: black;
 }
 
+comments,
 fieldset {
+    display: block;
+    margin: 20px 0px;
 	padding: 10px;
 	border: 1px solid black;
 	border-radius: 3px;
@@ -61,6 +64,7 @@ label {
 	font-size: 1.3em;
 }
 
+button,
 input[type=submit] {
 	display: block;
 	margin: 15px 10px;
@@ -74,13 +78,20 @@ input[type=submit] {
 	font-size: 1.1em;
 }
 
+button:active,
 input[type=submit]:active {
 	background-color: hsl(120, 100%, 18%);
 	box-shadow: 0px 0px 10px 1px hsl(0, 0%, 80%);
 }
 
+button:disabled,
 input[type=submit]:disabled {
 	background-color: hsl(120, 0%, 90%);
-    border: none;
-    box-shadow: none;
+	border: none;
+	box-shadow: none;
+}
+
+button:focus,
+input[type=submit]:disabled {
+	outline: none;
 }

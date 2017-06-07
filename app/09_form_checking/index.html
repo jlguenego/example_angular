@@ -33,14 +33,16 @@
 				<input type="submit" value="Post" ng-disabled="myForm.$invalid" />
 			</fieldset>
 		</form>
-		<button ng-click="ctrl.deleteAll()">Delete All</button>
-		<div ng-repeat="object in ctrl.comments track by $index">
-			<ul>
-				<li>Rate: {{object.select}}</li>
-				<li>Email: {{object.email}}</li>
-				<li>Text: {{object.text}}</li>
-			</ul>
-		</div>
+		<comments>
+			<button id="delete" ng-disabled="ctrl.comments.length === 0" ng-click="ctrl.deleteAll()">Delete All</button>
+			<div ng-repeat="object in ctrl.comments track by $index">
+				<ul>
+					<li>Rate: {{object.select}}</li>
+					<li>Email: {{object.email}}</li>
+					<li>Text: {{object.text}}</li>
+				</ul>
+			</div>
+		</comments>
 	</div>
 	<script src="../../node_modules/angular/angular.js"></script>
 	<script type="text/javascript" src="app.js"></script>
