@@ -8,7 +8,8 @@
 	font-family: 'Lato', sans-serif;
 }
 
-html, body {
+html,
+body {
 	min-width: 780px;
 }
 
@@ -18,7 +19,7 @@ header {
 }
 
 site-id {
-    display: inline-block;
+	display: inline-block;
 	margin: 5px;
 	padding: 10px;
 }
@@ -30,18 +31,17 @@ site-id * {
 }
 
 red {
-    padding: 10px;
+	padding: 10px;
 	color: red;
-	font-size: 2.5em;
 }
 
 gray {
-    padding: 10px;
+	padding: 10px;
 	color: hsl(0, 0%, 90%)
 }
 
 blue {
-    padding: 10px;
+	padding: 10px;
 	color: blue;
 }
 
@@ -62,17 +62,6 @@ menu item a {
 	background-color: hsl(0, 100%, 95%);
 }
 
-cover {
-	display: block;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
-	width: 100%;
-	height: 300px;
-	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/MontBlanc2c.jpg/1280px-MontBlanc2c.jpg");
-	
-}
-
 footer {
 	display: block;
 	width: 100%;
@@ -80,4 +69,44 @@ footer {
 	padding: 10px;
 	text-align: center;
 	color: hsl(0, 0%, 70%);
+}
+
+cover {
+	display: block;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	height: 300px;
+	
+	background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Niinsaare_j%C3%A4rv.jpg/1280px-Niinsaare_j%C3%A4rv.jpg");
+}
+
+panel {
+	display: block;
+	position: relative;
+	top: 80px;
+	margin: 40px auto;
+	width: 500px;
+	padding: 20px;
+	text-align: center;
+	background-color: hsla(0, 0%, 100%, 0.5);
+}
+
+panel h1 {
+	font-size: 4em;
+}
+
+panel a {
+	margin: 2px 10px;
+	padding: 5px;
+	background-color: hsl(0, 100%, 50%);
+	border: 1px solid hsl(0, 100%, 20%);
+	color: white;
+	text-decoration: none;
+}
+
+panel a.blue {
+	background-color: hsl(240, 100%, 50%);
+	color: white;
 }
