@@ -1,8 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Vibur');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 * {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
 }
+
+site-id {
+    display: inline-block;
+	margin: 5px;
+	padding: 10px;
+}
+
+site-id * {
+	font-family: 'Vibur', cursive;
+	font-size: 3em;
+	font-weight: bold;
+}
+
+red {
+    padding: 10px;
+	color: red;
+}
+
+green {
+    padding: 10px;
+	color: green;
+	font-size: 5em;
+}
+
+blue {
+    padding: 10px;
+	color: blue;
+}
+
 
 cover {
 	display: block;
