@@ -90,6 +90,7 @@ cover:after {
 	transition: opacity 4s ease;
 	background-color: black;
 	opacity: 0.25;
+	pointer-events: none;
 }
 
 .is-loading cover:after {
@@ -98,6 +99,8 @@ cover:after {
 
 panel {
 	display: block;
+	position: relative;
+	z-index: 1;
 	padding: 20px;
 }
 
