@@ -9,7 +9,10 @@
 		Enter a password : <input type="password" ng-model="password" />
 		<h1>Hash('{{password}}') = {{hash.compute(password)}}</h1>
 		<h1>Algo = {{hash.name}}</h1>
-		<script src="../../node_modules/jshashes/hashes.min.js"></script>
+		<select ng-init="hash.name = 'MD5'" ng-model="hash.name" ng-options="pair.value as pair.name for pair in hash.algos">
+		</select>
+
+		<script src="../../node_modules/jshashes/hashes.js"></script>
 		<script src="../../node_modules/angular/angular.js"></script>
 		<script type="text/javascript" src="app.js"></script>
 	</body>
