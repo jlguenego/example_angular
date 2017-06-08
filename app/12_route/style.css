@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
 * {
@@ -15,7 +15,13 @@ body {
 
 header {
 	display: block;
-	height: 100px;
+	padding: 0px 20px;
+	height: 90px;
+	background-color: black;
+}
+
+header * {
+	color: white;
 }
 
 site-id {
@@ -24,31 +30,16 @@ site-id {
 	padding: 10px;
 }
 
-site-id * {
-	font-family: 'Lobster', cursive;
-	font-size: 1.5em;
-	font-weight: bold;
-}
-
-red {
-	padding: 10px;
-	color: red;
-}
-
-gray {
-	padding: 10px;
-	color: hsl(0, 0%, 90%)
-}
-
-blue {
-	padding: 10px;
-	color: blue;
+site-id {
+	font-family: 'Pacifico', cursive;
+	font-size: 2em;
 }
 
 menu {
 	display: block;
 	float: right;
-	padding: 30px 30px;
+	padding: 20px 0px;
+	text-transform: uppercase;
 }
 
 menu item {
@@ -59,7 +50,8 @@ menu item {
 menu item a {
 	display: block;
 	padding: 15px;
-	background-color: hsl(0, 100%, 95%);
+	font-weight: bold;
+	text-decoration: none;
 }
 
 footer {
