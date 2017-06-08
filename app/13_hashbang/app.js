@@ -1,10 +1,9 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('myApp', ['ngRoute']);
+	var app = angular.module('myApp', ['ngRoute', 'jlg-css']);
 	app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 		$locationProvider
-			.html5Mode(false)
 			.hashPrefix('!');
 
 		$routeProvider
@@ -14,16 +13,20 @@
 			.when('/hello', {
 				templateUrl: 'hello.html'
 			})
-			.when('/:message', {
+			.when('/:msg', {
 				templateUrl: 'message.html',
 				controller: 'MessageController',
-				controllerAs: 'ctrl'
+				controllerAs: '$ctrl'
 			})
 			.otherwise({
 				redirectTo: '/'
 			});
 	}]);
-	app.controller('MessageController', ['$routeParams', function($routeParams) {
-		this.message = $routeParams.message;
-	}]);
+
+	app.controller('MessageController', function($routeParams, jlgCss) {
+		'ngInject';
+		this.message = $routeParams.msg;
+		var img = 'http://motivationsparkles.com/wp-content/uploads/2017/05/Why-are-we-so-alone.jpg'
+		jlgCss.onload(img);
+	});
 })();
