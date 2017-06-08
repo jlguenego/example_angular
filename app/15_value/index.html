@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>My First Value Recipe</title>
-	</head>
 
-	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
-		<h1>My First Value Recipe</h1>
-		Enter a password : <input type="password" ng-model="password" />
-		<h1>Hash('{{password}}') = {{hash.compute(password)}}</h1>
-		<h1>Algo = {{hash.name}}</h1>
-		<select ng-init="hash.name = 'MD5'" ng-model="hash.name" ng-options="pair.value as pair.name for pair in hash.algos">
-		</select>
+<head>
+	<title>My First Value Recipe</title>
+	<link rel="stylesheet" href="style.css">
+</head>
 
-		<script src="../../node_modules/jshashes/hashes.js"></script>
-		<script src="../../node_modules/angular/angular.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
+<body ng-app="myApp" ng-controller="MyController as my_ctrl">
+	<h1>My First Value Recipe</h1>
+	<panel>
+
+
+		<label>Enter a password : <br><input type="text" ng-model="password" /></label>
+		<label>Algo : <br>
+			<select ng-init="hash.name = 'MD5'" ng-model="hash.name" ng-options="pair.value as pair.name for pair in hash.algos"></select>
+		</label>
+		<br>
+		<code>Hash() :
+		{{hash.compute(password)}}
+	</code>
+
+	</panel>
+	<script src="../../node_modules/jshashes/hashes.js"></script>
+	<script src="../../node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+
 </html>
