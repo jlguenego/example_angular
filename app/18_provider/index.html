@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>My First Factory Recipe</title>
-	</head>
 
-	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
-		<h1>My First Value Recipe</h1>
-		Enter a login : <input type="text" ng-model="login" /><br/>
-		Enter a password : <input type="password" ng-model="password" />
-		<h1>PasswordHash = {{passwordHash}}</h1>
-		<h1>Algo = {{hash.name}}</h1>
-		<script src="../../node_modules/jshashes/hashes.min.js"></script>
-		<script src="../../node_modules/angular/angular.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
+<head>
+	<title>My First Provider Recipe</title>
+	<link rel="stylesheet" href="../15_value/style.css">
+</head>
+
+<body ng-app="myApp" ng-controller="MyController as my_ctrl">
+	<h1>My First Provider Recipe</h1>
+	<panel>
+		<label>Enter a login : <br>
+			<input type="text" ng-model="login" /></label>
+		<label>Enter a password : <br>
+			<input type="password" ng-model="password" /></label>
+		<br>
+		<code>
+			PasswordHash = {{passwordHash}}
+			<br>
+			Algo = {{hash.name}}
+		</code>
+	</panel>
+
+	<script src="../../node_modules/jshashes/hashes.min.js"></script>
+	<script src="../../node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+
 </html>
