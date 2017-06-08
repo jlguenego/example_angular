@@ -105,8 +105,7 @@ cover.hello {
 }
 
 cover.message {
-	background-image: none;
-	background-color: hsl(0, 0%, 30%);
+	background-image: url("http://motivationsparkles.com/wp-content/uploads/2017/05/Why-are-we-so-alone.jpg");
 }
 
 .is-loading cover:after {
@@ -148,4 +147,17 @@ panel a {
 
 panel a:hover {
 	background-color: hsla(0, 0%, 100%, 0.25);
+}
+
+@keyframes move-anim {
+	from {
+		transform: translate(-600px);
+	}
+	to {
+		transform: translate(0px);
+	}
+}
+
+.hello panel {
+	animation: move-anim 1s;
 }

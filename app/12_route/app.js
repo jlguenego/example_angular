@@ -23,7 +23,10 @@
 			});
 	}]);
 
-	app.controller('MessageController', ['$routeParams', function($routeParams) {
+	app.controller('MessageController', function($routeParams, jlgCss) {
+		'ngInject';
 		this.message = $routeParams.msg;
-	}]);
+		var img = 'http://motivationsparkles.com/wp-content/uploads/2017/05/Why-are-we-so-alone.jpg'
+		jlgCss.onload(img);
+	});
 })();
