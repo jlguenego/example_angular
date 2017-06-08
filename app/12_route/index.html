@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>My First View</title>
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body ng-app="myApp" class="is-loading">
-		<header>
-			<site-id>
-				Single Page Application
-			</site-id>
-			<menu>
-				<item><a href="#/">Accueil</a></item>
-				<item><a href="#/hello">Hello</a></item>
-				<item><a href="#/coucou">Coucou</a></item>
-			</menu>
-		</header>
-		<ng-view></ng-view>
-		<footer>
-			Editions Maïté ©2017
-		</footer>
-		<script src="../../node_modules/angular/angular.js"></script>
-		<script src="../../node_modules/angular-route/angular-route.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
+
+<head>
+	<title>My First View</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-app="myApp">
+	<header>
+		<site-id>
+			<a href="#/">Single Page Application</a>
+		</site-id>
+		<menu>
+			<item><a href="#/">Accueil</a></item>
+			<item><a href="#/hello">Hello</a></item>
+			<item><a href="#/coucou">Coucou</a></item>
+		</menu>
+	</header>
+	<ng-view></ng-view>
+	<footer>
+		&copy; Untitled Design: <a href="https://templated.co/">TEMPLATED</a>. Images <a href="https://unsplash.com/">Unsplash</a>
+	</footer>
+	<script src="../../node_modules/angular/angular.js"></script>
+	<script src="../../node_modules/angular-route/angular-route.js"></script>
+	<script src="app.js"></script>
+	<script src="jlg-css.js"></script>
+</body>
+
 </html>

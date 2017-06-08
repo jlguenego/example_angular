@@ -7,6 +7,10 @@
 	box-sizing: border-box;
 }
 
+a {
+	text-decoration: none;
+}
+
 html,
 body {
 	min-width: 780px;
@@ -27,12 +31,10 @@ header * {
 site-id {
 	display: inline-block;
 	padding-top: 15px;
-}
-
-site-id {
 	font-family: 'Pacifico', cursive;
 	font-size: 2em;
 }
+
 
 menu {
 	display: block;
@@ -50,7 +52,6 @@ menu item a {
 	display: block;
 	padding: 15px;
 	font-weight: bold;
-	text-decoration: none;
 }
 
 ng-view {
@@ -64,6 +65,14 @@ footer {
 	padding: 10px;
 	text-align: center;
 	color: hsl(0, 0%, 70%);
+}
+
+footer a {
+	color: hsl(0, 0%, 70%);
+}
+
+footer a:hover {
+	text-decoration: underline;
 }
 
 
@@ -91,6 +100,10 @@ cover:after {
 	background-color: black;
 	opacity: 0.25;
 	pointer-events: none;
+}
+
+cover.hello {
+	background-image: url("http://motivationsparkles.com/wp-content/uploads/2017/05/Why-are-we-so-alone.jpg");
 }
 
 .is-loading cover:after {
@@ -123,10 +136,9 @@ panel a {
 	color: white;
 	font-size: .8em;
 	font-weight: bold;
-	text-decoration: none;
 	text-transform: uppercase;
 	cursor: pointer;
-	transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
 }
 
 panel a:hover {
