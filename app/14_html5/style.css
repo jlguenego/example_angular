@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+}
+
+html,
+body {
+	min-width: 780px;
+	font-family: 'Lato', sans-serif;
+}
+
+header {
+	display: block;
+	padding: 0px 25px;
+	height: 90px;
+	background-color: black;
+}
+
+site-id {
+	display: inline-block;
+	padding-top: 15px;
+	font-family: 'Pacifico', cursive;
+	font-size: 2em;
+}
+
+
+menu {
+	display: block;
+	float: right;
+	padding: 20px 0px;
+	text-transform: uppercase;
+}
+
+menu item {
+	display: inline-block;
+	padding: 0px 5px;
+}
+
+menu item a {
+	display: block;
+	padding: 15px;
+	font-weight: bold;
+}
+
+ng-view {
+	display: block;
+}
+
+footer {
+	display: block;
+	width: 100%;
+	height: 40px;
+	padding: 10px;
+	text-align: center;
+	color: hsl(0, 0%, 70%);
+}
+
+footer a {
+	color: hsl(0, 0%, 70%);
+}
+
+footer a:hover {
+	text-decoration: underline;
+}
+
+
+cover {
+	display: block;
+	position: relative;
+	background-color: black;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	padding: 192px 0px 160px 0px;
+	background-image: url("http://businessasmission.com/wp-content/uploads/2015/04/above-the-clouds-845x321.jpeg");
+}
+
+cover:after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transition: opacity 4s ease;
+	background-color: black;
+	opacity: 0.25;
+	pointer-events: none;
+}
+
+cover.hello {
+	background-image: none;
+	background-color: hsl(0, 0%, 50%);
+}
+
+cover.message {
+	background-image: url("http://motivationsparkles.com/wp-content/uploads/2017/05/Why-are-we-so-alone.jpg");
+}
+
+.is-loading cover:after {
+	opacity: 1;
+}
+
+panel {
+	display: block;
+	position: relative;
+	z-index: 1;
+	padding: 20px;
+}
+
+panel h1, p {
+	margin: 0 0 1em 0;
+	padding: 0;
+	font-size: 2em;
+	letter-spacing: 3px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+panel p {
+	font-size: 1.5em;
+}
+
+panel a {
+	display: inline-block;
+	margin: 2px 10px;
+	padding: 15px 30px;
+	border: 1px solid white;
+	box-shadow: inset 0 0 0 2px #fff;
+	font-size: .8em;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+panel a:hover {
+	background-color: hsla(0, 0%, 100%, 0.25);
+}
+
+@keyframes move-anim {
+	from {
+		transform: translate(-600px);
+	}
+	to {
+		transform: translate(0px);
+	}
+}
+
+.hello panel {
+	animation: move-anim 1s;
+}
