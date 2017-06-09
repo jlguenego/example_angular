@@ -6,17 +6,21 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 
-<body ng-app="myApp" ng-controller="MyController as my_ctrl">
+<body ng-app="myApp" ng-controller="MyController as $ctrl">
 	<h1>My First Value Recipe</h1>
 	<panel>
-		<label>Enter a password : <br><input type="text" ng-model="password" /></label>
+		<label>Enter a password : <br><input type="text" ng-model="$ctrl.password" /></label>
 		<label>Algo : <br>
-			<select ng-init="hash.name = 'MD5'" ng-model="hash.name" ng-options="pair.value as pair.name for pair in hash.algos"></select>
+			<select 
+				ng-init="$ctrl.hash.name = 'MD5'" 
+				ng-model="$ctrl.hash.name" 
+				ng-options="pair.value as pair.name for pair in $ctrl.hash.algos">
+			</select>
 		</label>
 		<br>
 		<code>
 			Hash() :
-			{{hash.compute(password)}}
+			{{$ctrl.hash.compute($ctrl.password)}}
 		</code>
 	</panel>
 

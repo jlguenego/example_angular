@@ -14,7 +14,7 @@
 		]
 	});
 
-	app.controller('MyController', ['hash', '$scope', function(hash, $scope) {
-		$scope.hash = hash;
+	app.controller('MyController', ['hash', function(hash) {
+		this.hash = hash;
 	}]);
 })();
