@@ -29,11 +29,12 @@
 
 	app.controller('MyController', ['passwordHash', 'hash', '$scope', function(passwordHash, hash, $scope) {
 		console.log('passwordHash', passwordHash);
-		this.hash = hash;
+		var ctrl = this;
+		ctrl.hash = hash;
 
-		$scope.$watch('password + login', function() {
-			$scope.passwordHash = passwordHash.hash($scope.login, $scope.password);
-		});
+		$scope.$watch('$ctrl', function() {
+			ctrl.passwordHash = passwordHash.hash(ctrl.login, ctrl.password);
+		}, true);
 
 	}]);
 })();

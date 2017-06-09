@@ -11,18 +11,17 @@
 	<panel>
 		<label for="">Enter a login : <br>
 		<input type="text" ng-model="$ctrl.login" /></label>
-		<label>Algo : <br>
-			<select ng-init="hash.name = 'MD5'"
-				ng-model="hash.name" 
-				ng-options="pair.value as pair.name for pair in hash.algos"></select>
-		</label>
 		<label for="">Enter a password : <br>
-		<input type="password" ng-model="password" /></label>
+		<input type="password" ng-model="$ctrl.password" /></label>
+
+		<label>Algo : <br>
+			<select ng-init="$ctrl.hash.name = 'MD5'"
+				ng-model="$ctrl.hash.name" 
+				ng-options="pair.value as pair.name for pair in $ctrl.hash.algos"></select>
+		</label>
 		<br>
 		<code>
-			PasswordHash = {{passwordHash}}
-			<br>
-			Algo = {{hash.name}}
+			PasswordHash = {{$ctrl.passwordHash}}
 		</code>
 	</panel>
 
