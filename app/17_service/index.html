@@ -6,18 +6,22 @@
 	<link rel="stylesheet" href="../15_value/style.css">
 </head>
 
-<body ng-app="myApp" ng-controller="MyController as my_ctrl">
+<body ng-app="myApp" ng-controller="MyController as $ctrl">
 	<h1>My First Service Recipe</h1>
 	<panel>
-		<label>Enter a login : <br>
-		<input type="text" ng-model="login" /></label>
-		<label>Enter a password : <br>
-		<input type="password" ng-model="password" /></label>
+		<label for="">Enter a login : <br>
+		<input type="text" ng-model="$ctrl.login" /></label>
+		<label for="">Enter a password : <br>
+		<input type="password" ng-model="$ctrl.password" /></label>
+
+		<label>Algo : <br>
+			<select ng-init="$ctrl.hash.name = 'MD5'"
+				ng-model="$ctrl.hash.name" 
+				ng-options="pair.value as pair.name for pair in $ctrl.hash.algos"></select>
+		</label>
 		<br>
 		<code>
-			PasswordHash = {{passwordHash}}
-			<br>
-			Algo = {{hash.name}}
+			PasswordHash = {{$ctrl.passwordHash}}
 		</code>
 	</panel>
 
