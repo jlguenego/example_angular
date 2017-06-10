@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: {
-		bundle: './app/35_carousel/app.js'
+		'35_carousel': './app/35_carousel/app.js'
 	},
 	output: {
 		filename: '[name].js',
@@ -18,18 +18,9 @@ module.exports = {
 			test: /\.js$/,
 			exclude: /node_modules/,
 			use: [{
-				loader: 'ng-annotate-loader'
+				loader: 'ng-annotate-loader',
 			}, {
-				loader: 'babel-loader'
-			}]
-		}, {
-			test: /\.ts$/,
-			exclude: /node_modules/,
-			use: [{
-				loader: 'awesome-typescript-loader',
-				options: {
-					configFileName: path.resolve(__dirname, './src/tsconfig.json')
-				}
+				loader: 'babel-loader',
 			}]
 		}, {
 			test: /\.css$/,
@@ -46,15 +37,63 @@ module.exports = {
 		}, {
 			test: /\.html$/,
 			use: [{
-				loader: 'ngtemplate-loader',
-				options: {
-					relativeTo: 'app'
-				}
-			}, {
 				loader: 'html-loader',
 				options: {
-					attrs: 'img-svg:src',
-					root: path.resolve('./app')
+					minimize: true
+				}
+			}],
+		}, {
+			test: /\.jpg$/,
+			use: [{
+				loader: 'file-loader',
+				options: {
+					name: '[path][name].[ext]',
+					publicPath: './wpk/'
+				}
+			}]
+		}, {
+			test: /\.png$/,
+			use: ["url-loader?mimetype=image/png"]
+		}, {
+			test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+			use: [{
+				loader: 'url-loader',
+				options: {
+					name: '[name].[ext]',
+					// publicPath: './wpk/',
+					limit: 10000,
+					mimetype: 'application/font-woff'
+				}
+			}]
+		}, {
+			test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+			use: [{
+				loader: 'url-loader',
+				options: {
+					name: '[name].[ext]',
+					// publicPath: './wpk/',
+					limit: 10000,
+					mimetype: 'application/octet-stream'
+				}
+			}]
+		}, {
+			test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+			use: [{
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+					publicPath: './wpk/'
+				}
+			}]
+		}, {
+			test: /(fontawesome-webfont|glyphicons-halflings-regular)\.svg(\?v=\d+\.\d+\.\d+)?$/,
+			use: [{
+				loader: 'url-loader',
+				options: {
+					name: '[name].[ext]',
+					// publicPath: './wpk/',
+					limit: 10000,
+					mimetype: 'image/svg+xml'
 				}
 			}]
 		}]
@@ -62,8 +101,11 @@ module.exports = {
 	devtool: 'source-map',
 	plugins: [
 		new ExtractTextPlugin('[name].css'),
-		// new webpack.optimize.CommonsChunkPlugin({
-		// 	name: ['02_javascript', '03_javascript_callback']
-		// }),
+		// comment this if you do not need jQuery.
+		new webpack.ProvidePlugin({
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.jQuery': 'jquery'
+		})
 	]
 }

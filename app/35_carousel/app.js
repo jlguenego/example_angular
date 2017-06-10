@@ -1,13 +1,18 @@
-(function() {
-	'use strict';
+'use strict';
+import 'font-awesome/css/font-awesome.css';
 
-	var app = angular.module('main', ['my-carousel']);
+import './style.scss';
 
-	app.controller('BodyCtrl', function BodyCtrl() {
-		var ctrl = this;
-		ctrl.click = function() {
-			window.alert('Bravo pour le click !');
-		};
-	});
+import 'angular';
 
-})();
+import './my-carousel/my-carousel.js';
+
+
+var app = angular.module('main', ['my-carousel']);
+
+app.controller('BodyCtrl', function BodyCtrl() {
+	var ctrl = this;
+	ctrl.click = function() {
+		window.alert('Bravo pour le click !');
+	};
+});
