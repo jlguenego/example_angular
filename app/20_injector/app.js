@@ -12,12 +12,10 @@
 	var $injector = angular.injector(['ng']);
 	console.log('$injector', $injector);
 
-	$injector.invoke(function() {
-		var ctrl = new(function PseudoController() {})();
-		var $log = $injector.get('$log');
-		var $rootScope = $injector.get('$rootScope');
-		console.log('$rootScope', $rootScope);
-		$rootScope.$ctrl = ctrl;
+	function PseudoCtrl(helloLocal, $injector, $log) {
+		var ctrl = this;
+
+		console.log('helloLocal', helloLocal);
 
 		ctrl.myService = 'blur';
 		ctrl.increment = function() {
@@ -60,6 +58,10 @@
 		ctrl.blur = $injector.get('blur');
 		ctrl.shadow = $injector.get('shadow');
 
+		var $rootScope = $injector.get('$rootScope');
+		console.log('$rootScope', $rootScope);
+		$rootScope.$ctrl = ctrl;
+
 		$rootScope.$watch('$ctrl', function() {
 			var blur = (Number(ctrl.blur.value) / 1);
 			console.log('blur', blur);
@@ -71,12 +73,24 @@
 				ctrl.style['text-shadow'] = ctrl.shadow.value + 'px ' + ctrl.shadow.value + 'px 3px hsl(0, 0%, 50%)'
 			}
 		}, true);
+	}
+
+	$injector.invoke(function() {
+		var pseudoCtrl = $injector.instantiate(PseudoCtrl, {helloLocal: 'hey I am a local injection'});
+		console.log('pseudoCtrl', pseudoCtrl);
+		var injections = $injector.annotate(PseudoCtrl);
+		console.log('injections', injections);
+
+		console.log('list of used modules: ', $injector.modules);
+
+
 
 		// compile but 3 seconds after just for fun...
 		var $timeout = $injector.get('$timeout');
 
 		$timeout(function() {
 			var $compile = $injector.get('$compile');
+			var $rootScope = $injector.get('$rootScope');
 			var $rootElement = angular.element(document.getElementsByTagName('body')[0]);
 			$compile($rootElement)($rootScope);
 		}, 3000);
