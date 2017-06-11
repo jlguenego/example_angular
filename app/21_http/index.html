@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<head>
 
-		<title>My First $http use</title>
-		<link rel="stylesheet" href="../../node_modules/angular/angular-csp.css">
-	</head>
+<head>
+	<title>My First $http use</title>
+	<link rel="stylesheet" href="../../node_modules/angular/angular-csp.css">
+	<link rel="stylesheet" href="style.css">
+</head>
 
-	<body ng-app="myApp" ng-controller="MyController as my_ctrl">
-		<h1>My First $http use</h1>
-		Voila du contenu AJAX :
-		<span ng-cloak>{{content}}</span>
+<body ng-app="main" ng-controller="MyController as $ctrl">
+	<h1>My First $http use</h1>
+	<p>Click the start button to do the AJAX request and get the content.</p>
+	<button ng-click="$ctrl.start()">Start</button><button ng-click="$ctrl.reset()">Reset</button>
+	<content ng-cloak>{{$ctrl.content}}</content>
 
-		<script src="../../node_modules/angular/angular.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-	</body>
+	<script src="../../node_modules/angular/angular.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+
 </html>
