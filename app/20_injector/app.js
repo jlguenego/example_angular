@@ -8,6 +8,7 @@
 	app.value('shadow', { value: 0 });
 
 	// create an injector and directly load the module list.
+	// we do not use ng-app neitheir angular.bootstrap... !!! ;)
 	var $injector = angular.injector(['ng']);
 	console.log('$injector', $injector);
 
@@ -71,7 +72,7 @@
 			}
 		}, true);
 
-		// compile but 3 seconds after...
+		// compile but 3 seconds after just for fun...
 		var $timeout = $injector.get('$timeout');
 
 		$timeout(function() {
@@ -80,11 +81,6 @@
 			$compile($rootElement)($rootScope);
 		}, 3000);
 
-
 	});
-
-
-
-
 
 })();
