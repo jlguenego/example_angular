@@ -12,12 +12,12 @@
 	<p>Note: install webpack globally and run it to see the compiled file.
 		<br/><br/>
 		<label>New Ticket name: <input type="text" placeholeder="Ex: John" ng-model="$ctrl.newTicket.name" /></label>
-		<button ng-click="$ctrl.create()">Create</button>
+		<button jlg-click-and-disable="$ctrl.create()">Create</button>
 		<br/><br/>
 	</p>
 	<fieldset>
 
-		<button ng-click="$ctrl.query()">Rafraichir la liste des tickets</button>&nbsp;<button ng-click="$ctrl.empty()">Delete All</button><br/>
+		<button jlg-click-and-disable="$ctrl.query()">Rafraichir la liste des tickets</button>&nbsp;<button jlg-click-and-disable="$ctrl.empty()">Delete All</button><br/>
 
 		<table>
 			<tr>
@@ -31,15 +31,15 @@
 				<td>{{ticket.id}}</td>
 				<td>{{ticket.name}}</td>
 				<td><input type="text" ng-model="ticket.newName" /></td>
-				<td><button ng-click="$ctrl.update(ticket)">Update</button></td>
-				<td><button ng-click="$ctrl.delete(ticket)">Delete</button></td>
+				<td><button jlg-click-and-disable="$ctrl.update(ticket)">Update</button></td>
+				<td><button jlg-click-and-disable="$ctrl.delete(ticket)">Delete</button></td>
 			</tr>
 		</table>
 	</fieldset>
 
 	<fieldset ng-init="id = 2">
 		<input type="number" ng-model="id" /><br/>
-		<button ng-click="$ctrl.retrieve(id)">Retrieve the ticket</button><br/>
+		<button jlg-click-and-disable="$ctrl.retrieve(id)">Retrieve the ticket</button><br/>
 		<br/>
 		<div ng-cloak>Retrieve Ticket: {{$ctrl.ticket}}</div>
 	</fieldset>

@@ -12,33 +12,34 @@ class MyController {
 		this.ticketResource = $resource('ws/tickets/:id', {
 			id: '@id'
 		}, {
-				update: {
-					method: 'PUT'
-				}
-			});
+			update: {
+				method: 'PUT'
+			}
+		});
 		this.query();
 	}
 
 	query() {
-		this.ticketResource.query().$promise.then((tickets) => {
+		console.log('appel query en cours...');
+		return this.ticketResource.query().$promise.then((tickets) => {
 			this.tickets = tickets;
 		}).catch((error) => {
 			console.error('error', error);
 		});
-		console.log('appel query en cours...');
 	}
 
 	create() {
-		this.ticketResource.save(this.newTicket).$promise.then(() => {
+		console.log('appel create en cours...');
+		return this.ticketResource.save(this.newTicket).$promise.then(() => {
 			this.query();
 		}).catch((error) => {
 			console.error('error', error);
 		});
-		console.log('appel create en cours...');
 	}
 
 	retrieve(id) {
-		this.ticketResource.get({
+		console.log('appel retrieve en cours...');
+		return this.ticketResource.get({
 			id
 		}).$promise.then((ticket) => {
 			console.log('ticket', ticket);
@@ -46,11 +47,11 @@ class MyController {
 		}).catch((error) => {
 			console.error('error', error);
 		});
-		console.log('appel retrieve en cours...');
 	}
 
 	update(ticket) {
-		this.ticketResource.update({
+		console.log('appel update en cours...');
+		return this.ticketResource.update({
 			id: ticket.id,
 			name: ticket.newName
 			// tslint:disable-next-line:no-shadowed-variable
@@ -61,11 +62,11 @@ class MyController {
 		}).catch((error) => {
 			console.error('error', error);
 		});
-		console.log('appel update en cours...');
 	}
 
 	delete(ticket) {
-		this.ticketResource.delete({
+		console.log('appel delete en cours...');
+		return this.ticketResource.delete({
 			id: ticket.id
 			// tslint:disable-next-line:no-shadowed-variable
 		}).$promise.then((ticket) => {
@@ -75,18 +76,34 @@ class MyController {
 		}).catch((error) => {
 			console.error('error', error);
 		});
-		console.log('appel delete en cours...');
 	}
 
 	empty(d) {
-		this.ticketResource.delete().$promise.then(() => {
+		console.log('appel delete all en cours...');
+		return this.ticketResource.delete().$promise.then(() => {
 			this.query();
 		}).catch((error) => {
 			console.error('error', error);
 		});
-		console.log('appel delete all en cours...');
 	}
 
 }
 
 app.controller('MyController', MyController);
+
+app.directive('jlgClickAndDisable', function() {
+	return {
+		scope: {
+			jlgClickAndDisable: '&'
+		},
+		controller: function($scope, $element) {
+			$element.bind('click', function() {
+				console.log('disable the button');
+				$element.prop('disabled', true);
+				$scope.jlgClickAndDisable().finally(function() {
+					$element.prop('disabled', false);
+				})
+			});
+		}
+	};
+});
