@@ -4,14 +4,17 @@
 <head>
 	<title>My First $resource use</title>
 	<link rel="stylesheet" href="../../node_modules/angular/angular-csp.css" />
+	<link rel="stylesheet" href="wpk/22_resource.css">
 </head>
 
 <body ng-cloak ng-csp ng-app="myApp" ng-controller="MyController as $ctrl">
 	<h1>My First $resource use</h1>
-	<p>Note: install webpack globally and run it to see the compiled file.</p>
-	<br/>
-	<input type="text" ng-model="$ctrl.newTicket.name" /><button ng-click="$ctrl.create()">Create a new ticket</button>
-	<br/><br/>
+	<p>Note: install webpack globally and run it to see the compiled file.
+		<br/><br/>
+		<label>New Ticket name: <input type="text" placeholeder="Ex: John" ng-model="$ctrl.newTicket.name" /></label>
+		<button ng-click="$ctrl.create()">Create</button>
+		<br/><br/>
+	</p>
 	<fieldset>
 
 		<button ng-click="$ctrl.query()">Rafraichir la liste des tickets</button>&nbsp;<button ng-click="$ctrl.empty()">Delete All</button><br/>
@@ -40,7 +43,7 @@
 		<br/>
 		<div ng-cloak>Retrieve Ticket: {{$ctrl.ticket}}</div>
 	</fieldset>
-	<script type="text/javascript" src="wpk/22_resource.js"></script>
+	<script src="wpk/22_resource.js"></script>
 </body>
 
 </html>

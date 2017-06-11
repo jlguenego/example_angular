@@ -1,3 +1,5 @@
+import './style.scss';
+
 import 'angular';
 import 'angular-resource';
 

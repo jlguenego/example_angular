@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Roboto Slab', serif;
+    box-sizing: border-box;
+}
+
+h1 {
+    padding: 20px;
+    background: linear-gradient(45deg, hsl(240, 100%, 80%), hsl(180, 100%, 80%), hsl(240, 100%, 80%));
+    text-align: center;
+}
+
+p {
+    padding: 20px;
+}
+
+fieldset {
+    margin: 20px;
+}
+
+button, input {
+    height: 30px;
+    margin: 5px 5px;
+}
+
+button {
+    padding: 0px 10px;
+}
