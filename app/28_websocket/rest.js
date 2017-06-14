@@ -4,6 +4,14 @@ const express = require('express');
 const router = express.Router();
 
 let io;
+
+let tickets = [
+	{ name: 'coucou', id: 1 },
+	{ name: 'hello', id: 2 }
+];
+
+let id = tickets.length + 1;
+
 module.exports = function(myIo) {
 	io = myIo;
 	return router;
@@ -17,11 +25,7 @@ router.use((req, res, next) => {
 	next();
 });
 
-let tickets = [
-	{ name: 'coucou', id: 1 },
-	{ name: 'hello', id: 2 }
-];
-let id = tickets.length + 1;
+
 
 router.get('/tickets', (req, res, next) => {
 	res.json(tickets);
@@ -31,6 +35,7 @@ router.delete('/tickets', (req, res, next) => {
 	tickets = [];
 	id = 1;
 	res.json({});
+	io.emit('ticketChannel', 'refresh');
 });
 
 // Creation
@@ -67,6 +72,7 @@ router.put('/tickets/:id', (req, res, next) => {
 	ticket.name = req.body.name;
 	console.log('ticket', ticket);
 	res.json(ticket);
+	io.emit('ticketChannel', 'refresh');
 });
 
 router.delete('/tickets/:id', (req, res, next) => {
@@ -82,4 +88,5 @@ router.delete('/tickets/:id', (req, res, next) => {
 	});
 	tickets.splice(index, 1);
 	res.json(ticket);
+	io.emit('ticketChannel', 'refresh');
 });
