@@ -1,4 +1,3 @@
-
 'use strict';
 
 const express = require('express'); // charge ExpressJS
@@ -25,4 +24,3 @@ app.use(function (req, res, next) {
 app.listen(8000, function () {
 	console.log('server started on port 8000');
 });
-

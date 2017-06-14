@@ -21,6 +21,10 @@ h1 {
 	color: white;
 }
 
+h2 {
+	margin: 20px 0px;
+}
+
 panel {
 	display: block;
 	padding: 20px;
@@ -46,4 +50,12 @@ code {
 	background-color: hsl(240, 20%, 90%);
 	font-size: 1.5em;
 	word-wrap: break-word;
+}
+
+ul {
+	margin-left: 10px;
+}
+
+ul li {
+	margin-left: 10px;
 }
