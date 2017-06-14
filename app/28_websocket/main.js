@@ -8,9 +8,7 @@ const io = require('socket.io-client/dist/socket.io.js');
 var socket = io();
 console.log('socket', socket);
 
-socket.on('ticketChannel', function(data) {
-	console.log('Message recieved:', data);
-});
+
 
 
 const app = angular.module('myApp', ['ngResource']);
@@ -27,6 +25,11 @@ class MyController {
 			}
 		});
 		this.query();
+
+		socket.on('ticketChannel', (data) => {
+			console.log('Message recieved:', data);
+			this.query();
+		});
 	}
 
 	query() {
@@ -40,9 +43,7 @@ class MyController {
 
 	create() {
 		console.log('appel create en cours...');
-		return this.ticketResource.save(this.newTicket).$promise.then(() => {
-			this.query();
-		}).catch((error) => {
+		return this.ticketResource.save(this.newTicket).$promise.catch((error) => {
 			console.error('error', error);
 		});
 	}
@@ -68,7 +69,6 @@ class MyController {
 		}).$promise.then((ticket) => {
 			console.log('ticket', ticket);
 			this.ticket = ticket;
-			this.query();
 		}).catch((error) => {
 			console.error('error', error);
 		});
@@ -82,7 +82,6 @@ class MyController {
 		}).$promise.then((ticket) => {
 			console.log('ticket', ticket);
 			this.ticket = ticket;
-			this.query();
 		}).catch((error) => {
 			console.error('error', error);
 		});
@@ -90,9 +89,7 @@ class MyController {
 
 	empty(d) {
 		console.log('appel delete all en cours...');
-		return this.ticketResource.delete().$promise.then(() => {
-			this.query();
-		}).catch((error) => {
+		return this.ticketResource.delete().$promise.catch((error) => {
 			console.error('error', error);
 		});
 	}
