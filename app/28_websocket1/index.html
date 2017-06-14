@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Socket.IO chat</title>
+		<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font: 13px Helvetica, Arial; }
+form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+#tampon { height: 50px; }
+		</style>
+	</head>
+
+	<body>
+		<ul id="messages"></ul>
+		<div id="tampon"></div>
+		<form action="">
+			<input id="userMessage" autocomplete="off" /><button>Send</button>
+		</form>
+
+		<script src="../../node_modules/jquery/dist/jquery.js"></script>
+		<script src="../../node_modules/socket.io-client/dist/socket.io.js"></script>
+		<script>
+var socket = io();
+$('form').submit(function(){
+	socket.emit('chat_message', $('#userMessage').val());
+	$('#userMessage').val('');
+	return false;
+});
+
+socket.on('chat_message', function(data) {
+	console.log('Message recieved:', data);
+	$('#messages').append($('<li>').text(data));
+	$('html, body').animate({
+		scrollTop: $("#tampon").offset().top
+	}, 0);
+});
+		</script>
+	</body>
+</html>

@@ -3,6 +3,12 @@ import './style.scss';
 import 'angular';
 import 'angular-resource';
 
+const io = require('socket.io-client/dist/socket.io.js');
+
+var socket = io();
+console.log('socket', socket);
+
+
 const app = angular.module('myApp', ['ngResource']);
 
 class MyController {
