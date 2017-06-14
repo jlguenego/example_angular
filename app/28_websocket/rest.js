@@ -2,7 +2,14 @@
 
 const express = require('express');
 const router = express.Router();
-module.exports = router;
+
+let io;
+module.exports = function(myIo) {
+	io = myIo;
+	return router;
+};
+
+
 
 // all webservices are slow to show when they are called and the async aspect.
 router.use((req, res, next) => {
@@ -34,6 +41,7 @@ router.post('/tickets', (req, res, next) => {
 	tickets.push(ticket);
 	res.status(201);
 	res.json(ticket);
+	io.emit('ticketChannel', 'refresh');
 });
 
 router.get('/tickets/:id', (req, res, next) => {

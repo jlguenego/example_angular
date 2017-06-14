@@ -8,28 +8,12 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('./webpack.config.js');
 
-const ws = require('./rest.js');
-
 const app = express();
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-io.on('connection', function(socket) {
-	console.log('User connected');
-	socket.emit('chat_message', '[Server] Welcome');
-	socket.broadcast.emit('chat_message', '[Server] New user connected!');
-
-	socket.on('chat_message', function(data) {
-		console.log('Message:', data);
-		io.emit('chat_message', data);
-	});
-
-	socket.on('disconnect', function() {
-		console.log('User disconnected');
-		socket.broadcast.emit('chat_message', '[Server] User disconnection');
-	});
-});
+const ws = require('./rest.js')(io);
 
 // accept the POST, PUT request body as a json object.
 app.use(bodyParser.json());

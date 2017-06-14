@@ -8,6 +8,10 @@ const io = require('socket.io-client/dist/socket.io.js');
 var socket = io();
 console.log('socket', socket);
 
+socket.on('ticketChannel', function(data) {
+	console.log('Message recieved:', data);
+});
+
 
 const app = angular.module('myApp', ['ngResource']);
 
