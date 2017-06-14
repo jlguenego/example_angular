@@ -12,17 +12,20 @@
 	<h1>My First Injector</h1>
 
 	<block>
-		<select ng-model="$ctrl.myService">
-			<option value="blur">Blur</option>
-			<option value="grayscale">Gray scale</option>
-			<option value="shadow">Shadow</option>
-			<option value="hueRotate">Hue rotate</option>
-		</select><i class="fa fa-sort-desc select-dropdown" aria-hidden="true"></i>
+		<my-select>
+			<select ng-model="$ctrl.myService">
+				<option value="blur">Blur</option>
+				<option value="grayscale">Gray scale</option>
+				<option value="shadow">Shadow</option>
+				<option value="hueRotate">Hue rotate</option>
+			</select>
+			<i class="fa fa-sort-desc select-dropdown" aria-hidden="true"></i>
+		</my-select>
 		<button ng-click="$ctrl.decrement()"><i class="fa fa-minus" aria-hidden="true"></i></button>
 		<value><span ng-cloak>{{$ctrl.getValue()}}</span></value>
 		<button ng-click="$ctrl.increment()"><i class="fa fa-plus" aria-hidden="true"></i></button>
 	</block>
-	
+
 
 	<content ng-style="$ctrl.style">
 		Text to be decorated.

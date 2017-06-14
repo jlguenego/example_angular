@@ -1,36 +1,37 @@
-(function() {
-	'use strict';
+'use strict';
 
-	var express = require('express');
-	var app = express();
-	var http = require('http').Server(app);
-	var io = require('socket.io')(http);
+const bodyParser = require('body-parser');
+const express = require('express');
+const serveIndex = require('serve-index');
 
-	var root = __dirname + '/../..';
-	var port = 8000;
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackConfig = require('./webpack.config.js');
 
-	var serveIndex = require('serve-index');
+const ws = require('./rest.js');
 
-	app.use(express.static(root + '/'));
-	app.use('/', serveIndex(root + '/'));
+const app = express();
 
-	io.on('connection', function(socket) {
-		console.log('User connected');
-		socket.emit('chat_message', '[Server] Welcome');
-		socket.broadcast.emit('chat_message', '[Server] New user connected!');
+// accept the POST, PUT request body as a json object.
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-		socket.on('chat_message', function(data) {
-			console.log('Message:', data);
-			io.emit('chat_message', data);
-		});
+// webpack developement short loop.
+webpackConfig.output.path = '/';
+const compiler = webpack(webpackConfig);
+app.use('/app/28_websocket/wpk/', webpackDevMiddleware(compiler, {}));
 
-		socket.on('disconnect', function() {
-			console.log('User disconnected');
-			socket.broadcast.emit('chat_message', '[Server] User disconnection');
-		});
-	});
+app.use('/app/28_websocket/ws', ws);
 
-	http.listen(port, function() {
-		console.log('Listening websocket on port ' + port);
-	});
-})();
+app.use(express.static('.'));
+app.use(serveIndex('.', { icons: true }));
+
+app.use((req, res, next) => {
+	console.log('404: Page not Found', req.url);
+	next();
+});
+
+app.listen(8000, () => {
+	console.log('server started on port 8000');
+});
+

@@ -3,6 +3,9 @@
 
 	var app = angular.module('ng');
 
+	var info = app.info();
+	info.hello = 'world';
+
 	app.value('grayscale', { value: 0 });
 	app.value('blur', { value: 0 });
 	app.value('shadow', { value: 0 });
@@ -75,21 +78,22 @@
 		}, true);
 	}
 
-	$injector.invoke(function() {
-		var pseudoCtrl = $injector.instantiate(PseudoCtrl, {helloLocal: 'hey I am a local injection'});
+	$injector.invoke(function($compile, $timeout) {
+		'ngInject';
+		var pseudoCtrl = $injector.instantiate(PseudoCtrl, { helloLocal: 'hey I am a local injection' });
 		console.log('pseudoCtrl', pseudoCtrl);
 		var injections = $injector.annotate(PseudoCtrl);
 		console.log('injections', injections);
 
 		console.log('list of used modules: ', $injector.modules);
 
-
+		for (var p in $injector.modules) {
+			var info = $injector.modules[p].info();
+			console.log('info', info);
+		}
 
 		// compile but 3 seconds after just for fun...
-		var $timeout = $injector.get('$timeout');
-
 		$timeout(function() {
-			var $compile = $injector.get('$compile');
 			var $rootScope = $injector.get('$rootScope');
 			var $rootElement = angular.element(document.getElementsByTagName('body')[0]);
 			$compile($rootElement)($rootScope);
