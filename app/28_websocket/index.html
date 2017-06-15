@@ -13,7 +13,11 @@
 	<panel><button class="primary" ng-click="$ctrl.createDialogBox.open()"><i class="fa fa-plus" aria-hidden="true"></i> New Ticket</button></panel>
 	<fieldset>
 
-		<button jlg-click-and-disable="$ctrl.query()"><i class="fa fa-refresh" aria-hidden="true"></i></button>&nbsp;<button class="danger" jlg-click-and-disable="$ctrl.empty()"><i class="fa fa-trash" aria-hidden="true"></i> Delete All</button><br/>
+		<button jlg-click-and-disable="$ctrl.query()"><i class="fa fa-refresh" aria-hidden="true"></i></button>&nbsp;<button class="danger" jlg-click-and-disable="$ctrl.empty()"><i class="fa fa-trash" aria-hidden="true"></i> Delete All</button>
+		<span>
+			filtre: <input type="text" ng-model="$ctrl.filter">
+		</span>
+		<br/>
 
 		<table>
 			<tr>
@@ -23,7 +27,7 @@
 				<th>Update</th>
 				<th>Delete</th>
 			</tr>
-			<tr ng-repeat="ticket in $ctrl.tickets track by $index">
+			<tr ng-repeat="ticket in $ctrl.tickets | filter:$ctrl.filter track by $index">
 				<td>{{ticket.id}}</td>
 				<td>{{ticket.name}}</td>
 				<td><input type="text" ng-model="ticket.newName" /></td>
