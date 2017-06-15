@@ -10,7 +10,7 @@
 <body ng-cloak ng-csp ng-app="myApp" ng-controller="MyController as $ctrl">
 	<h1>My First $resource use</h1>
 	<p>Note: install webpack globally and run it to see the compiled file.</p>
-	<panel><button class="primary" ng-click="$ctrl.createDialogBox.open()">New Ticket</button></panel>
+	<panel><button class="primary" ng-click="$ctrl.createDialogBox.open()"><i class="fa fa-plus" aria-hidden="true"></i> New Ticket</button></panel>
 	<dialog-box id="createDialogBox">
 		<form name="form" ng-submit="$ctrl.doClick('#createTicketButton')">
 			<label>New Ticket name: <input name="name" type="text" placeholder="Ex: John" ng-model="$ctrl.newTicket.name" autofocus/></label>
@@ -21,7 +21,7 @@
 	</dialog-box>
 	<fieldset>
 
-		<button jlg-click-and-disable="$ctrl.query()">Rafraichir la liste des tickets</button>&nbsp;<button jlg-click-and-disable="$ctrl.empty()">Delete All</button><br/>
+		<button jlg-click-and-disable="$ctrl.query()"><i class="fa fa-refresh" aria-hidden="true"></i></button>&nbsp;<button class="danger" jlg-click-and-disable="$ctrl.empty()"><i class="fa fa-trash" aria-hidden="true"></i> Delete All</button><br/>
 
 		<table>
 			<tr>
@@ -35,8 +35,8 @@
 				<td>{{ticket.id}}</td>
 				<td>{{ticket.name}}</td>
 				<td><input type="text" ng-model="ticket.newName" /></td>
-				<td><button jlg-click-and-disable="$ctrl.update(ticket)">Update</button></td>
-				<td><button jlg-click-and-disable="$ctrl.delete(ticket)">Delete</button></td>
+				<td><button ng-disabled="!ticket.newName" jlg-click-and-disable="$ctrl.update(ticket)">Update</button></td>
+				<td><button class="danger" jlg-click-and-disable="$ctrl.delete(ticket)">Delete</button></td>
 			</tr>
 		</table>
 	</fieldset>
