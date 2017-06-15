@@ -25,6 +25,8 @@ class DialogBox {
 	open() {
 		this.elt.style.display = 'block';
 		// this.elt.css('display', 'block');
+		console.log('focus');
+		this.elt.querySelector('input').focus();
 	}
 
 	close() {
@@ -47,7 +49,8 @@ class DialogBox {
 class MyController {
 	/* @ngInject */
 
-	constructor($resource) {
+	constructor($resource, $q) {
+		this.$q = $q;
 		this.ticketResource = $resource('ws/tickets/:id', {
 			id: '@id'
 		}, {
@@ -85,6 +88,12 @@ class MyController {
 			this.newTicket = {};
 		}).catch((error) => {
 			console.error('error', error);
+		});
+	}
+
+	createAndClose() {
+		return this.create().then(() => {
+			this.createDialogBox.close();	
 		});
 	}
 
@@ -128,6 +137,10 @@ class MyController {
 	}
 
 	empty(d) {
+		const answer = window.confirm('Are you sure?');
+		if (!answer) {
+			return this.$q.resolve();
+		}
 		console.log('appel delete all en cours...');
 		return this.ticketResource.delete().$promise.catch((error) => {
 			console.error('error', error);
