@@ -3,6 +3,7 @@ import './style.scss';
 
 import 'angular';
 import 'angular-resource';
+import 'angular-animate';
 
 const io = require('socket.io-client/dist/socket.io.js');
 
@@ -12,7 +13,7 @@ console.log('socket', socket);
 
 
 
-const app = angular.module('myApp', ['ngResource']);
+const app = angular.module('myApp', ['ngResource', 'ngAnimate']);
 
 class DialogBox {
 	constructor(selector) {
