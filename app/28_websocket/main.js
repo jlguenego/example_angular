@@ -75,7 +75,9 @@ class MyController {
 
 	create() {
 		console.log('appel create en cours...');
-		return this.ticketResource.save(this.newTicket).$promise.catch((error) => {
+		return this.ticketResource.save(this.newTicket).$promise.then((response) => {
+			this.newTicket = {};
+		}).catch((error) => {
 			console.error('error', error);
 		});
 	}

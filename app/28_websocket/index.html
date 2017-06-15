@@ -9,17 +9,13 @@
 
 <body ng-cloak ng-csp ng-app="myApp" ng-controller="MyController as $ctrl">
 	<h1>My First $resource use</h1>
-	<p>Note: install webpack globally and run it to see the compiled file.
-		<br/><br/>
-		<button class="primary" ng-click="$ctrl.createDialogBox.open()">New Ticket</button>
-		<dialog-box id="createDialogBox">
-			<label>New Ticket name: <input name="name" type="text" placeholder="Ex: John" ng-model="$ctrl.newTicket.name"/></label>
-			<button class="primary" ng-disabled="!$ctrl.newTicket.name" jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Create</button>
-			<button jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Cancel</button>
-		</dialog-box>
-
-		<br/><br/>
-	</p>
+	<p>Note: install webpack globally and run it to see the compiled file.</p>
+	<panel><button class="primary" ng-click="$ctrl.createDialogBox.open()">New Ticket</button></panel>
+	<dialog-box id="createDialogBox">
+		<label>New Ticket name: <input name="name" type="text" placeholder="Ex: John" ng-model="$ctrl.newTicket.name"/></label>
+		<button class="primary" ng-disabled="!$ctrl.newTicket.name" jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Create</button>
+		<button jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Cancel</button>
+	</dialog-box>
 	<fieldset>
 
 		<button jlg-click-and-disable="$ctrl.query()">Rafraichir la liste des tickets</button>&nbsp;<button jlg-click-and-disable="$ctrl.empty()">Delete All</button><br/>

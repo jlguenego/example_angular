@@ -18,7 +18,16 @@ p {
 }
 
 fieldset {
-	margin: 20px;
+	display: block;
+	margin: 20px 20px;
+	border: none;
+	background-color: hsl(0, 0%, 98%);
+}
+
+panel {
+	display: block;
+	margin: 5px 20px;
+	border: 1px solid hsl(0, 0%, 90%);
 }
 
 button,
