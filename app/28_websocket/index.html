@@ -28,11 +28,11 @@
 				<div class="ticket-col">Delete</div>
 			</div>
 			<div class="ticket-row" ng-repeat="ticket in $ctrl.tickets | filter:$ctrl.filter as results">
-				{{ticket.id}}
-				{{ticket.name}}
+				<div class="ticket-col">{{ticket.id}}</div>
+				<div class="ticket-col">{{ticket.name}}</div>
 				<div class="ticket-col"><input type="text" ng-model="ticket.newName" /></div>
-				<!--<div class="ticket-col"><button ng-disabled="!ticket.newName" jlg-click-and-disable="$ctrl.update(ticket)"><i class="fa fa-pencil" aria-hidden="true"></i></button></div>
-				<div class="ticket-col"><button jlg-click-and-disable="$ctrl.delete(ticket)"><i class="fa fa-minus" aria-hidden="true"></i></button></div>-->
+				<div class="ticket-col"><button ng-disabled="!ticket.newName" jlg-click-and-disable="$ctrl.update(ticket)"><i class="fa fa-pencil" aria-hidden="true"></i></button></div>
+				<div class="ticket-col"><button jlg-click-and-disable="$ctrl.delete(ticket)"><i class="fa fa-minus" aria-hidden="true"></i></button></div>
 			</div>
 
 			<!--<ul class="example-animate-container">

@@ -26,10 +26,10 @@ fieldset {
 panel {
 	display: block;
 	margin: 5px 20px;
+	padding: 5px;
 	border: 1px solid hsl(0, 0%, 90%);
 }
 
-button,
 input,
 label {
 	height: 30px;
@@ -37,6 +37,7 @@ label {
 }
 
 button {
+	height: 30px;
 	padding: 0px 10px;
 	background-color: hsl(0, 0%, 90%);
 	border: 1px solid hsl(0, 0%, 80%);
@@ -82,70 +83,50 @@ input {
 	margin: 0px 10px;
 }
 
-// .ticket-row {
-// 	line-height: 60px;
-// 	.ticket-col {
-// 		display: inline-block;
-// 		&:nth-child(1) {
-// 			width: 50px;
-// 		}
-// 		&:nth-child(2) {
-// 			width: 100px;
-// 		}
-// 	}
-// 	&.ng-move,
-// 	&.ng-enter,
-// 	&.ng-leave {
-// 		transition: all linear 0.5s;
-// 	}
-// 	&.ng-leave.ng-leave-active,
-// 	&.ng-move,
-// 	&.ng-enter {
-// 		opacity: 0;
-// 		max-height: 0;
-// 	}
-// 	&.ng-leave,
-// 	&.ng-move.ng-move-active,
-// 	&.ng-enter.ng-enter-active {
-// 		opacity: 1;
-// 		max-height: 30px;
-// 	}
-// }
+
 .ticket-table {
 	background: white;
 	border: 1px solid black;
 	list-style: none;
 	margin: 0;
 	padding: 0 10px;
-}
+	>.ticket-row {
+		display: block;
+		line-height: 30px;
+		list-style: none;
+		box-sizing: border-box;
+		>.ticket-col {
+			display: inline-block;
+			&:nth-child(1) {
+				width: 50px;
+			}
+			&:nth-child(2) {
+				width: 100px;
+			}
+			&:nth-child(3) {
+				width: 200px;
+			}
+			&:nth-child(4) {
+				width: 100px;
+			}
+		}
+		&.ng-move,
+		&.ng-enter,
+		&.ng-leave {
+			transition: all linear 0.5s;
+		}
+		&.ng-leave.ng-leave-active,
+		&.ng-move,
+		&.ng-enter {
+			opacity: 0;
+			max-height: 0;
+		}
 
-.ticket-row {
-	display: block;
-	line-height: 30px;
-	list-style: none;
-	box-sizing: border-box;
-}
-
-.ticket-col {
-	display: inline-block;
-}
-
-.ticket-row.ng-move,
-.ticket-row.ng-enter,
-.ticket-row.ng-leave {
-	transition: all linear 0.5s;
-}
-
-.ticket-row.ng-leave.ng-leave-active,
-.ticket-row.ng-move,
-.ticket-row.ng-enter {
-	opacity: 0;
-	max-height: 0;
-}
-
-.ticket-row.ng-leave,
-.ticket-row.ng-move.ng-move-active,
-.ticket-row.ng-enter.ng-enter-active {
-	opacity: 1;
-	max-height: 60px;
+		&.ng-leave,
+		&.ng-move.ng-move-active,
+		&.ng-enter.ng-enter-active {
+			opacity: 1;
+			max-height: 60px;
+		}
+	}
 }

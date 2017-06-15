@@ -59,6 +59,7 @@ class MyController {
 				method: 'PUT'
 			}
 		});
+		this.tickets = [];
 		this.query();
 
 		socket.on('ticketChannel', (data) => {
@@ -77,6 +78,15 @@ class MyController {
 	query() {
 		console.log('appel query en cours...');
 		return this.ticketResource.query().$promise.then((tickets) => {
+			// for (let ti of this.tickets) {
+			// 	let t = tickets.indexOf()
+			// 	if (!t) {
+			// 		this.ticket.remove();
+			// 	}
+			// }
+			// for (let i = 0; i < tickets.length; i++) {
+				
+			// }
 			this.tickets = tickets;
 		}).catch((error) => {
 			console.error('error', error);
