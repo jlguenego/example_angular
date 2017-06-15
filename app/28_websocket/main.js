@@ -15,15 +15,18 @@ const app = angular.module('myApp', ['ngResource']);
 
 class DialogBox {
 	constructor(selector) {
-		this.elt = angular.element(document.querySelector(selector));
+		this.elt = document.querySelector(selector);
+		// this.elt = angular.element(document.querySelector(selector));
 	}
 
 	open() {
-		this.elt.css('display', 'block');
+		this.elt.style.display = 'block';
+		// this.elt.css('display', 'block');
 	}
 
 	close() {
-		this.elt.css('display', 'none');
+		this.elt.style.display = 'none';
+		// this.elt.css('display', 'none');
 	}
 }
 
