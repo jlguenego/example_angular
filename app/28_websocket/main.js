@@ -64,6 +64,11 @@ class MyController {
 		this.createDialogBox = new DialogBox('#createDialogBox');
 	}
 
+	doClick(selector) {
+		const elt = angular.element(document.querySelector(selector));
+		elt.triggerHandler('click');
+	}
+
 	query() {
 		console.log('appel query en cours...');
 		return this.ticketResource.query().$promise.then((tickets) => {

@@ -12,9 +12,12 @@
 	<p>Note: install webpack globally and run it to see the compiled file.</p>
 	<panel><button class="primary" ng-click="$ctrl.createDialogBox.open()">New Ticket</button></panel>
 	<dialog-box id="createDialogBox">
-		<label>New Ticket name: <input name="name" type="text" placeholder="Ex: John" ng-model="$ctrl.newTicket.name"/></label>
-		<button class="primary" ng-disabled="!$ctrl.newTicket.name" jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Create</button>
-		<button jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Cancel</button>
+		<form name="form" ng-submit="$ctrl.doClick('#createTicketButton')">
+			<label>New Ticket name: <input name="name" type="text" placeholder="Ex: John" ng-model="$ctrl.newTicket.name" autofocus/></label>
+			<button id="createTicketButton" class="primary" ng-disabled="!$ctrl.newTicket.name" jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Create</button>
+			<button jlg-click-and-disable="$ctrl.createDialogBox.close()">Cancel</button>
+		</form>
+
 	</dialog-box>
 	<fieldset>
 
