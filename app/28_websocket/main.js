@@ -10,8 +10,26 @@ const io = require('socket.io-client/dist/socket.io.js');
 var socket = io();
 console.log('socket', socket);
 
-
-
+function arraySync(dstArray, srcArray) {
+	for (const ticket of srcArray) {
+		const id = ticket.id;
+		const myTicket = dstArray.find(t => t.id === id);
+		if (myTicket) {
+			myTicket.name = ticket.name;
+		} else {
+			dstArray.push(ticket);
+		}
+	}
+	for (let i = dstArray.length - 1; i >= 0; i--) {
+		console.log('i', i);
+		if (!srcArray.find((ticket) => {
+				return ticket.id === dstArray[i].id &&
+					ticket.name === dstArray[i].name;
+			})) {
+			dstArray.splice(i, 1);
+		}
+	}
+}
 
 const app = angular.module('myApp', ['ngResource', 'ngAnimate']);
 
@@ -78,16 +96,8 @@ class MyController {
 	query() {
 		console.log('appel query en cours...');
 		return this.ticketResource.query().$promise.then((tickets) => {
-			// for (let ti of this.tickets) {
-			// 	let t = tickets.indexOf()
-			// 	if (!t) {
-			// 		this.ticket.remove();
-			// 	}
-			// }
-			// for (let i = 0; i < tickets.length; i++) {
-				
-			// }
-			this.tickets = tickets;
+			arraySync(this.tickets, tickets);
+			// this.tickets = tickets;
 		}).catch((error) => {
 			console.error('error', error);
 		});
@@ -104,7 +114,7 @@ class MyController {
 
 	createAndClose() {
 		return this.create().then(() => {
-			this.createDialogBox.close();	
+			this.createDialogBox.close();
 		});
 	}
 
