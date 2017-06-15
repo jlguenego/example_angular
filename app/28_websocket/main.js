@@ -13,6 +13,20 @@ console.log('socket', socket);
 
 const app = angular.module('myApp', ['ngResource']);
 
+class DialogBox {
+	constructor(selector) {
+		this.elt = angular.element(document.querySelector(selector));
+	}
+
+	open() {
+		this.elt.css('display', 'block');
+	}
+
+	close() {
+		this.elt.css('display', 'none');
+	}
+}
+
 class MyController {
 	/* @ngInject */
 
@@ -27,9 +41,11 @@ class MyController {
 		this.query();
 
 		socket.on('ticketChannel', (data) => {
-			console.log('Message recieved:', data);
+			console.log('Message received:', data);
 			this.query();
 		});
+
+		this.createDialogBox = new DialogBox('#createDialogBox');
 	}
 
 	query() {
@@ -93,6 +109,8 @@ class MyController {
 			console.error('error', error);
 		});
 	}
+
+
 
 }
 

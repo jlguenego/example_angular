@@ -11,8 +11,12 @@
 	<h1>My First $resource use</h1>
 	<p>Note: install webpack globally and run it to see the compiled file.
 		<br/><br/>
-		<label>New Ticket name: <input type="text" placeholeder="Ex: John" ng-model="$ctrl.newTicket.name" /></label>
-		<button jlg-click-and-disable="$ctrl.create()">Create</button>
+		<button ng-click="$ctrl.createDialogBox.open()">New Ticket</button>
+		<dialog-box id="createDialogBox">
+			<label>New Ticket name: <input type="text" placeholeder="Ex: John" ng-model="$ctrl.newTicket.name" /></label>
+			<button jlg-click-and-disable="$ctrl.create(); $ctrl.createDialogBox.close()">Create</button>
+		</dialog-box>
+
 		<br/><br/>
 	</p>
 	<fieldset>
