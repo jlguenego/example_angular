@@ -17,6 +17,8 @@ class DialogBox {
 	constructor(selector) {
 		this.elt = document.querySelector(selector);
 		// this.elt = angular.element(document.querySelector(selector));
+
+		this.setupCancel();
 	}
 
 	open() {
@@ -27,6 +29,17 @@ class DialogBox {
 	close() {
 		this.elt.style.display = 'none';
 		// this.elt.css('display', 'none');
+	}
+
+	setupCancel() {
+		const self = this;
+		this.elt.addEventListener('click', function(e) {
+			const width = self.elt.offsetWidth - 16000;
+			const height = self.elt.offsetHeight - 16000;
+			if (e.offsetX < 0 || e.offsetX > width || e.offsetY < 0 || e.offsetY > height) {
+				self.close();
+			}
+		});
 	}
 }
 

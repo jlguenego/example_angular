@@ -42,6 +42,11 @@ button {
 	}
 }
 
+input {
+	border: 1px solid black;
+	outline: none;
+}
+
 #createDialogBox {
 	display: none;
 	position: fixed;
