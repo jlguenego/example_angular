@@ -3,7 +3,7 @@
 
 	var app = angular.module('myApp', []);
 
-	app.controller('myController', [function() {
+	app.controller('MyController', function() {
 		this.message = 'Hello World!';
-	}]);
+	});
 })();

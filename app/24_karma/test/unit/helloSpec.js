@@ -1,21 +1,18 @@
-(function() {
-	'use strict';
+'use strict';
 
-	describe('hello world', function() {
+describe('myApp', function() {
+	beforeEach(module('myApp'));
 
-		describe('myController', function() {
-			var scope, ctrl;
+	describe('MyController', function() {
+		var scope, ctrl;
 
-			beforeEach(module('myApp'));
-			beforeEach(inject(function($rootScope, $controller) {
-				scope = $rootScope.$new();
-				ctrl = $controller('myController', {$scope: scope});
-			}));
+		beforeEach(inject(function($rootScope, $controller) {
+			scope = $rootScope.$new();
+			ctrl = $controller('MyController', { $scope: scope });
+		}));
 
-
-			it('should return "Hello World!"', function() {
-				expect(ctrl.message).toEqual('Hello World!');
-			});
+		it('should return "Hello World!"', function() {
+			expect(ctrl.message).toEqual('Hello World!');
 		});
 	});
-})();
+});
