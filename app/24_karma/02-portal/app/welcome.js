@@ -11,5 +11,8 @@
 		$log.debug('logged');
 		this.message = 'Welcome ' + authentication.login + '!';
 		this.user = $resource('data/' + authentication.login + '.json').get();
+		this.user.$promise.catch(function(error) {
+			$log.error('error', error);
+		});
 	});
 })();

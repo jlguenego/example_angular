@@ -5,13 +5,13 @@ describe('authentication', function() {
 
 	describe('AuthenticationCtrl', function() {
 		var $http;
-		var loginRequestHandler;
+		var request;
 		var ctrl;
 
 		beforeEach(inject(function($rootScope, $httpBackend, $controller) {
 			$http = $httpBackend;
-			loginRequestHandler = $http.when('GET', 'data/login.json');
-			loginRequestHandler.respond({
+			request = $http.when('GET', 'data/login.json');
+			request.respond({
 				logins: [
 					'juan'
 				]
@@ -28,7 +28,7 @@ describe('authentication', function() {
 
 		it('should authenticate the user', function() {
 			ctrl.login = 'juan';
-			$http.expectGET('data/login.json');
+			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
 			$http.flush();
 			expect(ctrl.authentication.state).toEqual('logged');
@@ -36,7 +36,7 @@ describe('authentication', function() {
 
 		it('should return "bad login"', function() {
 			ctrl.login = 'kiki';
-			$http.expectGET('data/login.json');
+			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
 			$http.flush();
 			expect(ctrl.authentication.state).toEqual('not logged');
@@ -44,9 +44,9 @@ describe('authentication', function() {
 		});
 
 		it('should return "technical error" when 404', function() {
-			ctrl.login = 'kiki';
-			loginRequestHandler.respond(404, '');
-			$http.expectGET('data/login.json');
+			ctrl.login = 'juan';
+			request.respond(404, '');
+			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
 			$http.flush();
 			expect(ctrl.authentication.state).toEqual('not logged');
@@ -54,11 +54,11 @@ describe('authentication', function() {
 		});
 
 		it('should return "technical error" when json is not good', function() {
-			ctrl.login = 'kiki';
-			loginRequestHandler.respond({
+			ctrl.login = 'juan';
+			request.respond({
 				logins: true
 			});
-			$http.expectGET('data/login.json');
+			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
 			$http.flush();
 			expect(ctrl.authentication.state).toEqual('not logged');
