@@ -57,25 +57,22 @@
 		$httpProvider.defaults.cache = false;
 
 		// register the interceptor as a service
-		$provide.factory('authentication.interceptor', function($q, $log, logout) {
+		$provide.service('authenticationInterceptor', function AuthenticationInterceptor($q, $log, logout) {
 			'ngInject';
-			return {
-				// optional method
-				response: function(response) {
-					$log.debug('running interceptor response ', response);
-					if (response.data.authenticated === 'false') {
-						$log.error('User not authenticated ');
-						logout.run();
-						return $q.reject(response);
-					}
-
-					// do something on success
-					return response;
+			this.response = function(response) {
+				$log.debug('running interceptor response ', response);
+				if (response.data.authenticated === 'false') {
+					$log.error('User not authenticated ');
+					logout.run();
+					return $q.reject(response);
 				}
-			};
+
+				// do something on success
+				return response;
+			}
 		});
 
-		$httpProvider.interceptors.push('authentication.interceptor');
+		$httpProvider.interceptors.push('authenticationInterceptor');
 
 		console.log('interceptors', $httpProvider.interceptors);
 	});
