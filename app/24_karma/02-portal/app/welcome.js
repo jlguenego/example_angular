@@ -10,6 +10,6 @@
 		}
 		$log.debug('logged');
 		this.message = 'Welcome ' + authentication.login + '!';
-		this.serviceJson = $resource('data/' + authentication.login + '.json').get();
+		this.user = $resource('data/' + authentication.login + '.json').get();
 	});
 })();

@@ -1,6 +1,6 @@
-Message: {{message}}<br/>
+Message: {{$ctrl.message}}<br/>
 services: <br/>
 <ul>
-	<li ng-repeat="service in serviceJson.services">{{service}}</li>
+	<li ng-repeat="service in $ctrl.user.services">{{service}}</li>
 </ul>
 <button ng-click="logout()">logout</button>

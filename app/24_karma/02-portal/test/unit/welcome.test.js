@@ -49,7 +49,7 @@ describe('welcome', function() {
 			$http.expectGET('data/juan.json');
 			var ctrl = $controller('welcome.MainCtrl', { $scope: $scope });
 			$http.flush();
-			expect(ctrl.serviceJson.services).toEqual([
+			expect(ctrl.user.services).toEqual([
 				'mail',
 				'cloud',
 				'ftp',
