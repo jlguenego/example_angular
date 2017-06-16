@@ -34,42 +34,42 @@
 
 
 			it('should authenticate the user', function() {
-				$scope.login = 'juan';
+				ctrl.login = 'juan';
 				$http.expectGET('data/login.json');
 				ctrl.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual('logged');
+				expect(ctrl.authentication.state).toEqual('logged');
 			});
 
 			it('should return "bad login"', function() {
-				$scope.login = 'kiki';
+				ctrl.login = 'kiki';
 				$http.expectGET('data/login.json');
 				ctrl.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual('not logged');
-				expect($rootScope.errorMessage).toEqual('bad login/password');
+				expect(ctrl.authentication.state).toEqual('not logged');
+				expect(ctrl.authentication.reason).toEqual('bad login/password');
 			});
 
 			it('should return "technical error" when 404', function() {
-				$scope.login = 'kiki';
+				ctrl.login = 'kiki';
 				loginRequestHandler.respond(404, '');
 				$http.expectGET('data/login.json');
 				ctrl.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual('not logged');
-				expect($rootScope.errorMessage).toEqual('technical error');
+				expect(ctrl.authentication.state).toEqual('not logged');
+				expect(ctrl.authentication.reason).toEqual('technical error');
 			});
 
 			it('should return "technical error" when json is not good', function() {
-				$scope.login = 'kiki';
+				ctrl.login = 'kiki';
 				loginRequestHandler.respond({
 					logins: true
 				});
 				$http.expectGET('data/login.json');
 				ctrl.authenticate();
 				$http.flush();
-				expect($rootScope.state).toEqual('not logged');
-				expect($rootScope.errorMessage).toEqual('technical error');
+				expect(ctrl.authentication.state).toEqual('not logged');
+				expect(ctrl.authentication.reason).toEqual('technical error');
 			});
 		});
 	});

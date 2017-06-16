@@ -2,50 +2,57 @@
 	'use strict';
 	var app = angular.module('authentication', []);
 
-	app.controller('AuthenticationCtrl', function($scope, $log, $rootScope, $http, $location, logout) {
+	app.controller('AuthenticationCtrl', function($scope, $log, $rootScope, $http, $location, authentication, logout) {
 		'ngInject';
 
 		var ctrl = this;
+		ctrl.authentication = authentication;
 		ctrl.authenticate = function() {
 			$log.debug('authenticate');
-			$rootScope.state = 'not logged';
-			$rootScope.errorMessage = undefined;
+			authentication.state = 'not logged';
+			authentication.reason = undefined;
 			$http.get('data/login.json').then(function(response) {
 				var data = response.data;
 				if (!(data.logins && data.logins instanceof Array)) {
 					$log.debug(data.logins);
 					$log.error('json not well formatted');
-					$rootScope.errorMessage = 'technical error';
+					authentication.reason = 'technical error';
 					return;
 				}
-				$log.debug('login = ', $scope.login);
+				$log.debug('login = ', ctrl.login);
 				$log.debug('logins = ', data.logins);
-				if (data.logins.indexOf($scope.login) > -1) {
-					$rootScope.state = 'logged';
-					$rootScope.login = $scope.login;
+				if (data.logins.indexOf(ctrl.login) > -1) {
+					authentication.state = 'logged';
+					authentication.login = ctrl.login;
 					$location.url('/');
 				} else {
-					$rootScope.errorMessage = 'bad login/password';
+					authentication.reason = 'bad login/password';
 				}
 			}).catch(function(error) {
-				$rootScope.errorMessage = 'technical error';
+				authentication.reason = 'technical error';
 			});
-			$log.error('bad login');
 		};
 		$rootScope.logout = logout.run;
 	});
 
-	app.factory('logout', ['$rootScope', '$location', '$log', function($rootScope, $location, $log) {
+	app.service('authentication', function Authentication() {
+		this.state = 'not logged';
+		this.reason = undefined;
+		this.login = undefined;
+	});
+
+	app.factory('logout', function($location, $log, authentication) {
+		'ngInject';
 		return {
 			run: function() {
 				$log.debug('About to logout');
-				$rootScope.state = 'not logged';
-				$rootScope.errorMessage = undefined;
+				authentication.state = 'not logged';
+				authentication.reason = undefined;
 				$location.url('/logout');
 				$log.debug('logout done.');
 			}
 		};
-	}]);
+	});
 
 	app.config(['$httpProvider', '$provide', function($httpProvider, $provide) {
 
