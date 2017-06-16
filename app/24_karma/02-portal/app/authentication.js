@@ -41,16 +41,14 @@
 		this.login = undefined;
 	});
 
-	app.factory('logout', function($location, $log, authentication) {
+	app.service('logout', function Logout($location, $log, authentication) {
 		'ngInject';
-		return {
-			run: function() {
-				$log.debug('About to logout');
-				authentication.state = 'not logged';
-				authentication.reason = undefined;
-				$location.url('/logout');
-				$log.debug('logout done.');
-			}
+		this.run = function() {
+			$log.debug('About to logout');
+			authentication.state = 'not logged';
+			authentication.reason = undefined;
+			$location.url('/logout');
+			$log.debug('logout done.');
 		};
 	});
 
