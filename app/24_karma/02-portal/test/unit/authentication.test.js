@@ -7,10 +7,17 @@ describe('authentication', function() {
 		var $http;
 		var request;
 		var ctrl;
+		var $location;
+		var $httpBackend;
+		var logout;
 
-		beforeEach(inject(function($rootScope, $httpBackend, $controller) {
-			$http = $httpBackend;
-			request = $http.when('GET', 'data/login.json');
+		beforeEach(inject(function($rootScope, $controller, $injector) {
+			$httpBackend = $injector.get('$httpBackend');
+			$http = $injector.get('$http');
+			$location = $injector.get('$location');
+			logout = $injector.get('logout');
+
+			request = $httpBackend.when('GET', 'data/login.json');
 			request.respond({
 				logins: [
 					'juan'
@@ -21,8 +28,8 @@ describe('authentication', function() {
 		}));
 
 		afterEach(function() {
-			$http.verifyNoOutstandingExpectation();
-			$http.verifyNoOutstandingRequest();
+			$httpBackend.verifyNoOutstandingExpectation();
+			$httpBackend.verifyNoOutstandingRequest();
 		});
 
 
@@ -30,7 +37,7 @@ describe('authentication', function() {
 			ctrl.login = 'juan';
 			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
-			$http.flush();
+			$httpBackend.flush();
 			expect(ctrl.authentication.state).toEqual('logged');
 		});
 
@@ -38,7 +45,7 @@ describe('authentication', function() {
 			ctrl.login = 'kiki';
 			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
-			$http.flush();
+			$httpBackend.flush();
 			expect(ctrl.authentication.state).toEqual('not logged');
 			expect(ctrl.authentication.reason).toEqual('bad login/password');
 		});
@@ -48,7 +55,7 @@ describe('authentication', function() {
 			request.respond(404, '');
 			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
-			$http.flush();
+			$httpBackend.flush();
 			expect(ctrl.authentication.state).toEqual('not logged');
 			expect(ctrl.authentication.reason).toEqual('technical error');
 		});
@@ -60,9 +67,27 @@ describe('authentication', function() {
 			});
 			// $http.expectGET('data/login.json');
 			ctrl.authenticate();
-			$http.flush();
+			$httpBackend.flush();
 			expect(ctrl.authentication.state).toEqual('not logged');
 			expect(ctrl.authentication.reason).toEqual('technical error');
 		});
+
+		it('should logout', function() {
+			logout.run();
+			expect(ctrl.authentication.state).toEqual('not logged');
+			expect(ctrl.authentication.reason).toEqual(undefined);
+			expect($location.url()).toEqual('/logout');
+
+		});
+
+		// it('should logout when authenticated is false', function() {
+		// 	request = $httpBackend.when('GET', 'data/jlg.json');
+		// 	request.respond({
+		// 		authenticated: "false",
+		// 	});
+		// 	$http.get('data/jlg.json').then(function() {}).catch(function() {});
+		// 	$httpBackend.flush();
+		// 	expect(ctrl.authentication.state).toEqual('not logged');
+		// });
 	});
 });
