@@ -29,6 +29,15 @@ function arraySync(dstArray, srcArray) {
 			dstArray.splice(i, 1);
 		}
 	}
+	dstArray.sort((a, b) => {
+		if (a.id === b.id) {
+			return 0;
+		}
+		if (a.id > b.id) {
+			return 1;
+		}
+		return -1;
+	});
 }
 
 const app = angular.module('myApp', ['ngResource', 'ngAnimate']);
