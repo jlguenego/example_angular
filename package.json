@@ -62,10 +62,9 @@
 		"velocity-animate": "^1.4.3"
 	},
 	"scripts": {
-		"test24": "node node_modules/karma/bin/karma start app/24_karma/test/karma.conf.js",
-		"test24-single-run": "node node_modules/karma/bin/karma start app/24_karma/test/karma.conf.js  --single-run",
-		"test24-2": "node node_modules/karma/bin/karma start app/24_karma2/test/karma.conf.js",
-		"test24-2-single-run": "node node_modules/karma/bin/karma start app/24_karma2/test/karma.conf.js  --single-run",
+		"test24": "node node_modules/karma/bin/karma start app/24_karma/01-helloworld/test/karma.conf.js",
+		"test24-sr": "node node_modules/karma/bin/karma start app/24_karma/test/karma.conf.js  --single-run",
+		"test24-2": "node node_modules/karma/bin/karma start app/24_karma/02-portal/test/karma.conf.js",
 		"test25": "node node_modules/karma/bin/karma start app/25_protractor/test/karma.conf.js",
 		"test25-single-run": "node node_modules/karma/bin/karma start app/25_protractor/test/karma.conf.js  --single-run",
 		"update-webdriver": "webdriver-manager update",

@@ -3,7 +3,7 @@ module.exports = function(config) {
 
 	config.set({
 
-		basePath: '../../../',
+		basePath: '../../../../',
 
 		files: [
 		'node_modules/jquery/dist/jquery.js',
@@ -12,9 +12,9 @@ module.exports = function(config) {
 		'node_modules/angular-route/angular-route.js',
 		'node_modules/angular-resource/angular-resource.js',
 		'node_modules/angular-mocks/angular-mocks.js',
-		'app/24_karma2/app/*.js',
-		'app/24_karma2/test/unit/**/*.js',
-		{pattern: 'app/24_karma2/test/mock/**/*.json', watched: true, served: true, included: false}
+		'app/24_karma/02-portal/app/*.js',
+		'app/24_karma/02-portal/test/unit/**/*.js',
+		{pattern: 'app/24_karma/02-portal/test/mock/**/*.json', watched: true, served: true, included: false}
 		],
 
 		autoWatch: true,

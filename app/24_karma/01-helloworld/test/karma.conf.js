@@ -3,13 +3,13 @@ module.exports = function(config) {
 
 	config.set({
 
-		basePath: '../../../',
+		basePath: '../../../../',
 
 		files: [
 		'node_modules/angular/angular.js',
 		'node_modules/angular-mocks/angular-mocks.js',
-		'app/24_karma/app/**/*.js',
-		'app/24_karma/test/unit/**/*.js'
+		'app/24_karma/01-helloworld/app/**/*.js',
+		'app/24_karma/01-helloworld/test/unit/**/*.js'
 		],
 
 		autoWatch: true,
