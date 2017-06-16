@@ -2,14 +2,11 @@
 	'use strict';
 	var app = angular.module('authentication', []);
 
-	app.controller('authentication.MainCtrl', ['$scope', '$injector', function($scope, $injector) {
-		var $log = $injector.get('$log');
-		var $rootScope = $injector.get('$rootScope');
-		var $http = $injector.get('$http');
-		var $location = $injector.get('$location');
-		var logout = $injector.get('authentication.logout');
+	app.controller('AuthenticationCtrl', function($scope, $log, $rootScope, $http, $location, logout) {
+		'ngInject';
 
-		$scope.authenticate = function() {
+		var ctrl = this;
+		ctrl.authenticate = function() {
 			$log.debug('authenticate');
 			$rootScope.state = 'not logged';
 			$rootScope.errorMessage = undefined;
@@ -36,9 +33,9 @@
 			$log.error('bad login');
 		};
 		$rootScope.logout = logout.run;
-	}]);
+	});
 
-	app.factory('authentication.logout', ['$rootScope', '$location', '$log', function($rootScope, $location, $log) {
+	app.factory('logout', ['$rootScope', '$location', '$log', function($rootScope, $location, $log) {
 		return {
 			run: function() {
 				$log.debug('About to logout');
@@ -63,7 +60,7 @@
 					$log.debug('running interceptor response ', response);
 					if (response.data.authenticated === 'false') {
 						$log.error('User not authenticated ');
-						var logout = $injector.get('authentication.logout');
+						var logout = $injector.get('logout');
 						logout.run();
 						return $q.reject(response);
 					}
