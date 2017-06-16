@@ -9,17 +9,17 @@
 
 		$routeProvider
 			.when('/login', {
-				templateUrl: 'partials/login.html',
+				templateUrl: 'tmpl/login.html',
 				controller: 'AuthenticationCtrl', 
 				controllerAs: '$ctrl'
 			})
 			.when('/main', {
-				templateUrl: 'partials/welcome.html',
+				templateUrl: 'tmpl/welcome.html',
 				controller: 'WelcomeCtrl',
 				controllerAs: '$ctrl'
 			})
 			.when('/logout', {
-				templateUrl: 'partials/logout.html'
+				templateUrl: 'tmpl/logout.html'
 			})
 			.otherwise({
 				redirectTo: '/main'

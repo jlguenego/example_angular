@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Roboto Slab', serif;
+	box-sizing: border-box;
+}
+
+select {
+	border: none;
+	-webkit-appearance: none;
+}
+
+
+h1 {
+	padding: 20px;
+	background: linear-gradient(45deg, hsl(240, 100%, 80%), hsl(180, 100%, 80%), hsl(240, 100%, 80%));
+	text-align: center;
+}
+
+h2 {
+	padding: 20px;
+	background: linear-gradient(45deg, hsl(240, 100%, 90%), hsl(180, 100%, 90%), hsl(240, 100%, 90%));
+	text-align: center;
+}
+
+form,
+panel {
+	display: block;
+	width: 300px;
+	padding: 20px;
+}
+
+label {
+	display: block;
+	width: 100%;
+	padding: 10px 0px;
+}
+
+input {
+	display: block;
+	width: 100%;
+	margin: 5px 0px;
+	padding: 5px 5px;
+}
+
+input[type="submit"],
+button {
+	display: block;
+	width: 100%;
+	padding: 5px 5px;
+	margin: 10px 0px;
+	width: 100%;
+}
+
+li {
+	margin: 0px 30px;
+	padding: 5px;
+}
