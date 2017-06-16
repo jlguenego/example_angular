@@ -30,7 +30,7 @@ describe('welcome', function() {
 			authentication.state = 'logged';
 			var request = $http.when('GET', 'data/juan.json');
 			request.respond(getJSONFixture('juan.json'));
-			var ctrl = $controller('welcome.MainCtrl', { $scope: $scope });
+			var ctrl = $controller('WelcomeCtrl', { $scope: $scope });
 			$http.flush();
 			expect(ctrl.message).toEqual('Welcome juan!');
 			expect(ctrl.user.services).toEqual([
@@ -43,7 +43,7 @@ describe('welcome', function() {
 
 		it('should redirect to authentication', function() {
 			authentication.state = 'not logged';
-			$controller('welcome.MainCtrl', { $scope: $scope });
+			$controller('WelcomeCtrl', { $scope: $scope });
 			expect($location.url()).toEqual('/login');
 		});
 
@@ -52,7 +52,7 @@ describe('welcome', function() {
 			authentication.state = 'logged';
 			var request = $http.when('GET', 'data/kiki.json');
 			request.respond(404, '');
-			var ctrl = $controller('welcome.MainCtrl', { $scope: $scope });
+			var ctrl = $controller('WelcomeCtrl', { $scope: $scope });
 			$http.flush();
 			expect(ctrl.message).toEqual('Welcome kiki!');
 		});

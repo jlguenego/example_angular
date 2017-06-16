@@ -3,7 +3,7 @@
 
 	var app = angular.module('welcome', ['ngResource', 'authentication']);
 
-	app.controller('welcome.MainCtrl', function($rootScope, $location, $resource, $log, authentication) {
+	app.controller('WelcomeCtrl', function($rootScope, $location, $resource, $log, authentication) {
 		if (authentication.state != 'logged') {
 			$location.url('/login');
 			return;

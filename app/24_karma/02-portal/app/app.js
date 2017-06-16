@@ -15,7 +15,7 @@
 			})
 			.when('/main', {
 				templateUrl: 'partials/welcome.html',
-				controller: 'welcome.MainCtrl',
+				controller: 'WelcomeCtrl',
 				controllerAs: '$ctrl'
 			})
 			.when('/logout', {
