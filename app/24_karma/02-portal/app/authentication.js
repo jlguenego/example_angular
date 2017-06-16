@@ -52,20 +52,19 @@
 		};
 	});
 
-	app.config(['$httpProvider', '$provide', function($httpProvider, $provide) {
-
+	app.config(function($httpProvider, $provide) {
+		'ngInject';
 		$httpProvider.defaults.cache = false;
 
 		// register the interceptor as a service
-		$provide.factory('authentication.interceptor', ['$q', '$injector', function($q, $injector) {
-			var $log = $injector.get('$log');
+		$provide.factory('authentication.interceptor', function($q, $log, logout) {
+			'ngInject';
 			return {
 				// optional method
 				response: function(response) {
 					$log.debug('running interceptor response ', response);
 					if (response.data.authenticated === 'false') {
 						$log.error('User not authenticated ');
-						var logout = $injector.get('logout');
 						logout.run();
 						return $q.reject(response);
 					}
@@ -74,11 +73,11 @@
 					return response;
 				}
 			};
-		}]);
+		});
 
 		$httpProvider.interceptors.push('authentication.interceptor');
 
 		console.log('interceptors', $httpProvider.interceptors);
-	}]);
+	});
 
 })();
