@@ -1,13 +1,7 @@
 (function() {
 	'use strict';
 
-	var app = angular.module('mainApp', ['ngRoute', 'authentication', 'welcome']);
-
-	app.controller('MainCtrl', ['$rootScope', function($rootScope) {
-		$rootScope.state = undefined;
-		$rootScope.errorMessage = undefined;
-		$rootScope.login = undefined;
-	}]);
+	var app = angular.module('main', ['ngRoute', 'authentication', 'welcome']);
 
 	app.config(['$routeProvider', '$locationProvider', '$logProvider',
 		function($routeProvider, $locationProvider, $logProvider) {
