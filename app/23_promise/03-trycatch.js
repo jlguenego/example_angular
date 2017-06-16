@@ -1,12 +1,13 @@
 (function() {
 	'use strict';
 
-	var rightLimit = 200;
+	var rightLimit = 300;
 	var leftLimit = 0;
+	var initialPosition = (leftLimit + rightLimit) / 2;
 
 	function initial() {
 		$('.box').css({
-			left: 100,
+			left: initialPosition,
 			top: 0
 		});
 		$('.limit.right').css({
@@ -58,21 +59,21 @@
 			return deferred.promise;
 		};
 
-		//		$q.when('start').then(function() {
-		//			var choice = (Math.random() - 0.5) >= 0;
-		//			return movePromise(choice);
-		//		}).then(function() {
-		//			var choice = (Math.random() - 0.5) >= 0;
-		//			return movePromise(choice);
-		//		}).then(function() {
-		//			var choice = (Math.random() - 0.5) >= 0;
-		//			return movePromise(choice);
-		//		}).then(function() {
-		//			var choice = (Math.random() - 0.5) >= 0;
-		//			return movePromise(choice);
-		//		}).catch(function() {
-		//			console.log('BOUM');
-		//		});
+				// $q.resolve().then(function() {
+				// 	var choice = (Math.random() - 0.5) >= 0;
+				// 	return movePromise(choice);
+				// }).then(function() {
+				// 	var choice = (Math.random() - 0.5) >= 0;
+				// 	return movePromise(choice);
+				// }).then(function() {
+				// 	var choice = (Math.random() - 0.5) >= 0;
+				// 	return movePromise(choice);
+				// }).then(function() {
+				// 	var choice = (Math.random() - 0.5) >= 0;
+				// 	return movePromise(choice);
+				// }).catch(function() {
+				// 	console.log('BOUM');
+				// });
 
 
 		var f = function() {
