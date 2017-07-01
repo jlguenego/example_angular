@@ -15,6 +15,8 @@ module.exports = {
 		'prefer-spread': 0,
 		'no-use-before-define': 'error',
 		'no-undef-init': 'error',
+		'semi': ['error', 'always'],
+		'quotes': ['error', 'single'],
 	},
 	env: {
 		browser: true,
