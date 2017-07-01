@@ -30,7 +30,33 @@
 
 	console.log('garfield', garfield);
 
-	// TODO: translate this in ES6.
+	class Vehicle {
+		constructor(color) {
+			this.color = color;
+		}
+		start() {
+			console.log('vroum vroum !');
+		}
+		stop() {
+			console.log('...');
+		}
+	}
+
+	class Car extends Vehicle {
+		constructor(color, price) {
+			super(color);
+			this.price = price;
+		}
+		lock() {
+			console.log('Car is locked.');
+		}
+	}
+
+	const citroen2CV = new Car('blue', 25000);
+	citroen2CV.lock();
+	citroen2CV.start();
+	citroen2CV.stop();
+	console.log('citroen2CV', citroen2CV);
 
 	function myTest() {
 		// Question: what does x is ?
