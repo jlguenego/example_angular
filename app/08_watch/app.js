@@ -20,7 +20,7 @@
 					if ($scope.lastUpdate < until) {
 						return $timeout(function() {
 							$scope.lastUpdate = new Date($scope.lastUpdate.getTime() + 1000);
-						}, 100).then(function() {
+						}, 10).then(function() {
 							increment();
 						});
 					}
