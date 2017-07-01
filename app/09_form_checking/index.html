@@ -10,32 +10,32 @@
 
 <body ng-cloak ng-app="mainApp">
 	<h1>Mon Premier formulaire</h1>
-	<div ng-controller="MainCtrl as ctrl">
-		<form name="myForm" ng-submit="ctrl.add(); myForm.$setPristine()">
+	<div ng-controller="MainCtrl as $ctrl">
+		<form name="myForm" ng-submit="$ctrl.add(); myForm.$setPristine()">
 			<fieldset>
 
-				<select name="mySelect" ng-model="ctrl.object.select" ng-options="rate for rate in [5, 4, 3, 2, 1]" required>
+				<select name="mySelect" ng-model="$ctrl.object.select" ng-options="rate for rate in [5, 4, 3, 2, 1]" required>
 					<option value="">Select your note</option>
 				</select><i ng-show="myForm.mySelect.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
 				<label for="_lastName">Last name: </label><br>
-				<input type="text" name="myLastName" id="_lastName" ng-model="ctrl.object.name" required>
+				<input type="text" name="myLastName" id="_lastName" ng-model="$ctrl.object.name" required>
 				<i ng-show="myForm.myLastName.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
 				<label for="_email">Email: </label><br>
-				<input type="email" name="myEmail" id="_email" ng-model="ctrl.object.email" required>
+				<input type="email" name="myEmail" id="_email" ng-model="$ctrl.object.email" required>
 				<i ng-show="myForm.myEmail.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
 				<label for="_comment">Your comment: </label><br>
-				<textarea name="myComment" id="_comment" ng-model="ctrl.object.text" rows="5" required></textarea>
+				<textarea name="myComment" id="_comment" ng-model="$ctrl.object.text" rows="5" required></textarea>
 				<i ng-show="myForm.myComment.$valid" class="fa fa-check" aria-hidden="true"></i><br>
 
 				<input type="submit" value="Post" ng-disabled="myForm.$invalid" />
 			</fieldset>
 		</form>
 		<comments>
-			<button id="delete" ng-disabled="ctrl.comments.length === 0" ng-click="ctrl.deleteAll()">Delete All</button>
-			<comment ng-repeat="object in ctrl.comments track by $index">
+			<button id="delete" ng-disabled="$ctrl.comments.length === 0" ng-click="$ctrl.deleteAll()">Delete All</button>
+			<comment ng-repeat="object in $ctrl.comments track by $index">
 				<ul>
 					<li><b>Rate: </b>{{object.select}}</li>
 					<li><b>Last name: </b>{{object.name}}</li>
