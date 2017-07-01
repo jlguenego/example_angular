@@ -5,7 +5,7 @@
 	// just for the sunrise. Nothing to do with the SPA
 	app.run(function($location, jlgCss) {
 		'ngInject';
-		var img = 'http://businessasmission.com/wp-content/uploads/2015/04/above-the-clouds-845x321.jpeg';
+		var img = 'http://jlg-consulting.com/orsys/FAN/resources/above-the-clouds-845x321.jpeg';
 		console.log('$location.path', $location.path());
 		if ($location.path() === '' || $location.path() === '/' || $location.path() === '/hello') {
 			console.log('onload');

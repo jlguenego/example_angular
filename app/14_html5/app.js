@@ -27,7 +27,7 @@
 	app.controller('MessageController', function($routeParams, jlgCss) {
 		'ngInject';
 		this.message = $routeParams.msg;
-		var img = 'http://motivationsparkles.com/wp-content/uploads/2017/05/Why-are-we-so-alone.jpg'
+		var img = 'http://jlg-consulting.com/orsys/FAN/resources/mt-fuji-2232246.jpg'
 		jlgCss.onload(img);
 	});
 })();

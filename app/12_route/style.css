@@ -82,7 +82,7 @@ cover {
 	background-position: center;
 	width: 100%;
 	padding: 192px 0px 160px 0px;
-	background-image: url("http://businessasmission.com/wp-content/uploads/2015/04/above-the-clouds-845x321.jpeg");
+	background-image: url("http://jlg-consulting.com/orsys/FAN/resources/above-the-clouds-845x321.jpeg");
 }
 
 cover:after {
@@ -105,7 +105,7 @@ cover.hello {
 }
 
 cover.message {
-	background-image: url("http://motivationsparkles.com/wp-content/uploads/2017/05/Why-are-we-so-alone.jpg");
+	background-image: url("http://jlg-consulting.com/orsys/FAN/resources/mt-fuji-2232246.jpg");
 }
 
 .is-loading cover:after {
