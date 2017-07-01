@@ -53,7 +53,7 @@ module.exports = {
 			}]
 		}, {
 			test: /\.png$/,
-			use: ["url-loader?mimetype=image/png"]
+			use: ['url-loader?mimetype=image/png']
 		}, {
 			test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
 			use: [{
@@ -108,4 +108,4 @@ module.exports = {
 			'window.jQuery': 'jquery'
 		})
 	]
-}
+};
