@@ -4,7 +4,9 @@
 	"end_with_newline": true,
 	"eol": "\n",
 	"html": {
-
+		"unformatted": [],
+		"preserve_newlines": true,
+		"wrap_line_length": 120
 	},
 	"css": {
 
