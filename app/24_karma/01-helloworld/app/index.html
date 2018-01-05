@@ -2,10 +2,11 @@
 <html>
 
 <head>
+	<link rel="stylesheet" href="../../../../node_modules/angular/angular-csp.css">
 	<title>My First Karma Unit Test</title>
 </head>
 
-<body ng-app="myApp" ng-controller="MyController as $ctrl">
+<body ng-cloak ng-app="myApp" ng-controller="MyController as $ctrl">
 	<h1>My First Karma Unit Test</h1>
 	<h1>{{$ctrl.message}}</h1>
 	<script src="../../../../node_modules/angular/angular.js"></script>
