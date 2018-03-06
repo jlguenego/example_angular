@@ -2,7 +2,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"name": "example_angular",
-	"description": "S豩e d'exemples utilisant AngularJS",
+	"description": "Site d'exemples utilisant AngularJS",
 	"repository": "https://github.com/jlguenego/example_angular",
 	"license": "MIT",
 	"devDependencies": {
