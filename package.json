@@ -30,7 +30,7 @@
 		"node-sass": "^4.7.2",
 		"protractor": "",
 		"sass-loader": "^6.0.5",
-		"serve-index": "1.6.2",
+		"serve-index": "^1.9.1",
 		"serve-static": "1.9.1",
 		"socket.io": "^2.0.3",
 		"style-loader": "^0.18.2",
