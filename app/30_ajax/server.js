@@ -5,6 +5,7 @@
 	var serveIndex = require('serve-index');
 
 	var app = express();
+
 	app.use(function(req, res, next) {
 		console.log('req.url', req.url);
 		setTimeout(function() {
