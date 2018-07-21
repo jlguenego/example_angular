@@ -12,6 +12,13 @@ exports.config = {
 
 	chromeOnly: true,
 
+	// pour firefox
+	// capabilities: {
+	// 	browserName: 'firefox',
+	// 	platform: 'WINDOWS'
+	// },
+	// directConnect: true,
+
 	baseUrl: 'http://localhost:8000/app/25_protractor/',
 
 	framework: 'jasmine',

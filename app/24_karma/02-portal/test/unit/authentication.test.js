@@ -4,7 +4,6 @@ describe('authentication', function() {
 	beforeEach(module('authentication'));
 
 	describe('AuthenticationCtrl', function() {
-		var $http;
 		var request;
 		var ctrl;
 		var $location;
@@ -13,7 +12,6 @@ describe('authentication', function() {
 
 		beforeEach(inject(function($rootScope, $controller, $injector) {
 			$httpBackend = $injector.get('$httpBackend');
-			$http = $injector.get('$http');
 			$location = $injector.get('$location');
 			logout = $injector.get('logout');
 
